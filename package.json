@@ -22,11 +22,6 @@
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
@@ -94,7 +89,7 @@
     "mocha": "^6.1.4",
     "nodemon": "^1.18.3",
     "npm-merge-driver": "^2.3.5",
-    "prettier": "1.11.1",
+    "prettier": "^1.19.1",
     "react-test-renderer": "^16.4.2",
     "redux-devtools-extension": "^2.13.5",
     "redux-mock-store": "^1.5.3",

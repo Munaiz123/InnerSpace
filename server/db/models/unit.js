@@ -10,6 +10,9 @@ const Unit = db.define('unit', {
   },
   bathroomCount: {
     type: Sequelize.INTEGER
+  },
+  rent:{
+    type:Sequelize.INTEGER
   }
 })
 
