@@ -15,6 +15,7 @@ async function seed() {
       lastName: 'lord',
       isLandlord: true
     }),
+
     User.create({
       email: 'tenant@email.com',
       password: '123',

@@ -17,6 +17,8 @@ Ticket.belongsTo(User)
 User.belongsToMany(Building, {through:'Tenants'})
 Building.belongsToMany(User, {through:'Tenants'})
 
+User.hasOne(Building, {as:'landlord'}) //Landlord
+
 module.exports = {
   User,
   Ticket,

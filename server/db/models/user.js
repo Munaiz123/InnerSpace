@@ -27,9 +27,6 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  buildingID: {
-    type: Sequelize.INTEGER
-  },
   isLandlord: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
