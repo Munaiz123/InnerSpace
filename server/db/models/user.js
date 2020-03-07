@@ -30,9 +30,9 @@ const User = db.define('user', {
   buildingID: {
     type: Sequelize.INTEGER
   },
-  isTenant: {
+  isLandlord: {
     type: Sequelize.BOOLEAN,
-    defaultValue: true
+    defaultValue: false
   },
   salt: {
     type: Sequelize.STRING,

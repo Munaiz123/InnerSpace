@@ -11,15 +11,15 @@ async function seed() {
     User.create({
       email: 'landlord@email.com',
       password: '123',
-      isTenant: false,
       firstName: 'Land',
-      lastName: 'lord'
+      lastName: 'lord',
+      isLandlord: true
     }),
     User.create({
       email: 'tenant@email.com',
       password: '123',
       firstName: 'Cody',
-      lastName: 'Boy'
+      lastName: 'Boy',
     })
   ])
 
