@@ -6,7 +6,7 @@ const Ticket = db.define('ticket', {
     type: Sequelize.ENUM('HEAT/AC', 'PLUMBING', 'ELECTRICAL', 'OTHER'),
     allowNull: false
   },
-  comments: {
+  details: {
     type: Sequelize.TEXT,
     allowNull: false
   }

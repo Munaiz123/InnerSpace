@@ -3,25 +3,31 @@ const User = require('./user')
 const Ticket = require('./ticket')
 const Building = require('./building')
 const Unit = require('./unit')
+const Note = require('./notes')
 
 
-User.hasOne(Unit)
-Unit.belongsTo(User)
+User.hasOne(Building, {as:'landlord'}) //Landlord
+
+User.hasOne(Unit, {as:'tenant'})
+// Unit.belongsTo(User)
 
 Building.hasMany(Unit)
 Unit.belongsTo(Building)
 
 User.hasMany(Ticket)
-Ticket.belongsTo(User)
 
 User.belongsToMany(Building, {through:'Tenants'})
 Building.belongsToMany(User, {through:'Tenants'})
 
-User.hasOne(Building, {as:'landlord'}) //Landlord
+
+Unit.hasMany(Note)
+// Note.belongsTo(Unit)
+
 
 module.exports = {
   User,
   Ticket,
   Building,
-  Unit
+  Unit,
+  Note
 }
