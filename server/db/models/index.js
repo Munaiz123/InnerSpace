@@ -6,16 +6,13 @@ const Unit = require('./unit')
 
 
 User.hasOne(Unit)
+Unit.belongsTo(User)
 
-// Ticket.belongsTo(User)
+Building.hasMany(Unit)
+Unit.belongsTo(Building)
 
-// Building.hasMany(Unit, {as:'unitId'})
-// Unit.belongsTo(Building)
-
-// Unit.hasOne(User)
-
-
-const TicketsSubmited = db.model('TicketsSubmited')
+User.hasMany(Ticket)
+Ticket.belongsTo(User)
 
 /**
  * If we had any associations to make, this would be a great place to put them!
