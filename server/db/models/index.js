@@ -19,7 +19,6 @@ User.hasMany(Ticket)
 User.belongsToMany(Building, {through:'Tenants'})
 Building.belongsToMany(User, {through:'Tenants'})
 
-
 Unit.hasMany(Note)
 // Note.belongsTo(Unit)
 
