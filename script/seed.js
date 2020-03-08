@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User,Unit,Building} = require('../server/db/models')
 const faker = require('faker')
 
 
@@ -31,6 +31,43 @@ const createUser = async () =>{
   }
 }
 
+const createBuilding = async () =>{
+  try{
+    let currentBuilding = await Building.create({
+      buildingName: faker.address.streetName() + ' Apartments',
+      address:faker.address.streetAddress(),
+      unitsCount: faker.random.number({'min':5, 'max':11})
+    })
+    return currentBuilding
+
+  } catch(error){
+    console.log('ERROR FROM SEED FILE - createBuilding() ')
+    console.log(error)
+  }
+}
+
+const createUnit = async (tenId, builId) =>{
+  try{
+    let unitNum = String(faker.random.alphaNumeric(faker.random.number({'min':1, 'max':6})))
+
+    let currentUnit = await Unit.create({
+      unitNumber: unitNum,
+      bedroomCount: faker.random.number({'min':1 ,'max':3}),
+      bathroomCount: faker.random.number({'min':1, 'max':2}),
+      rent: faker.random.number({'min': 900, 'max':1300}),
+      tenantId: tenId,
+      buildingId:builId
+    })
+
+    return currentUnit;
+
+  } catch(error){
+    console.log('ERROR FROM SEED FILE - createUnit() ')
+    console.log(error)
+  }
+}
+
+
 
 async function seed() {
   await db.sync({force: true})
@@ -55,6 +92,16 @@ async function seed() {
 
   for (let i = 0; i < USER_COUNT; i++) {
     await createUser()
+  }
+
+  for (let i = 0; i < BUILDING_COUNT; i++) {
+    await createBuilding()
+  }
+
+  for (let i = 2; i <= UNIT_COUNT+1; i++) {
+    //creating new unit + at the same time adding tenant
+    let buildingNum = faker.random.number({'min': 1, 'max':7})
+    let newUnit = await createUnit(i, buildingNum)
   }
 
   console.log(`seeded ${users.length} users`)
