@@ -12,86 +12,83 @@ const TICKET_COUNT = 45
 const BUILDING_COUNT = 7
 const NOTE_COUNT = 23
 
-const createUser = async () =>{
-
-  try{
+const createUser = async () => {
+  try {
     let pass = faker.internet.password()
     let currentUser = await User.create({
-      email:faker.internet.email(),
+      email: faker.internet.email(),
       password: pass,
       firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
+      lastName: faker.name.lastName()
     })
 
-    return currentUser;
-
-  } catch(error){
+    return currentUser
+  } catch (error) {
     console.log('ERROR FROM SEED FILE - createUser() ')
     console.log(error)
   }
 }
 
-const createBuilding = async () =>{
-  try{
+const createBuilding = async () => {
+  try {
     let currentBuilding = await Building.create({
       buildingName: faker.address.streetName() + ' Apartments',
-      address:faker.address.streetAddress(),
-      unitsCount: faker.random.number({'min':5, 'max':11})
+      address: faker.address.streetAddress(),
+      unitsCount: faker.random.number({min: 5, max: 11})
     })
     return currentBuilding
-
-  } catch(error){
+  } catch (error) {
     console.log('ERROR FROM SEED FILE - createBuilding() ')
     console.log(error)
   }
 }
 
-const createUnit = async (tenId, builId) =>{
-  try{
-    let unitNum = String(faker.random.alphaNumeric(faker.random.number({'min':1, 'max':6})))
+const createUnit = async (tenId, builId) => {
+  try {
+    let unitNum = String(
+      faker.random.alphaNumeric(faker.random.number({min: 1, max: 6}))
+    )
 
     let currentUnit = await Unit.create({
       unitNumber: unitNum,
-      bedroomCount: faker.random.number({'min':1 ,'max':3}),
-      bathroomCount: faker.random.number({'min':1, 'max':2}),
-      rent: faker.random.number({'min': 900, 'max':1300}),
+      bedroomCount: faker.random.number({min: 1, max: 3}),
+      bathroomCount: faker.random.number({min: 1, max: 2}),
+      rent: faker.random.number({min: 900, max: 1300}),
       tenantId: tenId,
-      buildingId:builId
+      buildingId: builId
     })
 
-    return currentUnit;
-
-  } catch(error){
+    return currentUnit
+  } catch (error) {
     console.log('ERROR FROM SEED FILE - createUnit() ')
     console.log(error)
   }
 }
 
-const createTicket = async () =>{
-  try{
+const createTicket = async () => {
+  try {
     let currentTicket = await Ticket.create({
-      issue:faker.random.arrayElement(['HEAT/AC', 'PLUMBING', 'ELECTRICAL', 'OTHER']),
+      issue: faker.random.arrayElement(['HEAT/AC','PLUMBING','ELECTRICAL','OTHER']),
       details: faker.lorem.paragraph(),
-      unitId: faker.random.number({'min':1, 'max':30}),
+      unitId: faker.random.number({min: 1, max: 30})
     })
     return currentTicket
-
-  } catch(error){
+  } catch (error) {
     console.log('ERROR FROM SEED FILE - createTicket() ')
     console.log(error)
   }
 }
 
-const createNote = async() =>{
+const createNote = async () => {
   try {
     let currentNote = await Note.create({
-      date:faker.date.past(7),
-      header:faker.lorem.sentence(),
-      body:faker.lorem.paragraph(1),
-      unitId:faker.random.number({'min':1, 'max':30})
+      date: faker.date.past(7),
+      header: faker.lorem.sentence(),
+      body: faker.lorem.paragraph(1),
+      unitId: faker.random.number({min: 1, max: 30})
     })
     return currentNote
-  } catch(error){
+  } catch (error) {
     console.log('ERROR FROM SEED FILE - createNote() ')
     console.log(error)
   }
@@ -127,17 +124,17 @@ async function seed() {
     await createBuilding()
   }
 
-  for (let i = 2; i <= UNIT_COUNT+1; i++) {
+  for (let i = 2; i <= UNIT_COUNT + 1; i++) {
     //creating new unit + at the same time adding tenant
-    let buildingNum = faker.random.number({'min': 1, 'max':7})
+    let buildingNum = faker.random.number({min: 1, max: 7})
     let newUnit = await createUnit(i, buildingNum)
   }
 
-  for(let i = 0; i < TICKET_COUNT; i++){
+  for (let i = 0; i < TICKET_COUNT; i++) {
     await createTicket()
   }
 
-  for(let i = 0; i < NOTE_COUNT; i++){
+  for (let i = 0; i < NOTE_COUNT; i++) {
     await createNote()
   }
 

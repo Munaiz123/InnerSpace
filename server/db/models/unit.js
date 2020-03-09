@@ -3,7 +3,7 @@ const db = require('../db')
 
 const Unit = db.define('unit', {
   unitNumber: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   bedroomCount: {
     type: Sequelize.INTEGER
@@ -11,8 +11,8 @@ const Unit = db.define('unit', {
   bathroomCount: {
     type: Sequelize.INTEGER
   },
-  rent:{
-    type:Sequelize.INTEGER
+  rent: {
+    type: Sequelize.INTEGER
   }
 })
 
