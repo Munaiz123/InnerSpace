@@ -14,15 +14,13 @@ User.hasOne(Unit, {as:'tenant'})
 Building.hasMany(Unit)
 Unit.belongsTo(Building)
 
-User.hasMany(Ticket)
-Unit.hasMany(Ticket,{as:'tenant'})
+Unit.hasMany(Ticket)
 
 
 // User.belongsTo(Building, {through:'Tenants'})
 // Building.belongsToMany(User, {through:'Tenants'})
 
-Unit.hasMany(Note)
-// Note.belongsTo(Unit)
+Unit.hasMany(Note) // Only landlords should be writing notes
 
 
 module.exports = {

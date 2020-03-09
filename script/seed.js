@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User,Unit,Building} = require('../server/db/models')
+const {User,Unit,Building,Ticket,Note} = require('../server/db/models')
 const faker = require('faker')
 
 
@@ -67,7 +67,35 @@ const createUnit = async (tenId, builId) =>{
   }
 }
 
-// createTicket = async ()
+const createTicket = async () =>{
+  try{
+    let currentTicket = await Ticket.create({
+      issue:faker.random.arrayElement(['HEAT/AC', 'PLUMBING', 'ELECTRICAL', 'OTHER']),
+      details: faker.lorem.paragraph(),
+      unitId: faker.random.number({'min':1, 'max':30}),
+    })
+    return currentTicket
+
+  } catch(error){
+    console.log('ERROR FROM SEED FILE - createTicket() ')
+    console.log(error)
+  }
+}
+
+const createNote = async() =>{
+  try {
+    let currentNote = await Note.create({
+      date:faker.date.past(7),
+      header:faker.lorem.sentence(),
+      body:faker.lorem.paragraph(1),
+      unitId:faker.random.number({'min':1, 'max':30})
+    })
+    return currentNote
+  } catch(error){
+    console.log('ERROR FROM SEED FILE - createNote() ')
+    console.log(error)
+  }
+}
 
 
 async function seed() {
@@ -105,7 +133,14 @@ async function seed() {
     let newUnit = await createUnit(i, buildingNum)
   }
 
-  console.log(`seeded ${users.length} users`)
+  for(let i = 0; i < TICKET_COUNT; i++){
+    await createTicket()
+  }
+
+  for(let i = 0; i < NOTE_COUNT; i++){
+    await createNote()
+  }
+
   console.log(`seeded successfully`)
 }
 
