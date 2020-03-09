@@ -67,6 +67,7 @@ const createUnit = async (tenId, builId) =>{
   }
 }
 
+// createTicket = async ()
 
 
 async function seed() {
