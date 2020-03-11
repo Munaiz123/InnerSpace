@@ -17,6 +17,7 @@ const createUser = async () => {
     let pass = faker.internet.password()
     let currentUser = await User.create({
       email: faker.internet.email(),
+      unhashedPasswordForTesting:pass,
       password: pass,
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName()

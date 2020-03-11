@@ -41,6 +41,9 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  unhashedPasswordForTesting: {
+    type: Sequelize.STRING
   }
 })
 
