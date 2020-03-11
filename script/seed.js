@@ -35,7 +35,8 @@ const createBuilding = async () => {
     let currentBuilding = await Building.create({
       buildingName: faker.address.streetName() + ' Apartments',
       address: faker.address.streetAddress(),
-      unitsCount: faker.random.number({min: 5, max: 11})
+      unitsCount: faker.random.number({min: 5, max: 11}),
+      landlordId:1
     })
     return currentBuilding
   } catch (error) {
