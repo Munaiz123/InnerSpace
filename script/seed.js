@@ -99,7 +99,7 @@ const createNote = async () => {
 
 async function seed() {
   await db.sync({force: true})
-  console.log('db synced!')
+  // console.log('db synced!')
 
   const users = await Promise.all([
     User.create({
@@ -140,7 +140,7 @@ async function seed() {
     await createNote()
   }
 
-  console.log(`seeded successfully`)
+  // console.log(`seeded successfully!`)
 }
 
 // We've separated the `seed` function from the `runSeed` function.

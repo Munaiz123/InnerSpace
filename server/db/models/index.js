@@ -7,9 +7,10 @@ const Note = require('./notes')
 
 
 User.hasOne(Building, {as:'landlord'}) //Landlord
+Building.belongsTo(User)
 
 User.hasOne(Unit, {as:'tenant'})
-// Unit.belongsTo(User)
+Unit.belongsTo(User)
 
 Building.hasMany(Unit)
 Unit.belongsTo(Building)
