@@ -15,13 +15,15 @@ describe('seed File', () => {
     allUnits = await Unit.findAll({
       include: [{model: Building}, {model: User, as: 'tenant'}]
     })
-    allTickets = await Ticket.findAll()
+    allTickets = await Ticket.findAll({include:[Unit]})
     allBuildings = await Building.findAll({include:[User]})
-    allNotes = await Note.findAll()
+    allNotes = await Note.findAll({include:[Unit]})
   })
 
-  it('Should seed atleast 30 users',()=>{
-    expect(allUsers).to.have.lengthOf.above(29)
+  describe('Users', ()=>{
+    it('Should seed atleast 30 users',()=>{
+      expect(allUsers).to.have.lengthOf.above(29)
+    })
   })
 
   describe('Units', ()=>{
@@ -40,8 +42,17 @@ describe('seed File', () => {
     })
   })
 
-  it('Should seed atleast 45 tickets',()=>{
-    expect(allTickets).to.have.lengthOf.above(44)
+  describe('Tickets', ()=>{
+
+    it('Should seed atleast 45 tickets',()=>{
+      expect(allTickets).to.have.lengthOf.above(44)
+    })
+
+    it('Each ticket should should have a unit associated with it',()=>{
+      const ticketsWithoutUnit = allTickets
+      .filter( ticket => !ticket.unitId)
+      expect(ticketsWithoutUnit).to.have.lengthOf(0)
+    })
   })
 
   describe('Buildings', ()=>{
@@ -50,7 +61,7 @@ describe('seed File', () => {
       expect(allBuildings).to.have.lengthOf.above(5)
     })
 
-    it('all buildings should have a landlord user associated with it.', () => {
+    it('All buildings should have a landlord user associated with it.', () => {
       const buildingWithoutLandlord = allBuildings
         .filter(building => !building.landlordId)
       expect(buildingWithoutLandlord).to.have.lengthOf(0)
@@ -58,8 +69,16 @@ describe('seed File', () => {
 
   })
 
-  it('Should seed atleast 20 notes',()=>{
-    expect(allNotes).to.have.lengthOf.above(20)
+  describe('Notes', () => {
+
+    it('Should seed atleast 20 notes', () => {
+      expect(allNotes).to.have.lengthOf.above(20)
+    })
+
+    it('All notes should have a unit associated with it', () => {
+      let notesWithoutUnits = allNotes.filter(note => !note.unitId)
+      expect(notesWithoutUnits).to.have.lengthOf(0)
+    })
   })
 
 })
