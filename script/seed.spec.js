@@ -12,7 +12,9 @@ describe('seed File', () => {
   beforeEach( async ()=>{
     await seed()
     allUsers = await User.findAll()
-    allUnits = await Unit.findAll()
+    allUnits = await Unit.findAll({
+      include: [{model: Building}, {model: User, as: 'tenant'}]
+    })
     allTickets = await Ticket.findAll()
     allBuildings = await Building.findAll({include:[User]})
     allNotes = await Note.findAll()
@@ -22,8 +24,20 @@ describe('seed File', () => {
     expect(allUsers).to.have.lengthOf.above(29)
   })
 
-  it('Should seed atleast 30 units',()=>{
-    expect(allUnits).to.have.lengthOf.above(29)
+  describe('Units', ()=>{
+    it('Should seed atleast 30 units',()=>{
+      expect(allUnits).to.have.lengthOf.above(29)
+    })
+    it('Each unit should should have a building associated with it', ()=>{
+      const unitsWithoutBuilding = allUnits
+      .filter( unit => !unit.buildingId)
+      expect(unitsWithoutBuilding).to.have.lengthOf(0)
+    })
+    it('Each unit should should have a tenant associated with it', ()=>{
+      const unitsWithoutTenant = allUnits
+      .filter( unit => !unit.tenantId)
+      expect(unitsWithoutTenant).to.have.lengthOf(0)
+    })
   })
 
   it('Should seed atleast 45 tickets',()=>{
@@ -37,9 +51,9 @@ describe('seed File', () => {
     })
 
     it('all buildings should have a landlord user associated with it.', () => {
-      const buildingsWithLandlord = allBuildings
+      const buildingWithoutLandlord = allBuildings
         .filter(building => !building.landlordId)
-      expect(buildingsWithLandlord).to.have.lengthOf(0)
+      expect(buildingWithoutLandlord).to.have.lengthOf(0)
     })
 
   })
