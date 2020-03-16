@@ -21,11 +21,11 @@ const User = db.define('user', {
   },
   firstName: {
     type: Sequelize.STRING,
-    // allowNull: false
+    allowNull: false
   },
   lastName: {
     type: Sequelize.STRING,
-    // allowNull: false
+    allowNull: false
   },
   isLandlord: {
     type: Sequelize.BOOLEAN,
