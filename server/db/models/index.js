@@ -3,7 +3,7 @@ const User = require('./user')
 const Ticket = require('./ticket')
 const Building = require('./building')
 const Unit = require('./unit')
-const Note = require('./notes')
+const Note = require('./note')
 
 
 User.hasOne(Building, {as:'landlord'}) //Landlord
