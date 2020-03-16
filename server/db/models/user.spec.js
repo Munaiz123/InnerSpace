@@ -86,8 +86,6 @@ describe('User model', () => {
     } catch (error) {}
   })
 
-
-
   // describe('correctPassword', () => {
   //   let cody
   //   beforeEach(async () => {
