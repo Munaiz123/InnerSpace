@@ -23,6 +23,8 @@
 
     "test-everything": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --watch --require @babel/polyfill --require @babel/register",
 
+    "test-APIs":"NODE_ENV='test' mocha \"./server/api/**/*.spec.js \" --watch --recursive --require  @babel/polyfill --require @babel/register",
+
     "test-models": "NODE_ENV='test' mocha \"./server/db/models/**/*.spec.js \" --watch --recursive --require  @babel/polyfill --require @babel/register",
 
     "test-seedFile":"NODE_ENV='test' mocha \"./script/**/*.spec.js \" --watch --require @babel/polyfill --require @babel/register"
