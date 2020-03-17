@@ -45,30 +45,53 @@ describe('User API routes', () => {
 
 
   describe('POST /api/users', () => {
+
     let newUser = {
       email:'user1@email.com',
       firstName:'User',
       lastName:'One',
       isLandlord: true
     }
+
+    // using sinon's fakes to replace .create + .findOne express.js methods
+    // & have them resolve to a particular newUser obj.
+
     if(!User.create) User.create = ()=>{}
     let fakeCreate = sinon.fake.resolves(newUser)
 
-    beforeEach(()=>{
-      sinon.replace(User, 'create', fakeCreate)
-      return db.sync({force: true})
+    if(!User.findOne) User.findOne = () =>{}
+    let fakeFindOne = sinon.fake.resolves(newUser)
 
+    beforeEach(()=>{  //express.js methods are being replaced here
+
+      sinon.replace(User, 'create', fakeCreate)
+      sinon.replace(User, 'findOne', fakeFindOne)
+
+      return db.sync({force: true})
     })
-    afterEach(()=>{
+
+    afterEach(()=>{  // restoring sinon here
       sinon.restore()
     })
 
-    it('creates new user', async ()=>{
-
+    it('creates new user', async () => {
       const res = await agent
-      .post('/api/users/addUser')
-      .expect(201)
+        .post('/api/users/addUser')
+        .send(newUser)
+        .expect(201)
+
+      expect(res.body).to.be.an('object')
+      expect(res.body).to.deep.equal(newUser)
+      expect(User.create.calledOnce).to.be.equal(true)
+
+      let testUser = await User.findOne({
+        where: {email: 'user1@email.com'}
+      })
+
+      expect(testUser).to.be.an('object')
+      expect(testUser.email).to.be.equal('user1@email.com')
     })
+
 
 
   }) // end describe(' POST /api/users')
