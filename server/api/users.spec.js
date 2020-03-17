@@ -10,13 +10,13 @@ const User = db.model('user')
 
 
 describe('User API routes', () => {
-  let users = [
-    {id:1, email: 'user1@email.com',firstName:'User', lastName:'One'},
-    {id:2,email: 'user2@email.com',firstName:'User', lastName:'Two'},
-    {id:3,email: 'user3@email.com',firstName:'User', lastName:'Three'}
-  ]
 
   describe('GET /api/users/', () => {
+    let users = [
+      {id:1, email: 'user1@email.com',firstName:'User', lastName:'One'},
+      {id:2,email: 'user2@email.com',firstName:'User', lastName:'Two'},
+      {id:3,email: 'user3@email.com',firstName:'User', lastName:'Three'}
+    ]
 
     if(!User.findAll) User.findAll = ()=>{}
     let fakeFindAll = sinon.fake.resolves(users)
@@ -38,52 +38,40 @@ describe('User API routes', () => {
       expect(res.body).to.be.an('array')
       expect(res.body).to.deep.equal(users)
       expect(User.findAll.calledOnce).to.be.equal(true)
+
     })
 
   }) // end describe(' GET /api/users')
 
 
-  /*
   describe('POST /api/users', () => {
+    let newUser = {
+      email:'user1@email.com',
+      firstName:'User',
+      lastName:'One',
+      isLandlord: true
+    }
+    if(!User.create) User.create = ()=>{}
+    let fakeCreate = sinon.fake.resolves(newUser)
 
-    if(!User.addUser) User.addUser = ()=>{}
-    let fakeAddUser = sinon.fake.resolves(users)
-
-    beforeEach(() => {
-      sinon.replace(User, 'addUser', fakeAddUser)
+    beforeEach(()=>{
+      sinon.replace(User, 'create', fakeCreate)
       return db.sync({force: true})
+
     })
     afterEach(()=>{
       sinon.restore()
     })
 
-    it('creates a new user and sends back the newly created user', async ()=>{
-      const res = await request(app)
-        .post('/api/users/')
-        .send({
-          email: 'user4@email.com',
-          firstName: 'User',
-          lastName: 'Four'
-        })
-        .expect(201)
+    it('creates new user', async ()=>{
 
-      expect(res.body).to.be.an('object')
-      expect(res.body.lastName).to.equal('Four')
-
-      // const newUser = await User.findOne({
-      //   where:{
-      //     lastName:'Four'
-      //   }
-      // })
-
-      // expect(newUser).to.be.an('object')
-      // expect(newUser.lastName).to.equal('Four')
-
+      const res = await agent
+      .post('/api/users/addUser')
+      .expect(201)
     })
 
-  }) // end describe(' POST /api/users')
-  */
 
+  }) // end describe(' POST /api/users')
 
 
 }) // end describe('User routes')
