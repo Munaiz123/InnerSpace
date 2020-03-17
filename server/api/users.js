@@ -36,8 +36,7 @@ router.post('/addUser', async( req, res, next)=>{
       lastName:req.body.lastName,
       isLandlord:req.body.isLandlord,
     })
-    res.json(newUser).status(201)
-
+    res.status(201).json(newUser)
   } catch(error){
     next(error)
   }

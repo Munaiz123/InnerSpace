@@ -40,21 +40,26 @@ describe('User API routes', () => {
       expect(User.findAll.calledOnce).to.be.equal(true)
     })
 
-    // it('should be able to add a user to the data base', async ()=>{
-    //   const res = await request(app)
-    //     .post('/api/users/')
-    //     .timeout({deadline:20})
-    //     .expect(200)
-
-    // })
   }) // end describe(' GET /api/users')
 
 
+  /*
   describe('POST /api/users', () => {
 
+    if(!User.addUser) User.addUser = ()=>{}
+    let fakeAddUser = sinon.fake.resolves(users)
+
+    beforeEach(() => {
+      sinon.replace(User, 'addUser', fakeAddUser)
+      return db.sync({force: true})
+    })
+    afterEach(()=>{
+      sinon.restore()
+    })
+
     it('creates a new user and sends back the newly created user', async ()=>{
-      const res = await agent
-        .post('/api/users')
+      const res = await request(app)
+        .post('/api/users/')
         .send({
           email: 'user4@email.com',
           firstName: 'User',
@@ -62,8 +67,8 @@ describe('User API routes', () => {
         })
         .expect(201)
 
-      // expect(res.body).to.be.an('object')
-      // expect(res.body.lastName).to.equal('Four')
+      expect(res.body).to.be.an('object')
+      expect(res.body.lastName).to.equal('Four')
 
       // const newUser = await User.findOne({
       //   where:{
@@ -77,6 +82,7 @@ describe('User API routes', () => {
     })
 
   }) // end describe(' POST /api/users')
+  */
 
 
 
