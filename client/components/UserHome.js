@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
+import Sidebar from './landlord/LandlordSidebar'
+
+
 /**
  * COMPONENT
  */
@@ -12,12 +15,16 @@ export class UserHome extends React.Component {
     super()
   }
 
-  render(props) {
+  render() {
     const {user} = this.props
+    console.log('PROPSS', this.props)
 
     return (
       <div>
         <h3>Welcome Back, {user.firstName}!</h3>
+        {user.isLandlord ? (
+            <Sidebar/>
+        ):('')}
       </div>
     )
   }
