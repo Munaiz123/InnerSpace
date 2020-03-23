@@ -17,14 +17,10 @@ export class UserHome extends React.Component {
 
   render() {
     const {user} = this.props
-    console.log('PROPSS', this.props)
 
     return (
       <div>
         <h3>Welcome Back, {user.firstName}!</h3>
-        {user.isLandlord ? (
-            <Sidebar/>
-        ):('')}
       </div>
     )
   }

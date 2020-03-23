@@ -10,10 +10,6 @@ export default class LandlordSidebar extends React.Component{
   render(){
     return <div>
       <h3> Sidebar, bruv</h3>
-
-
     </div>
   }
-
-
 }
