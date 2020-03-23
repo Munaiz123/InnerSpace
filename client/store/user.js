@@ -7,10 +7,7 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 
-/**
- * INITIAL STATE
- */
-const defaultUser = {}
+
 
 /**
  * ACTION CREATORS
@@ -24,6 +21,7 @@ const removeUser = () => ({type: REMOVE_USER})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
+    console.log('RESDATAaaa',res.data)
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
@@ -55,6 +53,12 @@ export const logout = () => async dispatch => {
     console.error(err)
   }
 }
+
+
+/**
+ * INITIAL STATE
+ */
+const defaultUser = {}
 
 /**
  * REDUCER

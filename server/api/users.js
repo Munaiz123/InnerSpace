@@ -8,6 +8,7 @@ router.get('/', async (req, res, next) => {
     let allUsers = await User.findAll({
       attributes: ['id','firstName','lastName', 'email','isLandlord']
     })
+    console.log('HELLO')
     res.send(allUsers).status(200)
   } catch (err) {
     next(err)
@@ -19,7 +20,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next)=>{
   try{
     let user = await User.findOne({where:{id: req.params.id}})
-    console.log(req.params)
     res.send(user).status(200)
   } catch (error){
     next (error)
