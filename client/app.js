@@ -1,29 +1,35 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-
 import {Navbar} from './components'
 import Routes from './routes'
 
-import Sidebar from './components/landlord/LandlordSidebar'
+import LandLordHome from './components/landlord/LandlordHome'
 
-const App = (props) => {
+const App = props => {
   const {user} = props
 
   return (
     <div>
-      <Navbar />
-      <Routes />
-      {user.isLandlord ? <Sidebar /> : ''}
+      {user.isLandlord ? (
+        <div>
+          <Navbar />
+          <Routes />
+          <LandLordHome />
+        </div>
+      ) : (
+        <div>
+          <Navbar />
+          <Routes />
+        </div>
+      )}
     </div>
   )
 }
 
-
-
-const mapState = state =>{
-  return{
-    user:state.user
+const mapState = state => {
+  return {
+    user: state.user
   }
 }
 
