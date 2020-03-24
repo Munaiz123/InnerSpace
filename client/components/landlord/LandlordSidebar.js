@@ -1,18 +1,12 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {logout} from '../../store//user'
-import Navbar from '../navbar'
 
 export class LandlordSidebar extends React.Component{
   constructor(){
     super()
   }
-
-  // handleClick(){
-  //   this.props.logout()
-  // }
-
 
   render(){
     const {user} = this.props
@@ -25,7 +19,6 @@ export class LandlordSidebar extends React.Component{
       <h4>Link3</h4>
       <h4>Link4</h4>
       <h4>Link5</h4>
-      <a href="#" onClick={()=> this.props.logout()}>Logout</a>
     </div>
   }
 }

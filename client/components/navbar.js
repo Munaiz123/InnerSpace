@@ -6,23 +6,36 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1> INNER SPACE </h1>
     <nav>
       {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>Logout</a>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-end',
+            margin: '7px'
+          }}
+        >
+          <h1>INNER SPACE</h1>
+          {/* <Link to="/home">Home</Link> */}
+          <Link to="#" onClick={handleClick} style={{margin: '7px'}}>
+            {' '}
+            Logout{' '}
+          </Link>
         </div>
       ) : (
         <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <h1 className="landingPagelink">INNER SPACE</h1>
+          <Link to="/login" className="landingPagelink">
+            Login
+          </Link>
+          <Link to="/signup" className="landingPagelink">
+            Sign Up
+          </Link>
         </div>
       )}
     </nav>
-    <hr/>
+    <hr />
   </div>
 )
 

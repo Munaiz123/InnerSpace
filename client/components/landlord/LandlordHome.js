@@ -12,7 +12,9 @@ export default class LandlordHome extends React.Component {
         <div style={{width:"25%", backgroundColor:'lightBlue'}}>
           <LandlordSidebar />
         </div>
-        <h1>LANDLORD HOME</h1>
+        <div>
+        {/* <h1>LANDLORD HOME</h1> */}
+        </div>
       </div>
     )
   }

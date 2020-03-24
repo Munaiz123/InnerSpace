@@ -13,9 +13,9 @@ const App = props => {
     <div>
       {user.isLandlord ? (
         <div>
-          {/* <Navbar /> */}
-          <Routes />
+          <Navbar />
           <LandLordHome />
+          <Routes />
         </div>
       ) : (
         <div>
