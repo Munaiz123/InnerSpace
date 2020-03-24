@@ -13,7 +13,7 @@ const App = props => {
     <div>
       {user.isLandlord ? (
         <div>
-          <Navbar />
+          {/* <Navbar /> */}
           <Routes />
           <LandLordHome />
         </div>
