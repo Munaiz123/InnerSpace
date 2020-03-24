@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from "react-router-dom"
+import {NavLink, Link} from "react-router-dom"
 import {connect} from 'react-redux'
 import {logout} from '../../store//user'
 
@@ -12,14 +12,33 @@ export class LandlordSidebar extends React.Component{
     const {user} = this.props
     console.log(this.props)
 
-    return <div style={{display:'flex', flexDirection:'column'}}>
-      <h3> {user.firstName}'s Sidebar, bruv</h3>
-      <h4>Link1</h4>
-      <h4>Link2</h4>
-      <h4>Link3</h4>
-      <h4>Link4</h4>
-      <h4>Link5</h4>
-    </div>
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center'
+        }}
+      >
+        <h5>
+          {user.firstName}
+          {user.lastName}'s Sidebar
+        </h5>
+        <Link className="landlordLinks" to="/buildings">
+          My Buildings
+        </Link>
+        <Link className="landlordLinks" to="/units">
+          My Units
+        </Link>
+        <Link className="landlordLinks" to="/tenants">
+          My Tenants
+        </Link>
+        <Link className="landlordLinks" to="/tickets">
+          {' '}
+          All Tickets
+        </Link>
+      </div>
+    )
   }
 }
 

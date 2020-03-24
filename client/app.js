@@ -5,6 +5,7 @@ import {Navbar} from './components'
 import Routes from './routes'
 
 import LandLordHome from './components/landlord/LandlordHome'
+import LandlordSidebar from './components/landlord/LandlordSidebar'
 
 const App = props => {
   const {user} = props
@@ -15,6 +16,7 @@ const App = props => {
         <div>
           <Navbar />
           <LandLordHome />
+          {/* <LandlordSidebar /> */}
           <Routes />
         </div>
       ) : (

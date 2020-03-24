@@ -9,11 +9,11 @@ export default class LandlordHome extends React.Component {
   render() {
     return (
       <div style={{display: 'flex', flexDirection: 'row', alignSelf: 'flex-end', backgroundColor:'pink'}}>
-        <div style={{width:"25%", backgroundColor:'lightBlue'}}>
+        <div style={{width:"15%", backgroundColor:'lightBlue'}}>
           <LandlordSidebar />
         </div>
         <div>
-        {/* <h1>LANDLORD HOME</h1> */}
+        <h4>LANDLORD HOME</h4>
         </div>
       </div>
     )

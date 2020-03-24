@@ -3,15 +3,23 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
+
+
 import LandlordHome from './components/landlord/LandlordHome'
+import AllBuildings from './components/landlord/AllBuildings'
+import AllUnits from './components/landlord/AllUnits'
+import AllTenants from './components/landlord/AllTenants'
+import AllTickets from './components/landlord//AllTickets'
+
 
 import {me} from './store'
-
 
 
 /**
  * COMPONENT
  */
+
+
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
@@ -31,6 +39,12 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available to loggged in landlords  */}
             <Route path="/landlordhome" component={LandlordHome} />
+            <Route exact path = '/buildings' component={AllBuildings} />
+            <Route exact path = '/units' component={AllUnits} />
+            <Route exact path = '/tenants' component={AllTenants} />
+            <Route exact path = '/tickets' component={AllTickets} />
+
+
           </Switch>
         )}
 
