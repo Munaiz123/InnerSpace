@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Navbar} from './components'
 import Routes from './routes'
 
-import LandLordHome from './components/landlord/LandlordHome'
+import LandLordHub from './components/landlord/LandlordHub'
 import LandlordSidebar from './components/landlord/LandlordSidebar'
 
 const App = props => {
@@ -15,8 +15,7 @@ const App = props => {
       {user.isLandlord ? (
         <div>
           <Navbar />
-          <LandLordHome />
-          {/* <LandlordSidebar /> */}
+          <LandLordHub />
           <Routes />
         </div>
       ) : (

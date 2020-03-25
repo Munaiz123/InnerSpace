@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 
 
-import LandlordHome from './components/landlord/LandlordHome'
+import LandlordHub from './components/landlord/LandlordHub'
 import AllBuildings from './components/landlord/AllBuildings'
 import AllUnits from './components/landlord/AllUnits'
 import AllTenants from './components/landlord/AllTenants'
@@ -38,12 +38,11 @@ class Routes extends Component {
         {isLandlord && (
           <Switch>
             {/* Routes placed here are only available to loggged in landlords  */}
-            <Route path="/landlordhome" component={LandlordHome} />
-            <Route exact path = '/buildings' component={AllBuildings} />
-            <Route exact path = '/units' component={AllUnits} />
-            <Route exact path = '/tenants' component={AllTenants} />
-            <Route exact path = '/tickets' component={AllTickets} />
-
+            <Route path="/landlordhub" component={LandlordHub} />
+            <Route exact path = '/landlordhub/buildings' component={AllBuildings} />
+            <Route exact path = '/landlordhub/units' component={AllUnits} />
+            <Route exact path = '/landlordhub/tenants' component={AllTenants} />
+            <Route exact path = '/landlordhub/tickets' component={AllTickets} />
 
           </Switch>
         )}
