@@ -1,5 +1,4 @@
 import React from 'react'
-import LandlordSidebar from './LandlordSidebar'
 
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
@@ -13,8 +12,8 @@ const routes = [
   {
     path: '/',
     exact: true,
-    sidebar: () => <h4>Landlord Hub</h4>,
-    main: () => <h3>Landlord Hub</h3>
+    sidebar: () => <h4>HOME</h4>,
+    main: () => <h3>HOME</h3>
   },
   {
     path: '/buildings',
