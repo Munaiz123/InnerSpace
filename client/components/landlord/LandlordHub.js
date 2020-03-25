@@ -19,18 +19,18 @@ const routes = [
   {
     path: '/buildings',
     sidebar: () => <h4>My Buildings</h4>,
-    main: () => AllBuildings
+    main: () => <AllBuildings />
   },
-  {path: '/units', sidebar: () => <h4>My Units</h4>, main: () => AllUnits},
+  {path: '/units', sidebar: () => <h4>My Units</h4>, main: () => <AllUnits />},
   {
     path: '/tenants',
     sidebar: () => <h4>My Tenants</h4>,
-    main: () => AllTenants
+    main: () => <AllTenants />
   },
   {
     path: '/tickets',
     sidebar: () => <h4>All Tickets</h4>,
-    main: () => AllTickets
+    main: () => <AllTickets />
   }
 ]
 
@@ -63,8 +63,18 @@ export default class LandlordHub extends React.Component {
             ))}
           </div>
 
-        </div>
+          <div style ={{flex:1, padding: '10px'}}>
+          {routes.map((route, index)=>(
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </div>
 
+        </div>
       </Router>
     )
   }

@@ -7,7 +7,12 @@ export class AllUnits extends React.Component{
   }
 
   render(){
-    return <h1>AllUnits</h1>
+    return (
+      <div>
+        <h1>All Units</h1>
+        <h6>TEST</h6>
+      </div>
+    )
   }
 }
 
