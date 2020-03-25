@@ -1,6 +1,11 @@
 import React from 'react'
-import {NavLink, Link} from "react-router-dom"
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
 import {connect} from 'react-redux'
+
+import  AllBuildings  from './AllBuildings'
+import  AllUnits from './AllUnits'
+import AllTenants from './AllTenants'
+import AllTickets from './AllTickets'
 
 
 export class LandlordSidebar extends React.Component{
@@ -13,6 +18,7 @@ export class LandlordSidebar extends React.Component{
     console.log(this.props)
 
     return (
+      <Router>
       <div
         style={{
           display: 'flex',
@@ -25,27 +31,31 @@ export class LandlordSidebar extends React.Component{
           {user.lastName}'s Sidebar
         </h5>
 
-        <NavLink to="/landlordhub/buildings" className="landlordLink" href="#">
-          {' '}
+        <Link to="/landlordhub/buildings" className="landlordLink" >
           My Buildings
-        </NavLink>
+        </Link>
 
-        <NavLink to="/landlordhub/units" className="landlordLink" href="#">
-          {' '}
+        <Link to="/landlordhub/units" className="landlordLink">
           My Units
-        </NavLink>
+        </Link>
 
-        <NavLink to="/landlordhub/tenants" className="landlordLink" href="#">
-          {' '}
+        <Link to="/landlordhub/tenants" className="landlordLink">
           My Tenants
-        </NavLink>
+        </Link>
 
-        <NavLink to="/landlordhub/tickets" className="landlordLink" href="#">
-          {' '}
+        <Link to="/landlordhub/tickets" className="landlordLink">
           Tenant Tickets
-        </NavLink>
+        </Link>
+
+        <Switch>
+          <Route exact path = '/landlordhub/buildings' component={AllBuildings} />
+          <Route exact path = '/landlordhub/units' component={AllUnits} />
+          <Route exact path = '/landlordhub/tenants' component={AllTenants} />
+          <Route exact path = '/landlordhub/tickets' component={AllTickets} />
+        </Switch>
 
       </div>
+      </Router>
     )
   }
 }

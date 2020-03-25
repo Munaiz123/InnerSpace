@@ -18,13 +18,6 @@ export default class LandlordHub extends React.Component {
       <div style={{display: 'flex', flexDirection: 'row', alignSelf: 'flex-end', backgroundColor:'pink'}}>
         <div style={{width:"15%", backgroundColor:'lightBlue'}}>
           <LandlordSidebar />
-          <Switch>
-            <Route  path="/landlordhub/buildings" component={AllBuildings} />
-            <Route  path="/landlordhub/units" component={AllUnits} />
-            <Route  path="/landlordhub/tenants" component={AllTenants} />
-            <Route  path="/landlordhub/tickets" component={AllTickets} />
-          </Switch>
-
         </div>
         <div>
         <h4>LANDLORD HUB</h4>

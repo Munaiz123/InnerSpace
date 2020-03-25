@@ -39,10 +39,6 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available to loggged in landlords  */}
             <Route path="/landlordhub" component={LandlordHub} />
-            <Route exact path = '/landlordhub/buildings' component={AllBuildings} />
-            <Route exact path = '/landlordhub/units' component={AllUnits} />
-            <Route exact path = '/landlordhub/tenants' component={AllTenants} />
-            <Route exact path = '/landlordhub/tickets' component={AllTickets} />
 
           </Switch>
         )}
