@@ -7,7 +7,12 @@ export class AllTenants extends React.Component{
   }
 
   render(){
-    return <h1>AllTenants</h1>
+    return (
+      <div>
+        <h1>All Tenants</h1>
+        <h6>TEST</h6>
+      </div>
+    )
   }
 }
 

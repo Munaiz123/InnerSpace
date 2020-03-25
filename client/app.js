@@ -5,7 +5,6 @@ import {Navbar} from './components'
 import Routes from './routes'
 
 import LandLordHub from './components/landlord/LandlordHub'
-import LandlordSidebar from './components/landlord/LandlordSidebar'
 
 const App = props => {
   const {user} = props

@@ -7,7 +7,12 @@ export class AllTickets extends React.Component{
   }
 
   render(){
-    return <h1>AllTickets</h1>
+    return (
+      <div>
+        <h1>All Tickets</h1>
+        <h6>TEST</h6>
+      </div>
+    )
   }
 }
 

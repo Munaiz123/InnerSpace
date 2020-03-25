@@ -1,22 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-export class AllBuildings extends React.Component{
-  constructor(){
+export class AllBuildings extends React.Component {
+  constructor() {
     super()
   }
 
-  render(){
-    return <h1>All Buildings</h1>
+  render() {
+    return (
+      <div>
+        <h1>All Buildings</h1>
+        <h6>TEST</h6>
+      </div>
+    )
   }
 }
 
-const mapState = state =>({
+const mapState = state => ({})
 
-})
-
-const mapDispatch = dispatch =>({
-
-})
+const mapDispatch = dispatch => ({})
 
 export default connect(mapState, mapDispatch)(AllBuildings)
