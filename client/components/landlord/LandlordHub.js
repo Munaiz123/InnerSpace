@@ -2,6 +2,7 @@ import React from 'react'
 
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
+import LandlordHome from './LandlordHome'
 import AllBuildings from './AllBuildings'
 import AllUnits from './AllUnits'
 import AllTenants from './AllTenants'
@@ -13,7 +14,7 @@ const routes = [
     path: '/',
     exact: true,
     sidebar: () => <h4>HOME</h4>,
-    main: () => <h3>HOME</h3>
+    main: () => < LandlordHome />
   },
   {
     path: '/buildings',
@@ -42,7 +43,7 @@ export default class LandlordHub extends React.Component {
     return (
       <Router>
         <div style={{display: 'flex'}}>
-          <div style={{ padding:'10px', width:'15%', backgroundColor:'pink'}}>
+          <div style={{ padding:'10px', width:'10%', backgroundColor:'pink'}}>
             <ul style={{listStyleType:'none', padding:'0'}}>
               <li><Link to='/'>HOME</Link></li>
               <li><Link to='/buildings'>My Buildings</Link></li>
