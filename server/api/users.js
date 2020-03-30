@@ -8,7 +8,6 @@ router.get('/', async (req, res, next) => {
     let allUsers = await User.findAll({
       attributes: ['id','firstName','lastName', 'email','isLandlord']
     })
-    console.log('HELLO')
     res.send(allUsers).status(200)
   } catch (err) {
     next(err)
@@ -25,6 +24,7 @@ router.get('/:id', async (req, res, next)=>{
     next (error)
   }
 })
+
 
 // /api/users/addUser
 router.post('/addUser', async( req, res, next)=>{

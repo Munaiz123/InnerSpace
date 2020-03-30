@@ -14,8 +14,8 @@ describe('User API routes', () => {
   describe('GET /api/users/', () => {
     let users = [
       {id:1, email: 'user1@email.com',firstName:'User', lastName:'One'},
-      {id:2,email: 'user2@email.com',firstName:'User', lastName:'Two'},
-      {id:3,email: 'user3@email.com',firstName:'User', lastName:'Three'}
+      {id:2, email: 'user2@email.com',firstName:'User', lastName:'Two'},
+      {id:3, email: 'user3@email.com',firstName:'User', lastName:'Three'}
     ]
 
     if(!User.findAll) User.findAll = ()=>{}

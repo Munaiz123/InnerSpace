@@ -73,7 +73,6 @@ export default class LandlordHub extends React.Component {
               />
             ))}
           </div>
-
         </div>
       </Router>
     )
