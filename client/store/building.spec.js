@@ -10,41 +10,41 @@ import {getBuildings, fetchBuildings} from './building'
 
 const middlewares = [thunkMiddleware]
 const mockStore = configureMockStore(middlewares)
-const initialState = {
-  buildings: []
-}
+
 
 describe('Buildings Store', ()=>{
 
   let fakeStore;
+  let mockAxios;
 
-  const buildings = [
-    {buildingName:'firstBuilding', address: '321 This Street', unitsCount: 6},
-    {buildingName:'secondBuilding', address: '123 That Street', unitsCount: 4}
-  ]
+  const initialState = {
+    buildings: []
+  }
 
   beforeEach(()=>{
+    mockAxios = new MockAdapter(axios)
     fakeStore = mockStore(initialState)
   })
 
- describe(' get/fetch buildings', ()=>{
-   it('getBuildings action creator', ()=>{
-     expect(getBuildings(buildings).to.deep.equal({
-       type:'GET_BUILDINGS',
-       buldings
-     }))
-
-   })
-
-   it('fetchBuildings thunk', async () => {
-
-    await fakeStore.dispatch(fetchBuildings())
-    const actions = fakeStore.getActions()
-    expect(actions[0].type).to.equal('GET_BUILDINGS')
-    expect(actions[0].buildings).to.deep.equal(buildings)
+  afterEach(()=>{
+    mockAxios.restore()
+    fakeStore.clearActions()
   })
 
+  describe('getBuildings Thunk',()=>{
+    it('eventually dispatches the GET_BUILDINGS action type', ()=>{
+      let fakeBuilding1= {buildingName: 'Fake Residence', address:'sike', unitCount:0}
+      let fakeBuilding2= {buildingName: 'Fake Place', address:'N/A', unitCount:0}
+      let fakeBuildings = [fakeBuilding1, fakeBuilding2]
 
- }) //END describe 'get/fetch buildings'
+      mockAxios.onGet('/api/buildings').replyOnce(200, fakeBuildings)
+      let actions = fakeStore.getActions()
+      expect(actions[0].type).to.be.equal('GET_BUILDINGS')
+      expect(actions[0].buildings).to.be.deep.equal(fakeBuildings)
+
+    })
+
+
+  }) // END 'getBuildings Thunk'
 
 }) // END describe 'Buildings Store'
