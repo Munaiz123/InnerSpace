@@ -7,10 +7,14 @@ export class SingleBuildingCard extends React.Component {
   }
 
   render() {
+    console.log('PROPS FROM SINGLEBUILDING CARD', this.props)
+    const {id, buildingName, address, unitCount} = this.props.buildInfo
+
     return (
       <div>
         <h1>Single Building Card</h1>
-        <h6>test</h6>
+        {console.log(id, buildingName)}
+        <h6>{id} {buildingName}</h6>
       </div>
     )
   }
