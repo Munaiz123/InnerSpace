@@ -6,6 +6,8 @@ import thunkMiddleware from 'redux-thunk'
 import history from '../history'
 
 import {getBuildings, fetchBuildings} from './building'
+import {reducer} from './index'
+import {createStore} from 'redux'
 
 
 const middlewares = [thunkMiddleware]
@@ -16,6 +18,11 @@ describe('Buildings Store', ()=>{
 
   let fakeStore;
   let mockAxios;
+
+  let buildings = [
+    {buildingName:'Cold building', address:'123 W Winter Street', unitCount:3},
+    {buildingName:'Hot building', address:'123 W Summer Street', unitCount:3}
+  ]
 
   const initialState = {
     buildings: []
@@ -32,19 +39,48 @@ describe('Buildings Store', ()=>{
   })
 
   describe('getBuildings Thunk',()=>{
-    it('eventually dispatches the GET_BUILDINGS action type', ()=>{
+    it('getBuildings action creator', ()=>{
+
+      expect(getBuildings(buildings)).to.deep.equal({type: "GET_BUILDINGS", buildings})
+    })
+
+    it('eventually dispatches the GET_BUILDINGS action type', async ()=>{
       let fakeBuilding1= {buildingName: 'Fake Residence', address:'sike', unitCount:0}
       let fakeBuilding2= {buildingName: 'Fake Place', address:'N/A', unitCount:0}
       let fakeBuildings = [fakeBuilding1, fakeBuilding2]
 
       mockAxios.onGet('/api/buildings').replyOnce(200, fakeBuildings)
+      await fakeStore.dispatch(fetchBuildings())
       let actions = fakeStore.getActions()
       expect(actions[0].type).to.be.equal('GET_BUILDINGS')
       expect(actions[0].buildings).to.be.deep.equal(fakeBuildings)
 
+
     })
 
-
   }) // END 'getBuildings Thunk'
+
+  describe('Building Reducer', ()=>{
+    let store;
+    beforeEach(()=>{
+      store = createStore(reducer)
+    })
+
+    it('Returns the initial state by default', () => {
+      expect(store.getState().building).to.be.an("array")
+    })
+
+    it('reduces on GET_BUILDINGS action', () => {
+      const action = { type: 'GET_BUILDINGS', buildings }
+
+      const prevState = store.getState()
+      store.dispatch(action)
+      const newState = store.getState()
+
+      expect(newState.building).to.be.deep.equal(buildings)
+      expect(newState.building).to.not.be.equal(prevState.building)
+    })
+
+  }) // END describe 'Building Reducer'
 
 }) // END describe 'Buildings Store'

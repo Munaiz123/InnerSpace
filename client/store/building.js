@@ -6,7 +6,7 @@ const GET_BUILDINGS = 'GET_BUILDINGS'
 
 
 
-// ACTION CREATTORS
+// ACTION CREATORS
 
 export const getBuildings = buildings =>({type: GET_BUILDINGS, buildings})
 
@@ -21,21 +21,20 @@ export const fetchBuildings = () => async dispatch =>{
   }
 }
 
-
-
-
 //INITIAL STATE
-const initialState = {
-  buildings: [],
-  filter:null
-}
+const buildings =  []
+
+// const initialState = {
+//   buildings: [],
+//   filter:null
+// }
 
 //REDUCER
 
-export default function(state = initialState, action){
+export default function(state = buildings, action){
   switch(action.type){
     case GET_BUILDINGS:
-      return action.robots
+      return action.buildings
     default:
       return state
   }
