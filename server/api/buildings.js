@@ -14,6 +14,15 @@ router.get('/', async(req, res, next)=>{
   }
 })
 
+router.get('/myBuildings', async(req, res,next)=>{
+  try{
+
+
+  } catch(error){
+    next(error)
+  }
+})
+
 
 // api/buildings/addBuilding
 

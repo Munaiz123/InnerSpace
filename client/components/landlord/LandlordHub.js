@@ -43,7 +43,7 @@ export default class LandlordHub extends React.Component {
     return (
       <Router>
         <div style={{display: 'flex'}}>
-          <div style={{ padding:'10px', width:'10%', backgroundColor:'pink'}}>
+          <div style={{ padding:'10px', width:'15%', backgroundColor:'pink'}}>
             <ul style={{listStyleType:'none', padding:'0'}}>
               <li><Link to='/'>HOME</Link></li>
               <li><Link to='/buildings'>My Buildings</Link></li>

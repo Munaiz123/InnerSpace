@@ -12,7 +12,7 @@ export class SingleBuildingCard extends React.Component {
 
     return (
       <div>
-        <h1>Single Building Card</h1>
+        <h4>Single Building Card</h4>
         {console.log(id, buildingName)}
         <h6>{id} {buildingName}</h6>
       </div>
