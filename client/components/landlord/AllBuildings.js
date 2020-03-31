@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import SingleBuildingCard from './SingleBuildingCard'
+
 export class AllBuildings extends React.Component {
   constructor() {
     super()
@@ -11,6 +13,8 @@ export class AllBuildings extends React.Component {
       <div>
         <h1>All Buildings</h1>
         <h6>TEST</h6>
+        <SingleBuildingCard />
+        <SingleBuildingCard />
       </div>
     )
   }

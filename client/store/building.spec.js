@@ -71,11 +71,11 @@ describe('Buildings Store', ()=>{
     })
 
     it('reduces on GET_BUILDINGS action', () => {
-      const action = { type: 'GET_BUILDINGS', buildings }
+      let action = { type: 'GET_BUILDINGS', buildings }
 
-      const prevState = store.getState()
+      let prevState = store.getState()
       store.dispatch(action)
-      const newState = store.getState()
+      let newState = store.getState()
 
       expect(newState.building).to.be.deep.equal(buildings)
       expect(newState.building).to.not.be.equal(prevState.building)
