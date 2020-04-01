@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const {Building} = require('../db/models')
-module.exports = router
 
 // api/buildings/
 
@@ -9,8 +8,9 @@ router.get('/', async(req, res, next)=>{
     let allBuildings = await Building.findAll({
       where:{landlordId: req.user.id}
     })
-    console.log('REQ', req.params)
-    res.send(allBuildings).status(200)
+    // console.log("allBuildings", typeof(allBuildings), allBuildings)
+
+    res.send(allBuildings)
 
   } catch(error){
     next(error)
@@ -32,5 +32,8 @@ router.post('/addBuilding', async(req,res,next)=>{
     next(error)
   }
 })
+
+module.exports = router
+
 
 

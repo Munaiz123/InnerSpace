@@ -8,7 +8,6 @@ export class SingleBuildingCard extends React.Component {
 
   render() {
     const {id, buildingName, address, unitCount} = this.props.buildInfo
-    console.log('PROPS', this.props)
 
     return (
       <div>
