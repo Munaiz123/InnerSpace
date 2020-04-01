@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Building} = require('../db/models')
+const {isLandlord} = require('./middleware')
 
 // api/buildings/
 
@@ -11,6 +12,16 @@ router.get('/', async(req, res, next)=>{
     // console.log("allBuildings", typeof(allBuildings), allBuildings)
 
     res.send(allBuildings)
+
+  } catch(error){
+    next(error)
+  }
+})
+
+router.get('/:id', async(req, res, next)=>{
+  try{
+    let singleBuilding = await Building.findById(req.params.id)
+    res.send(singleBuilding)
 
   } catch(error){
     next(error)
@@ -32,6 +43,24 @@ router.post('/addBuilding', async(req,res,next)=>{
     next(error)
   }
 })
+
+router.put('/:buildingId', async(req, res,next)=>{
+  try{
+    let oldBuilding = await Building.findOne({where:{id:req.params.buildingIds}})
+    console.log(req.params)
+    await oldBuilding.update({
+      buildingName: req.body.buildingName,
+      address:req.body.address,
+      unitsCount:req.body.unitsCount
+    })
+    res.status(200).send(oldBuilding)
+
+
+  } catch(error){
+    next(error)
+  }
+})
+
 
 module.exports = router
 
