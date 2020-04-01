@@ -17,8 +17,6 @@ router.get('/', async(req, res, next)=>{
   }
 })
 
-
-
 // api/buildings/addBuilding
 
 router.post('/addBuilding', async(req,res,next)=>{

@@ -9,8 +9,6 @@ const Building = db.model('building')
 
 describe('Building API Routes', ()=>{
 
-
-
   describe('GET /api/buildings/', ()=>{
 
     let buildings = [
@@ -94,8 +92,6 @@ describe('Building API Routes', ()=>{
     })
 
 
-
   }) // end describe(' POST /api/buildings')
-
 
 })
