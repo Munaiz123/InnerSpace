@@ -21,13 +21,11 @@ export class AllBuildings extends React.Component {
   render() {
     let {allBuildings} = this.props
 
-    console.log('BUILDINGS', allBuildings)
-
     return (
       <div>
         <h1>All Buildings</h1>
         <h6>TEST</h6>
-        <div style={{display:'flex', flexDirection:'row'}}>
+        <div style={{display:'flex', flexDirection:'column'}}>
         {allBuildings.map((build,i) => <SingleBuildingCard key={i} buildInfo={build}/>)}
 
         </div>

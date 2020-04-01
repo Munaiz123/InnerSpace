@@ -6,7 +6,10 @@ module.exports = router
 
 router.get('/', async(req, res, next)=>{
   try{
-    let allBuildings = await Building.findAll()
+    let allBuildings = await Building.findAll({
+      where:{landlordId: req.user.id}
+    })
+    console.log('REQ', req.params)
     res.send(allBuildings).status(200)
 
   } catch(error){
@@ -14,14 +17,6 @@ router.get('/', async(req, res, next)=>{
   }
 })
 
-router.get('/myBuildings', async(req, res,next)=>{
-  try{
-
-
-  } catch(error){
-    next(error)
-  }
-})
 
 
 // api/buildings/addBuilding
