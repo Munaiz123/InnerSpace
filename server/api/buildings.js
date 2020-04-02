@@ -20,7 +20,7 @@ router.get('/', async(req, res, next)=>{
 
 router.get('/:id', async(req, res, next)=>{
   try{
-    let singleBuilding = await Building.findById(req.params.id)
+    let singleBuilding = await Building.findOne({where:{id:req.params.id}})
     res.send(singleBuilding)
 
   } catch(error){
@@ -44,19 +44,18 @@ router.post('/addBuilding', async(req,res,next)=>{
   }
 })
 
-router.put('/:buildingId', async(req, res,next)=>{
-  try{
-    let oldBuilding = await Building.findOne({where:{id:req.params.buildingIds}})
-    console.log(req.params)
+router.put('/:id', async (req, res, next) => {
+  try {
+    let oldBuilding = await Building.findOne({where: {id: req.params.id}})
+
     await oldBuilding.update({
       buildingName: req.body.buildingName,
-      address:req.body.address,
-      unitsCount:req.body.unitsCount
+      address: req.body.address,
+      unitsCount: req.body.unitsCount
     })
+
     res.status(200).send(oldBuilding)
-
-
-  } catch(error){
+  } catch (error) {
     next(error)
   }
 })

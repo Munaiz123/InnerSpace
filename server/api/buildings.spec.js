@@ -7,7 +7,7 @@ const app = require('../index')
 const agent = request.agent(app)
 const Building = db.model('building')
 
-describe('Building API Routes', ()=>{
+describe.only('Building API Routes', ()=>{
 
   describe('GET /api/buildings/', ()=>{
 
@@ -51,11 +51,11 @@ describe('Building API Routes', ()=>{
 
     let building = {buildingName:'Building', address:'789 Main Street', unitsCount:3}
 
-    if(!Building.findById) Building.findById = () =>{}
-    let fakeFindById = sinon.fake.resolves(building)
+    if(!Building.findOne) Building.findOne = () =>{}
+    let fakefindOne = sinon.fake.resolves(building)
 
     beforeEach(()=>{
-      sinon.replace(Building, 'findById', fakeFindById)
+      sinon.replace(Building, 'findOne', fakefindOne)
       return db.sync({force: true})
     })
 
@@ -69,6 +69,7 @@ describe('Building API Routes', ()=>{
       .expect(200)
 
       expect(res.body).to.be.an('object')
+      expect(res.body).to.deep.equal(building)
     })
 
 
@@ -76,7 +77,7 @@ describe('Building API Routes', ()=>{
   }) // End describe(' GET /api/buildings/:id')
 
 
-  describe('POST /api/buildings', () => {
+  describe('POST /api/buildings/', () => {
 
     let newBuilding = {
       buildingName: 'New Building',
@@ -126,8 +127,51 @@ describe('Building API Routes', ()=>{
 
   }) // end describe(' POST /api/buildings')
 
-  xdescribe('PUT /api/building/:buildingId', ()=>{
 
-  })
+
+  // not recognizing oldBuilding.update() method.
+  // Trying to fake resolve the method with sinon fakes... to be continued.
+  xdescribe('PUT /api/building/:id', () => {
+
+    let old = {buildingName: 'old',
+    address:'780 W Sesame Street',
+    unitsCount:2}
+
+    let updatedBuilding = {buildingName: 'Updated Building',
+    address:'780 W Sesame Street',
+    unitsCount:2}
+
+    if (!Building.findOne) Building.findOne = () => {}
+    let fakeFindOne = sinon.fake.resolves(old)
+
+    if(!Building.update) Building.update = () => {}
+    let fakeUpdate = sinon.fake.resolves(updatedBuilding)
+
+
+    beforeEach(() => {
+      //express.js methods are being replaced here
+      sinon.replace(Building, 'findOne', fakeFindOne)
+      sinon.replace(Building, 'update', fakeUpdate)
+
+      return db.sync({force: true})
+    })
+
+    afterEach(() => {
+      // restoring sinon here
+      sinon.restore()
+    })
+
+    it('updates the building with the specified id', async () => {
+      const res = await agent
+      .put(`/api/buildings/${Building.id}`)
+      .send({updatedBuilding})
+      .expect(200)
+
+      expect(res.body).to.be.an('object')
+      expect(res.body.name).to.equal('Updated Building')
+
+    })
+
+  }) // end describe 'PUT /api/building/:id'
 
 })
