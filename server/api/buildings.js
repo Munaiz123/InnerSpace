@@ -18,6 +18,8 @@ router.get('/', async(req, res, next)=>{
   }
 })
 
+// api/buildings/id
+
 router.get('/:id', async(req, res, next)=>{
   try{
     let singleBuilding = await Building.findOne({where:{id:req.params.id}})
@@ -56,6 +58,15 @@ router.put('/:id', async (req, res, next) => {
 
     res.status(200).send(oldBuilding)
   } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/:id', async (req,res, next)=>{
+  try{
+    await Building.destroy({where:{id:req.body.id}})
+    res.sendStatus(200)
+  } catch(error){
     next(error)
   }
 })
