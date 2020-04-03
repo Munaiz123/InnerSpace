@@ -3,7 +3,6 @@ import axios from 'axios'
 // ACTION TYPES
 
 const GET_BUILDINGS = 'GET_BUILDINGS'
-const GET_BUILDING = 'GET_BUILDING'
 const ADD_BUILDING = 'ADD_BUILDING'
 const UPDATE_BUILDING = 'UPDATE_BUILDING'
 const DELETE_BUILDING = 'DELETE_BUILDING'
@@ -12,8 +11,6 @@ const DELETE_BUILDING = 'DELETE_BUILDING'
 // ACTION CREATORS
 
 export const getBuildings = buildings =>({type: GET_BUILDINGS, buildings})
-
-export const getSingleBuilding = singleBuilding =>({type: GET_BUILDING, singleBuilding})
 
 export const addBuilding = building => ({type: ADD_BUILDING, building})
 
@@ -29,16 +26,6 @@ export const fetchBuildings = () => async dispatch =>{
     dispatch(getBuildings(res.data))
   }catch(error){
     console.log('ERROR FROM fetchBuildings THUNK ', error)
-  }
-}
-
-export const fetchSingleBuilding = id => async dispatch =>{
-  try{
-    let res = await axios.get(`/api/buildings/${id}`)
-    dispatch(getSingleBuilding(res.data))
-
-  } catch(error){
-    console.log('ERROR FROM fetchSingleBuilding THUNK ', error)
   }
 }
 
@@ -89,8 +76,6 @@ export default function(state = buildings, action){
   switch(action.type){
     case GET_BUILDINGS:
       return action.buildings
-    case GET_BUILDING:
-      return action.singleBuilding
     case ADD_BUILDING:
       return action.building
     case UPDATE_BUILDING:

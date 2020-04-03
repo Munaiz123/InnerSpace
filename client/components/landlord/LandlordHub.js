@@ -8,6 +8,8 @@ import AllUnits from './AllUnits'
 import AllTenants from './AllTenants'
 import AllTickets from './AllTickets'
 
+import SingleBuildingView from './SingleBuildingView'
+
 
 const routes = [
   {
@@ -19,7 +21,8 @@ const routes = [
   {
     path: '/buildings',
     sidebar: () => <h4>My Buildings</h4>,
-    main: () => <AllBuildings />
+    main: () => <AllBuildings />,
+    singleBuilding: () => <SingleBuildingView />
   },
   {path: '/units', sidebar: () => <h4>My Units</h4>, main: () => <AllUnits />},
   {
@@ -43,14 +46,17 @@ export default class LandlordHub extends React.Component {
     return (
       <Router>
         <div style={{display: 'flex'}}>
+
+          {/*  START Sidebar */}
           <div style={{ padding:'10px', width:'15%', backgroundColor:'pink'}}>
-            <ul style={{listStyleType:'none', padding:'0'}}>
+            <ul style={{listStyleType:'none', padding:'3px'}}>
               <li><Link to='/'>HOME</Link></li>
               <li><Link to='/buildings'>My Buildings</Link></li>
               <li><Link to='/units'> My Units</Link></li>
               <li><Link to='/tenants'>My Tenants</Link></li>
               <li><Link to='/tickets'>All Tickets</Link></li>
             </ul>
+
 
             {routes.map((route, index)=>(
               <Route
@@ -61,8 +67,11 @@ export default class LandlordHub extends React.Component {
               />
 
             ))}
-          </div>
+          </div> {/*  END Sidebar */}
 
+
+
+          {/*  Our Page */}
           <div style ={{flex:1, padding: '10px'}}>
           {routes.map((route, index)=>(
               <Route

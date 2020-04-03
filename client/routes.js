@@ -6,10 +6,8 @@ import {Login, Signup, UserHome} from './components'
 
 
 import LandlordHub from './components/landlord/LandlordHub'
-import AllBuildings from './components/landlord/AllBuildings'
-import AllUnits from './components/landlord/AllUnits'
-import AllTenants from './components/landlord/AllTenants'
-import AllTickets from './components/landlord//AllTickets'
+
+import SingleBuildingView from './components/landlord/SingleBuildingView'
 
 
 import {me} from './store'
@@ -38,7 +36,9 @@ class Routes extends Component {
         {isLandlord && (
           <Switch>
             {/* Routes placed here are only available to loggged in landlords  */}
-            <Route path="/landlordhub" component={LandlordHub} />
+            {/* <Route exact path="/landlordhub" component={LandlordHub} /> */}
+            {/* <Route exact path="/buildings/:id" component={SingleBuildingView} /> */}
+
 
           </Switch>
         )}

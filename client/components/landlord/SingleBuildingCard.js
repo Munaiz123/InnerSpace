@@ -1,5 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+
 
 export class SingleBuildingCard extends React.Component {
   constructor() {
@@ -11,8 +13,9 @@ export class SingleBuildingCard extends React.Component {
 
     return (
       <div>
-        <h4>Single Building Card</h4>
-        <h6>{} {buildingName}</h6>
+        <Link to={`/buildings/${id}`}>
+        <h6>{buildingName}</h6>
+        </Link>
       </div>
     )
   }
