@@ -1,34 +1,35 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+
 import {fetchSingleBuilding} from '../../store/singleBuilding'
-
-
 
 export class SingleBuildingView extends React.Component {
   constructor() {
     super()
   }
 
-  componentDidMount(){
+  componentDidMount() {
     let buildingId = this.props.match.params.id
-    console.log('SINGLE BUILD MATCH', typeof(this.props.match.params.id))
-
-    fetchSingleBuilding(Number(buildingId))
+    this.props.fetchSingleBuilding(buildingId)
   }
 
   render() {
-    console.log('SINGLE BUILD PROPS', this.props.singleBuilding)
+    let {singleBuilding} = this.props
+    console.log("this.props", this.props.singleBuilding)
+
     return (
       <div>
-        <h6>Single SingleBuilding View</h6>
+        <h4>Single View</h4>
+        {/* <h6>{singleBuilding.id}</h6> */}
+        {/* <h6>{singleBuilding.buildingName}</h6> */}
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  singleBuilding: state.building
+  singleBuilding: state.singleBuilding
 })
 
 const mapDispatch = dispatch => ({

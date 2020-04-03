@@ -50,7 +50,7 @@ export default class LandlordHub extends React.Component {
           {/*  START Sidebar */}
           <div style={{ padding:'10px', width:'15%', backgroundColor:'pink'}}>
             <ul style={{listStyleType:'none', padding:'3px'}}>
-              <li><Link to='/'>HOME</Link></li>
+              <li style={{paddingBottom:'20px'}}><Link to='/'>HOME</Link></li>
               <li><Link to='/buildings'>My Buildings</Link></li>
               <li><Link to='/units'> My Units</Link></li>
               <li><Link to='/tenants'>My Tenants</Link></li>

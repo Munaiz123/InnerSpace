@@ -20,7 +20,6 @@ export class AllBuildings extends React.Component {
 
   render() {
     let {allBuildings} = this.props
-    console.log('ALLBUILDINGS', this.props)
 
     return (
       <div>

@@ -7,7 +7,7 @@ export const getSingleBuilding = singleBuilding =>({type: GET_BUILDING, singleBu
 export const fetchSingleBuilding = id => async dispatch =>{
   try{
     let res = await axios.get(`/api/buildings/${id}`)
-    console.log("res.data from THUNK", res.data)
+    console.log("res.data from thhunk", res.data)
     dispatch(getSingleBuilding(res.data))
 
   } catch(error){
@@ -15,11 +15,12 @@ export const fetchSingleBuilding = id => async dispatch =>{
   }
 }
 
-const building = {}
+const singleBuilding = {}
 
-export default function ( state = building, action){
+export default function ( state = singleBuilding, action){
   switch(action.type){
     case GET_BUILDING:
+      console.log('FROM REDUCER', action.singleBuilding)
       return action.singleBuilding
     default:
       return state

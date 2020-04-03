@@ -9,7 +9,6 @@ router.get('/', async(req, res, next)=>{
     let allBuildings = await Building.findAll({
       where:{landlordId: req.user.id}
     })
-    // console.log("allBuildings", typeof(allBuildings), allBuildings)
 
     res.send(allBuildings)
 
@@ -22,6 +21,7 @@ router.get('/', async(req, res, next)=>{
 
 router.get('/:id', async(req, res, next)=>{
   try{
+    console.log(req.params.id)
     let singleBuilding = await Building.findOne({where:{id:req.params.id}})
     res.send(singleBuilding)
 
