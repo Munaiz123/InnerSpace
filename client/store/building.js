@@ -32,13 +32,13 @@ export const fetchBuildings = () => async dispatch =>{
   }
 }
 
-export const fetchSingleBuilding = () => async dispatch =>{
+export const fetchSingleBuilding = id => async dispatch =>{
   try{
-    let {data} = await axios.get(`/api/buildings/${id}`)
-    dispatch(getSingleBuilding(data))
+    let res = await axios.get(`/api/buildings/${id}`)
+    dispatch(getSingleBuilding(res.data))
 
   } catch(error){
-    console.log('ERROR FROM fetchSingleBuildings THUNK ', error)
+    console.log('ERROR FROM fetchSingleBuilding THUNK ', error)
   }
 }
 
@@ -90,7 +90,7 @@ export default function(state = buildings, action){
     case GET_BUILDINGS:
       return action.buildings
     case GET_BUILDING:
-      return action.building
+      return action.singleBuilding
     case ADD_BUILDING:
       return action.building
     case UPDATE_BUILDING:
