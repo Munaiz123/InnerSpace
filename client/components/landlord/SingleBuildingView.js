@@ -10,14 +10,12 @@ export class SingleBuildingView extends React.Component {
   }
 
   componentDidMount() {
-    let buildingId = this.props.match.params.id
-    this.props.fetchSingleBuilding(buildingId)
+    let {fetchSingleBuilding} = this.props
+    console.log('single view props', this.props.match)
   }
 
   render() {
-    let {singleBuilding} = this.props
-    console.log("this.props", this.props.singleBuilding)
-
+    // console.log('MATCH',this.props.match.params)
     return (
       <div>
         <h4>Single View</h4>

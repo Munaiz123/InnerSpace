@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 
 import LandlordHome from './LandlordHome'
 import AllBuildings from './AllBuildings'
@@ -19,10 +19,16 @@ const routes = [
     main: () => < LandlordHome />
   },
   {
+    path: '/buildings/:id',
+    exact: true,
+  sidebar: () => <h4> My Buildings / {}</h4>,
+    main: () => <SingleBuildingView />
+  },
+  {
     path: '/buildings',
+    exact: true,
     sidebar: () => <h4>My Buildings</h4>,
     main: () => <AllBuildings />,
-    singleBuilding: () => <SingleBuildingView />
   },
   {path: '/units', sidebar: () => <h4>My Units</h4>, main: () => <AllUnits />},
   {
@@ -44,11 +50,12 @@ export default class LandlordHub extends React.Component {
 
   render() {
     return (
+      // <Switch>
       <Router>
         <div style={{display: 'flex'}}>
 
-          {/*  START Sidebar */}
-          <div style={{ padding:'10px', width:'15%', backgroundColor:'pink'}}>
+          <div style={{ padding:'10px', width:'15%', backgroundColor:'pink'}}> {/*  START Sidebar */}
+
             <ul style={{listStyleType:'none', padding:'3px'}}>
               <li style={{paddingBottom:'20px'}}><Link to='/'>HOME</Link></li>
               <li><Link to='/buildings'>My Buildings</Link></li>
@@ -56,7 +63,6 @@ export default class LandlordHub extends React.Component {
               <li><Link to='/tenants'>My Tenants</Link></li>
               <li><Link to='/tickets'>All Tickets</Link></li>
             </ul>
-
 
             {routes.map((route, index)=>(
               <Route
@@ -71,7 +77,7 @@ export default class LandlordHub extends React.Component {
 
 
 
-          {/*  Our Page */}
+          {/*  Our Pages */}
           <div style ={{flex:1, padding: '10px'}}>
           {routes.map((route, index)=>(
               <Route
@@ -84,6 +90,7 @@ export default class LandlordHub extends React.Component {
           </div>
         </div>
       </Router>
+      // {/* </Switch> */}
     )
   }
 }
