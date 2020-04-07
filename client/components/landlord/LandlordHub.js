@@ -21,8 +21,8 @@ const routes = [
   {
     path: '/buildings/:id',
     exact: true,
-  sidebar: () => <h4> My Buildings / {}</h4>,
-    main: () => <SingleBuildingView />
+    sidebar: () => <h4> My Buildings / {}</h4>,
+    main: () => <Route exact path= '/buildings/:id' component={SingleBuildingView} />
   },
   {
     path: '/buildings',
@@ -30,7 +30,11 @@ const routes = [
     sidebar: () => <h4>My Buildings</h4>,
     main: () => <AllBuildings />,
   },
-  {path: '/units', sidebar: () => <h4>My Units</h4>, main: () => <AllUnits />},
+  {
+    path: '/units',
+    sidebar: () => <h4>My Units</h4>,
+    main: () => <AllUnits />
+  },
   {
     path: '/tenants',
     sidebar: () => <h4>My Tenants</h4>,

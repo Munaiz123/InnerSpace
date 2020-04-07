@@ -12,7 +12,6 @@ export class SingleBuildingCard extends React.Component {
 
   render() {
     const {id, buildingName, address, unitCount} = this.props.buildInfo
-
     return (
       <div>
         <Link to={`/buildings/${id}`}>
