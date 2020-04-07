@@ -25,11 +25,9 @@ export class AllBuildings extends React.Component {
 
     return (
       <div>
-        <h1>All Buildings</h1>
-        <h6>TEST</h6>
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <h1 style={{'marginBottom':'3px'}}>All BUILDINGS</h1>
+        <div style={{display:'flex', flexDirection:'column', 'marginTop':'3px'}}>
         {allBuildings.map((build,i) => <SingleBuildingCard key={i} buildInfo={build}/>)}
-
         </div>
       </div>
     )
