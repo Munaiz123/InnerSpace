@@ -68,7 +68,6 @@ describe('Buildings Store', ()=>{
       mockAxios.onGet(path).replyOnce(200, fakeSingleBuilding)
       await fakeStore.dispatch(fetchSingleBuilding())
       let actions = fakeStore.getActions()
-      console.log('actions',actions)
       expect(actions[0].type).to.be.equal('GET_BUILDING')
       expect(actions[0].buildings).to.be.deep.equal(fakeSingleBuilding)
     })

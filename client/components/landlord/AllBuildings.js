@@ -4,30 +4,35 @@ import {connect} from 'react-redux'
 import SingleBuildingCard from './SingleBuildingCard'
 import {fetchBuildings} from '../../store/buildings'
 
-
 export class AllBuildings extends React.Component {
   constructor() {
     super()
     this.state = {
-      filter:null
+      filter: null
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchBuildings()
   }
 
-
   render() {
     let {allBuildings} = this.props
-    console.log(allBuildings)
-
 
     return (
       <div>
-        <h1 style={{'marginBottom':'3px'}}>All BUILDINGS</h1>
-        <div style={{display:'flex', flexDirection:'column', 'marginTop':'3px'}}>
-        {allBuildings.map((build,i) => <SingleBuildingCard key={i} buildInfo={build}/>)}
+        <h1 style={{marginBottom: '3px'}}>All BUILDINGS</h1>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginTop: '3px',
+            flexWrap: 'wrap'
+          }}
+        >
+          {allBuildings.map((build, i) => (
+            <SingleBuildingCard key={i} index={i+1} buildInfo={build} />
+          ))}
         </div>
       </div>
     )

@@ -21,7 +21,6 @@ router.get('/', async(req, res, next)=>{
 
 router.get('/:id', async(req, res, next)=>{
   try{
-    console.log(req.params.id)
     let singleBuilding = await Building.findOne({where:{id:req.params.id}})
     res.send(singleBuilding)
 
