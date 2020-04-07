@@ -10,24 +10,23 @@ export class SingleBuildingView extends React.Component {
   }
 
   componentDidMount() {
-    let {fetchSingleBuilding} = this.props
-    console.log('single view props', this.props.match.params.id)
+    this.props.fetchSingleBuilding(this.props.match.params.id)
   }
 
   render() {
-    // console.log('MATCH',this.props.match.params)
+    let {building} = this.props
+
+
     return (
       <div>
-        <h4>Single View</h4>
-        {/* <h6>{singleBuilding.id}</h6> */}
-        {/* <h6>{singleBuilding.buildingName}</h6> */}
+        <h4>{building.buildingName}</h4>
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  singleBuilding: state.singleBuilding
+  building: state.building
 })
 
 const mapDispatch = dispatch => ({

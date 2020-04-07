@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import SingleBuildingCard from './SingleBuildingCard'
-import {fetchBuildings} from '../../store/building'
+import {fetchBuildings} from '../../store/buildings'
 
 
 export class AllBuildings extends React.Component {
@@ -20,6 +20,8 @@ export class AllBuildings extends React.Component {
 
   render() {
     let {allBuildings} = this.props
+    console.log(allBuildings)
+
 
     return (
       <div>
@@ -35,7 +37,7 @@ export class AllBuildings extends React.Component {
 }
 
 const mapState = state => ({
-  allBuildings: state.building
+  allBuildings: state.buildings
 })
 
 const mapDispatch = dispatch => ({
