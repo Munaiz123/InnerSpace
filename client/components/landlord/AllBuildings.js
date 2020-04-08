@@ -27,7 +27,7 @@ export class AllBuildings extends React.Component {
             display: 'flex',
             flexDirection: 'column',
             marginTop: '3px',
-            flexWrap: 'wrap'
+            flexFlow: 'columnWrap'
           }}
         >
           {allBuildings.map((build, i) => (
