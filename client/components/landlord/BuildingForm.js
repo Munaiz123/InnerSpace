@@ -16,7 +16,11 @@ export class BuildingForm extends React.Component {
   handleSubmit(){
     event.preventDefault()
     console.log(this.state)
-
+    this.setState({
+      buildingName:'',
+      address:'',
+      unitsCount:''
+    })
   }
 
   handleChange(){
@@ -34,7 +38,7 @@ export class BuildingForm extends React.Component {
         <input
             type="text"
             name="buildingName"
-            value={this.state.buildingName}
+            value={this.state.buildingName || ''}
             onChange={this.handleChange}
             placeholder='Builing Name'
           />
@@ -43,7 +47,7 @@ export class BuildingForm extends React.Component {
           <input
             type="text"
             name="address"
-            value={this.state.address}
+            value={this.state.address || ''}
             onChange={this.handleChange}
             placeholder='Address'
           />
@@ -51,7 +55,7 @@ export class BuildingForm extends React.Component {
           <input
             type="text"
             name="unitsCount"
-            value={this.state.unitsCount}
+            value={this.state.unitsCount || ''}
             onChange={this.handleChange}
             placeholder='Number of Units'
           />
