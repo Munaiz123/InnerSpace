@@ -34,6 +34,7 @@ router.get('/:id', async(req, res, next)=>{
 router.post('/addBuilding', async(req,res,next)=>{
   try{
     let newBuilding = await Building.create({
+      landlordId: req.user.id,
       buildingName: req.body.buildingName,
       address:req.body.address,
       unitsCount:req.body.unitsCount
@@ -52,7 +53,7 @@ router.put('/:id', async (req, res, next) => {
     await oldBuilding.update({
       buildingName: req.body.buildingName,
       address: req.body.address,
-      unitsCount: req.body.unitsCount
+      unitsCount: parseInt(req.body.unitsCount)
     })
 
     res.status(200).send(oldBuilding)
@@ -72,6 +73,3 @@ router.delete('/:id', async (req,res, next)=>{
 
 
 module.exports = router
-
-
-

@@ -2,8 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
+import {addBuild} from '../../store/buildings'
 
-export class BuildingForm extends React.Component {
+export class AddBuildingForm extends React.Component {
   constructor() {
     super()
     this.state={}
@@ -15,12 +16,15 @@ export class BuildingForm extends React.Component {
 
   handleSubmit(){
     event.preventDefault()
-    console.log(this.state)
+    // console.log(this.state)
+    this.props.addBuild(this.state)
+
     this.setState({
       buildingName:'',
       address:'',
       unitsCount:''
     })
+
   }
 
   handleChange(){
@@ -74,7 +78,7 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-
+  addBuild: building => dispatch(addBuild(building))
 })
 
-export default connect(mapState, mapDispatch)(BuildingForm)
+export default connect(mapState, mapDispatch)(AddBuildingForm)

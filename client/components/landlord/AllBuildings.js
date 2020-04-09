@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import SingleBuildingCard from './SingleBuildingCard'
-import BuildingForm from './BuildingForm'
+import AddBuildingForm from './AddBuildingForm'
 import {fetchBuildings} from '../../store/buildings'
 
 export class AllBuildings extends React.Component {
@@ -94,10 +94,10 @@ export class AllBuildings extends React.Component {
           </div> {/* end SEARCH & FILTERS */}
 
           <div>
-            <h1 style={{marginBottom: '0px', marginTop: '0px'}}>
+            <h3 style={{marginBottom: '0px', marginTop: '0px'}}>
               ADD NEW BUILDING
-            </h1>
-            <BuildingForm />
+            </h3>
+            <AddBuildingForm />
           </div>
         </div>
       </div>

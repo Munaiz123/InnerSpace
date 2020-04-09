@@ -31,8 +31,9 @@ export const fetchBuildings = () => async dispatch =>{
 
 export const addBuild = building => async dispatch =>{
   try{
-    let {data} = await axios.post(`/api/buildings/addBuilding`, {building})
-    dispatch(addBuilding(data))
+    console.log("BUILDINGS addBUilding thunk", building)
+    let {data} = await axios.post(`/api/buildings/addBuilding`, building)
+    dispatch(addBuilding(building))
 
   } catch(error){
     console.log('ERROR FROM addBuild THUNK ', error)
@@ -73,11 +74,12 @@ const buildings =  []
 //REDUCER
 
 export default function(state = buildings, action){
-  switch(action.type){
+  switch (action.type){
     case GET_BUILDINGS:
       return action.buildings
     case ADD_BUILDING:
-      return action.building
+      console.log("action.building", action.building)
+      return [...state, action.building]
     case UPDATE_BUILDING:
       return [...state].map(build =>{
         if(build.id === action.building.id) return action.building
