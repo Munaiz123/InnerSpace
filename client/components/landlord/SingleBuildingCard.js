@@ -11,7 +11,7 @@ export class SingleBuildingCard extends React.Component {
 
   render() {
     const {id, buildingName, address, unitsCount} = this.props.buildInfo
-    const {index} = this.props
+    const {index,deleteBuilding} = this.props
 
     return (
       <div style={{display: 'flex', flexDirection: 'row', alignContent:'spaceBetween'}}>

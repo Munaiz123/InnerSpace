@@ -53,8 +53,7 @@ export const updateBuilding = (building, id) => async dispatch =>{
 export const deleteBuilding = id => async dispatch =>{
   try{
     await axios.delete(`/api/buildings/${id}`)
-    console.log('ERROR FROM updateBuilding THUNK ', error)
-    dispatch(deleteBuildingId(buidldingId))
+    dispatch(deleteBuildingId(id))
 
   } catch(error){
     console.log('ERROR FROM deleteBuilding THUNK ', error)
@@ -85,7 +84,7 @@ export default function(state = buildings, action){
         if(build.id === action.building.id) return action.building
       })
     case DELETE_BUILDING:
-      return [...state].filter( build => action.id !== build.id)
+      return [...state].filter( build => action.buidldingId !== build.id)
     default:
       return state
   }
