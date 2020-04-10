@@ -42,7 +42,7 @@ export const addBuild = building => async dispatch =>{
 
 export const updateBuilding = (building, id) => async dispatch =>{
   try{
-    let {data} = await axios.put(`/api/buildings/${id}`, {building})
+    let {data} = await axios.put(`/api/buildings/${id}`, building)
     dispatch(updateBuildingInfo(data))
 
   } catch(error){
@@ -77,7 +77,6 @@ export default function(state = buildings, action){
     case GET_BUILDINGS:
       return action.buildings
     case ADD_BUILDING:
-      console.log("action.building", action.building)
       return [...state, action.building]
     case UPDATE_BUILDING:
       return [...state].map(build =>{
