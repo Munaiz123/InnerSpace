@@ -28,3 +28,11 @@ form div {
 .landlordLink{
   margin: 10%;
 }
+
+.deleteButton {
+  background-color: red;
+  height: 50%;
+  margin-left: 5px;
+  margin-top: 4px;
+
+}

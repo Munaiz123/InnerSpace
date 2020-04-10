@@ -64,7 +64,7 @@ export class AddBuildingForm extends React.Component {
             placeholder='Number of Units'
           />
 
-          <button type="submit">Add Building</button>
+          <button style={{backgroundColor:'lightBlue'}} type="submit">Add Building</button>
         </form>
 
 

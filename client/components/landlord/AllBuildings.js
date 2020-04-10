@@ -44,7 +44,7 @@ export class AllBuildings extends React.Component {
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{width: '30%', backgroundColor: 'gainsboro'}}>
-          <h1 style={{marginBottom: '0px', marginTop: '0px'}}>All BUILDINGS</h1>
+          <h1 style={{marginTop: '0px'}}>All BUILDINGS</h1>
           <div
             style={{
               display: 'flex',
