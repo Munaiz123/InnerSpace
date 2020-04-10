@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import {updateBuilding} from '../../store/buildings'
+import {fetchSingleBuilding} from '../../store/singleBuilding'
 
 
 export class EditBuildingForm extends React.Component {
@@ -24,6 +25,7 @@ export class EditBuildingForm extends React.Component {
       unitsCount:''
     })
 
+    this.props.fetchSingleBuilding(this.props.buildId)
   }
 
   handleChange(){
@@ -77,7 +79,8 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  updateBuilding: (building,id) => dispatch(updateBuilding(building,id))
+  updateBuilding: (building,id) => dispatch(updateBuilding(building,id)),
+  fetchSingleBuilding: id => dispatch(fetchSingleBuilding(id))
 })
 
 export default connect(mapState, mapDispatch)(EditBuildingForm)
