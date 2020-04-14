@@ -6,10 +6,15 @@ const Unit = require('./unit')
 const Note = require('./note')
 
 
-User.hasOne(Building, {as:'landlord'}) //Landlord
+
+
+User.hasMany(User, {as:'tenantLandlord', foreignKey:'tenantLandlordId'})
+
+User.hasOne(Building, {as:'landlord', foreignKey:'landlordId'}) //Landlord
 Building.belongsTo(User)
 
 User.hasOne(Unit, {as:'tenant'})
+User.hasMany(Unit, {as:'unitLandlord', foreignKey:'unitLandlordId'})
 Unit.belongsTo(User, {as:'tenant'})
 
 Building.hasMany(Unit)
