@@ -20,7 +20,8 @@ const createUser = async () => {
       unhashedPasswordForTesting:pass,
       password: pass,
       firstName: faker.name.firstName(),
-      lastName: faker.name.lastName()
+      lastName: faker.name.lastName(),
+      tenantLandlordId: faker.random.number({min:1, max:2})
     })
 
     return currentUser
