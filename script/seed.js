@@ -20,7 +20,8 @@ const createUser = async () => {
       unhashedPasswordForTesting:pass,
       password: pass,
       firstName: faker.name.firstName(),
-      lastName: faker.name.lastName()
+      lastName: faker.name.lastName(),
+      tenantLandlordId: faker.random.number({min:1, max:2})
     })
 
     return currentUser
@@ -36,7 +37,7 @@ const createBuilding = async () => {
       buildingName: faker.address.streetName() + ' Apartments',
       address: faker.address.streetAddress(),
       unitsCount: faker.random.number({min: 5, max: 11}),
-      landlordId:1
+      landlordId: faker.random.number({min:1,max:2})
     })
     return currentBuilding
   } catch (error) {
@@ -57,6 +58,7 @@ const createUnit = async (tenId, builId) => {
       bathroomCount: faker.random.number({min: 1, max: 2}),
       rent: faker.random.number({min: 900, max: 1300}),
       tenantId: tenId,
+      unitLandlordId: faker.random.number({min:1,max:2}),
       buildingId: builId
     })
 
@@ -105,9 +107,18 @@ async function seed() {
     User.create({
       email: 'landlord@email.com',
       password: '123',
-      firstName: 'Land',
-      lastName: 'lord',
+      firstName: 'First',
+      lastName: 'Landlord',
       isLandlord: true
+    }),
+
+    User.create({
+      email: 'landlord2@email.com',
+      password: '123',
+      firstName: 'Second',
+      lastName: 'Landlord',
+      isLandlord: true
+
     }),
 
     User.create({
