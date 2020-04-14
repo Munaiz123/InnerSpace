@@ -57,7 +57,7 @@ const createUnit = async (tenId, builId) => {
       bathroomCount: faker.random.number({min: 1, max: 2}),
       rent: faker.random.number({min: 900, max: 1300}),
       tenantId: tenId,
-      // unitLandlordId: needs to be the same as the building's landlordId
+      unitLandlordId: faker.random.number({min:1,max:2}),
       buildingId: builId
     })
 
