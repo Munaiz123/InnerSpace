@@ -33,13 +33,16 @@ router.get('/:id', async(req, res, next)=>{
 
 router.post('/addBuilding', async(req,res,next)=>{
   try{
-    let newBuilding = await Building.create({
+    let newBuilding ={
       landlordId: req.user.id,
       buildingName: req.body.buildingName,
       address:req.body.address,
       unitsCount:req.body.unitsCount
-    })
-    res.status(201).send(newBuilding)
+    }
+
+    await Building.create(newBuilding)
+    console.log(req.content)
+    res.json(newBuilding)
 
   } catch(error){
     next(error)
