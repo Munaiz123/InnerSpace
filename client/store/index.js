@@ -2,11 +2,13 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
+
 import user from './user'
 import buildings from './buildings'
 import building from './singleBuilding'
+import units from './units'
 
-export const reducer = combineReducers({user,buildings,building})
+export const reducer = combineReducers({user,buildings,building,units})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
