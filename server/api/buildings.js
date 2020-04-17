@@ -41,7 +41,6 @@ router.post('/addBuilding', async(req,res,next)=>{
     }
 
     await Building.create(newBuilding)
-    console.log(req.content)
     res.json(newBuilding)
 
   } catch(error){
@@ -53,13 +52,13 @@ router.put('/:id', async (req, res, next) => {
   try {
     let oldBuilding = await Building.findOne({where: {id: req.params.id}})
 
-    await oldBuilding.update({
+    let updatedBuilding = await oldBuilding.update({
       buildingName: req.body.buildingName,
       address: req.body.address,
       unitsCount: parseInt(req.body.unitsCount)
     })
 
-    res.status(200).send(oldBuilding)
+    res.status(200).send(updatedBuilding)
   } catch (error) {
     next(error)
   }
