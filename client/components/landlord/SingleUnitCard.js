@@ -8,18 +8,18 @@ export class SingleUnitCard extends React.Component {
   }
 
   render() {
-    console.log('SINGLE UNIT CARD PROPS', this.props)
 
     const {index} = this.props
-    const { id,
+    const {
+      id,
       unitNumber,
       bedroomCount,
       bathroomCount,
       rent,
       tenantId,
       unitLandlordId,
-      buildingId} = this.props.unitInfo
-
+      buildingId
+    } = this.props.unitInfo
 
     return (
       <div

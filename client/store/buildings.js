@@ -65,11 +65,6 @@ export const deleteBuilding = id => async dispatch =>{
 //INITIAL STATE
 const buildings =  []
 
-// const initialState = {
-//   buildings: [],
-//   filter:null
-// }
-
 //REDUCER
 
 export default function(state = buildings, action){
