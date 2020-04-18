@@ -32,7 +32,7 @@ export class AddUnitForm extends React.Component{
 
 
   render(){
-    console.log('PROPS',this.props)
+    console.log('PROPSYOO!',this.props)
     return (
       <div>
         <form

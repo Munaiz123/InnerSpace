@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {fetchUnits} from '../../store/units'
 
 import SingleUnitCard from './SingleUnitCard'
-import {AddUnitForm} from './AddUnitForm'
+import AddUnitForm from './AddUnitForm'
 
 export class AllUnits extends React.Component {
   constructor() {

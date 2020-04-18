@@ -33,7 +33,6 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/addUnit', async (req, res, next) => {
   try {
-    console.log('req....', req.params)
     let newUnit = await Unit.create({
       unitNumber: req.body.unitNumber,
       bedroomCount: req.body.bedroomCount,
