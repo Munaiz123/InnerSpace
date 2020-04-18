@@ -15,7 +15,6 @@ export class AddBuildingForm extends React.Component {
 
   handleSubmit(){
     event.preventDefault()
-    // console.log(this.state)
     this.props.addBuild(this.state)
 
     this.setState({
@@ -31,6 +30,7 @@ export class AddBuildingForm extends React.Component {
   }
 
   render() {
+    console.log('PROPS',this.props)
 
     return (
       <div>

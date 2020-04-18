@@ -31,7 +31,6 @@ export const fetchBuildings = () => async dispatch =>{
 
 export const addBuild = building => async dispatch =>{
   try{
-    console.log("BUILDINGS addBUilding thunk", building)
     let {data} = await axios.post(`/api/buildings/addBuilding`, building)
     dispatch(addBuilding(building))
 

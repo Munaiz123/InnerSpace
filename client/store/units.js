@@ -28,8 +28,8 @@ export const fetchUnits = () => async dispatch =>{
 
 export const addAUnit = unit => async dispatch =>{
   try{
-    let {data} = await axios.post('api/units/addUnit')
-    dispatch(addUnit(data))
+    let {data} = await axios.post('api/units/addUnit', unit)
+    dispatch(addUnit(unit))
 
   } catch (error){
     console.log('ERROR FROM addAUnit THUNK', error)
