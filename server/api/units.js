@@ -49,7 +49,8 @@ router.post('/addUnit', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     console.log("REQQQ", req.body)
-    let oldUnit = Unit.findOne({where: {id: req.params.id}})
+    let oldUnit = await Unit.findOne({where: {id: req.params.id}})
+
     let updatedUnit = await oldUnit.update({
       unitNumber: req.body.unitNumber,
       bedroomCount: parseInt(req.body.bedroomCount),

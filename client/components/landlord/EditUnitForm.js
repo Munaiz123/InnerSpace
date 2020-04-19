@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {updateUnit} from '../../store/units'
+import {updateAUnit} from '../../store/units'
 import {fetchSingleUnit} from '../../store/singleUnit'
 
 export class EditUnitForm extends React.Component {
@@ -17,12 +17,13 @@ export class EditUnitForm extends React.Component {
   handleSubmit(){
     event.preventDefault()
 
-    this.props.updateUnit(this.props.unitId, this.state)
+    this.props.updateAUnit(this.state, this.props.unitId)
 
     this.setState({
-      buildingName:'',
-      address:'',
-      unitsCount:''
+      unitNumber:'',
+      bedroomCount:'',
+      bathroomCount:'',
+      rent:''
     })
 
     this.props.fetchSingleUnit(this.props.unitId)
@@ -93,7 +94,7 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   fetchSingleUnit: id => dispatch(fetchSingleUnit(id)),
-  updateUnit: (unit, id) => dispatch(updateUnit(unit,id))
+  updateAUnit: (unit, id) => dispatch(updateAUnit(unit,id))
 })
 
 export default connect(mapState, mapDispatch)(EditUnitForm)

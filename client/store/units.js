@@ -4,7 +4,7 @@ import axios from "axios"
 const GET_UNITS = 'GET_UNITS'
 const ADD_UNIT = 'ADD_UNIT'
 const DELETE_UNIT = 'DELETE_UNIT'
-const EDIT_UNIT = 'EDIT_UNIT'
+const UPDATE_UNIT = 'UPDATE_UNIT'
 
 //ACTION CREATORS
 
@@ -14,7 +14,7 @@ export const addUnit = unit =>({type: ADD_UNIT, unit})
 
 export const deleteUnit = unitId => ({type:DELETE_UNIT, unitId})
 
-export const editUnit = unit =>({type:EDIT_UNIT, unit})
+export const updateUnit = unit =>({type:UPDATE_UNIT, unit})
 
 
 
@@ -50,10 +50,10 @@ export const deleteAUnit = unitId => async dispatch =>{
   }
 }
 
-export const updateUnit = (id, unit) => async dispatch =>{
+export const updateAUnit = (unit, id) => async dispatch =>{
   try{
-    let {data} = await axios.put(`api/units/${id}`, unit)
-    dispatch(editUnit(data))
+    let {data} = await axios.put(`/api/units/${id}`, unit)
+    dispatch(updateUnit(data))
 
   } catch(error){
     console.log('ERROR FROM updateUnit THUNK', error)
@@ -73,7 +73,7 @@ export default function (state = units, action){
       return [...state, action.unit]
     case DELETE_UNIT:
       return [... state].filter( unit => action.unitId !== unit.id)
-    case EDIT_UNIT:
+    case UPDATE_UNIT:
       return[...state].map( unit =>{
         if(unit.id === action.unit.id) return action.unit
       })
