@@ -9,6 +9,7 @@ import AllTenants from './AllTenants'
 import AllTickets from './AllTickets'
 
 import SingleBuildingView from './SingleBuildingView'
+import SingleUnitView from './SingleUnitView'
 
 
 const routes = [
@@ -31,7 +32,14 @@ const routes = [
     main: () => <AllBuildings />,
   },
   {
+    path: '/units/:id',
+    exact: true,
+    sidebar: () => <h4> My Units / {}</h4>,
+    main: () => <Route exact path= '/units/:id' component={SingleUnitView} />
+  },
+  {
     path: '/units',
+    exact: true,
     sidebar: () => <h4>My Units</h4>,
     main: () => <AllUnits />
   },

@@ -33,7 +33,7 @@ export class SingleUnitCard extends React.Component {
         }}
       >
         <Link
-          // to={`/units/${id}`}
+          to={`/units/${id}`}
           style={{
             display: 'flex',
             flexDirection: 'row',
