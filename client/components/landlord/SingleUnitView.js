@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {fetchSingleUnit} from '../../store/singleUnit'
+import EditUnitForm from './EditUnitForm'
 
 export class SingleUnitView extends React.Component {
   constructor() {
@@ -20,12 +21,12 @@ export class SingleUnitView extends React.Component {
         <div>
           <div id="singleBuildInfo">
             <h4>{unit.unitNumber}</h4>
-            <h5>Address: {unit.bedroomCount}</h5>
-            <h5>Number of Units: {unit.bathroomCount}</h5>
+            <h5>Bedroom Count: {unit.bedroomCount}</h5>
+            <h5>Bathroom Count: {unit.bathroomCount}</h5>
           </div>
           <div>
             <h4>Edit Unit Here</h4>
-            {/* <EditBuildingForm buildId={building.id} /> */}
+            <EditUnitForm unitId={unit.id} />
           </div>
         </div>
       </div>

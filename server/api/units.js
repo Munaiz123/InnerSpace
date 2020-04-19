@@ -2,7 +2,6 @@ const router = require('express').Router()
 const {Unit} = require('../db/models')
 const {isLandlord} = require('./middleware')
 
-module.exports = router
 
 
 // api/units
@@ -49,16 +48,17 @@ router.post('/addUnit', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
+    console.log("REQQQ", req.body)
     let oldUnit = Unit.findOne({where: {id: req.params.id}})
     let updatedUnit = await oldUnit.update({
       unitNumber: req.body.unitNumber,
-      bedroomCount: req.body.bedroomCount,
-      bathroomCount: req.body.bathroomCount,
-      rent: req.body.rent,
+      bedroomCount: parseInt(req.body.bedroomCount),
+      bathroomCount: parseInt(req.body.bathroomCount),
+      rent: parseInt(req.body.rent),
       unitLandlordId: req.user.id
     })
 
-    res.status(200).json(updatedUnit)
+    res.status(200).send(updatedUnit)
 
   } catch (error) {
     next(error)
@@ -76,3 +76,6 @@ router.delete('/:id', async(req,res,next)=>{
     next(error)
   }
 })
+
+
+module.exports = router

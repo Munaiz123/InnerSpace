@@ -1,27 +1,31 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {addAUnit} from '../../store/units'
+import {updateUnit} from '../../store/units'
+import {fetchSingleUnit} from '../../store/singleUnit'
 
-export class AddUnitForm extends React.Component{
-  constructor(){
+export class EditUnitForm extends React.Component {
+  constructor() {
     super()
-    this.state = {}
+    this.state={}
 
-    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+
   }
 
   handleSubmit(){
     event.preventDefault()
-    this.props.addAUnit(this.state)
+
+    this.props.updateUnit(this.props.unitId, this.state)
 
     this.setState({
-      unitNumber:'',
-      bedroomCount:'',
-      bathroomCount:'',
-      rent:''
+      buildingName:'',
+      address:'',
+      unitsCount:''
     })
+
+    this.props.fetchSingleUnit(this.props.unitId)
 
   }
 
@@ -29,9 +33,9 @@ export class AddUnitForm extends React.Component{
     this.setState({[event.target.name]:event.target.value})
   }
 
+  render() {
+    console.log(this.props)
 
-
-  render(){
     return (
       <div>
         <form
@@ -75,7 +79,7 @@ export class AddUnitForm extends React.Component{
           />
 
           <button style={{backgroundColor: 'lightBlue'}} type="submit">
-            Add Unit
+            Edit Unit
           </button>
         </form>
       </div>
@@ -83,13 +87,13 @@ export class AddUnitForm extends React.Component{
   }
 }
 
-
 const mapState = state => ({
 
 })
 
-const mapDispatch = dispatch =>({
-  addAUnit: unit => dispatch(addAUnit(unit))
+const mapDispatch = dispatch => ({
+  fetchSingleUnit: id => dispatch(fetchSingleUnit(id)),
+  updateUnit: (unit, id) => dispatch(updateUnit(unit,id))
 })
 
-export default connect(mapState, mapDispatch)(AddUnitForm)
+export default connect(mapState, mapDispatch)(EditUnitForm)
