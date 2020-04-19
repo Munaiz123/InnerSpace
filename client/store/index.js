@@ -7,8 +7,9 @@ import user from './user'
 import buildings from './buildings'
 import building from './singleBuilding'
 import units from './units'
+import unit from './singleUnit'
 
-export const reducer = combineReducers({user,buildings,building,units})
+export const reducer = combineReducers({user,buildings,building,units,unit})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

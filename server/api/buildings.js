@@ -21,9 +21,9 @@ router.get('/', async(req, res, next)=>{
 
 router.get('/:id', async(req, res, next)=>{
   try{
+
     let singleBuilding = await Building.findOne({where:{id:req.params.id}})
     res.send(singleBuilding)
-
   } catch(error){
     next(error)
   }

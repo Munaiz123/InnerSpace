@@ -4,6 +4,7 @@ const {isLandlord} = require('./middleware')
 
 module.exports = router
 
+
 // api/units
 router.get('/', async (req, res, next) => {
   try {
@@ -17,15 +18,15 @@ router.get('/', async (req, res, next) => {
 })
 
 // api/units/id
-
 router.get('/:id', async (req, res, next) => {
   try {
-    let singleUnit = await Unit.findOne({where: {id: req.params.id}})
-    res.json(singleUnit)
+    let singleUnit = await Unit.findOne({where: {id: parseInt(req.params.id)}})
+    res.send(singleUnit).status(200)
   } catch (error) {
     next(error)
   }
 })
+
 
 // api/units/addUnit
 // need to think about how assinging a tenant to a unit looks like
