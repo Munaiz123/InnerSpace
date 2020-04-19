@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
+import {deleteAUnit} from '../../store/units'
+
 export class SingleUnitCard extends React.Component {
   constructor() {
     super()
@@ -9,7 +11,7 @@ export class SingleUnitCard extends React.Component {
 
   render() {
 
-    const {index} = this.props
+    const {index, deleteAUnit} = this.props
     const {
       id,
       unitNumber,
@@ -20,6 +22,7 @@ export class SingleUnitCard extends React.Component {
       unitLandlordId,
       buildingId
     } = this.props.unitInfo
+
 
     return (
       <div
@@ -48,9 +51,9 @@ export class SingleUnitCard extends React.Component {
             <h6 style={{marginTop: '3px'}}> Tenant ID: {tenantId} </h6>
           </div>
         </Link>
-        {/* <button className="deleteButton" onClick={() => deleteBuilding(id)}>
+        <button className="deleteButton" onClick={()=> deleteAUnit(id)}>
           DELETE
-        </button> */}
+        </button>
       </div>
     )
   }
@@ -59,7 +62,7 @@ export class SingleUnitCard extends React.Component {
 const mapState = state => ({})
 
 const mapDispatch = dispatch => ({
-  // deleteBuilding: id => dispatch(deleteBuilding(id))
+  deleteAUnit: unitId => dispatch(deleteAUnit(unitId))
 })
 
 export default connect(mapState, mapDispatch)(SingleUnitCard)
