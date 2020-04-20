@@ -15,18 +15,32 @@ export class SingleUnitView extends React.Component {
 
   render() {
     const {unit} = this.props
+    console.log('unit', unit)
 
     return (
-      <div>
-        <div>
-          <div id="singleBuildInfo">
+      <div id="singleUnitViewDiv">
+        <div style={{display:'flex', flexDirection:'row'}}>
+          <div style={{width:'25%'}}>
             <h4>{unit.unitNumber}</h4>
-            <h5>Bedroom Count: {unit.bedroomCount}</h5>
-            <h5>Bathroom Count: {unit.bathroomCount}</h5>
+            <h6>Bedroom Count: {unit.bedroomCount}</h6>
+            <h6>Bathroom Count: {unit.bathroomCount}</h6>
+            <h6>Tenant Name:</h6>
+            <h6>Building Name</h6>
           </div>
-          <div>
-            <h4>Edit Unit Here</h4>
+
+          <div style={{width:'45%'}}>
+            <h4>Edit Unit</h4>
             <EditUnitForm unitId={unit.id} />
+          </div>
+        </div>
+
+        <div style={{display:'flex', flexDirection:'row'}}>
+          <div style={{width:'25%'}}>
+            <h4>Tenant Info</h4>
+          </div>
+
+          <div>
+            <h4>Building Info</h4>
           </div>
         </div>
       </div>

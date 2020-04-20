@@ -66,7 +66,7 @@ export default class LandlordHub extends React.Component {
       <Router>
         <div style={{display: 'flex'}}>
 
-          <div style={{ padding:'10px', width:'15%', backgroundColor:'pink'}}> {/*  START Sidebar */}
+          <div style={{ padding:'10px', width:'125px', backgroundColor:'pink'}}> {/*  START Sidebar */}
 
             <ul style={{listStyleType:'none', padding:'3px'}}>
               <li style={{paddingBottom:'20px'}}><Link to='/'>HOME</Link></li>
