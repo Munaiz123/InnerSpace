@@ -11,8 +11,10 @@ export class AllUnits extends React.Component {
   constructor() {
     super()
     this.state = {
-      search: ''
+      buildingFilter: 'All Buildings'
     }
+
+    this.buildingFilterChange = this.buildingFilterChange.bind(this)
   }
 
   componentDidMount() {
@@ -20,12 +22,20 @@ export class AllUnits extends React.Component {
     this.props.fetchBuildings()
   }
 
+  buildingFilterChange(){
+    this.setState({
+      buildingFilter:event.target.value
+    })
+  }
+
+
+
   render() {
     let {allUnits, allBuildings} = this.props
 
-    console.log(allBuildings)
-
-
+    // allUnits = allUnits.filter(unit =>{
+    //   unit[this.state.buildingFilter]
+    // })
 
     return (
       <div
@@ -41,6 +51,7 @@ export class AllUnits extends React.Component {
             <SingleUnitCard key={i} index={i + 1} unitInfo={unit} />
           ))}
         </div>
+
         <div>
           <div>
             {/* <h4> SEARCH & FILTERS </h4> */}
@@ -54,16 +65,11 @@ export class AllUnits extends React.Component {
             >
               <h5 style={{paddingRight: '3px'}}> Filter by Building:</h5>
 
-              <select onChange={this.handleChange}>
+              <select onChange={this.buildingFilterChange}>
+                <option>All Buildings</option>
                 {allBuildings.map((build,i) => <option key={i}>{build.buildingName}</option>)}
               </select>
 
-              <input
-                name="search"
-                onChange={this.searchHandleChange}
-                defaultValue={this.state.search}
-                placeholder=" Type Here, bruv"
-              />
             </div>
           </div>
 
