@@ -15,7 +15,6 @@ export class SingleUnitView extends React.Component {
 
   render() {
     const {unit} = this.props
-    console.log('unit', unit)
 
     return (
       <div id="singleUnitViewDiv">

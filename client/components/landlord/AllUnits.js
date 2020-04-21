@@ -33,9 +33,13 @@ export class AllUnits extends React.Component {
   render() {
     let {allUnits, allBuildings} = this.props
 
-    // allUnits = allUnits.filter(unit =>{
-    //   unit[this.state.buildingFilter]
+
+    // if (this.state.buildingFilter === 'All Buildings') allUnits
+    // else allUnits = allUnits.filter(unit => {
+    //   return build.buildingName === this.state.buildingFilter
     // })
+
+
 
     return (
       <div
@@ -48,7 +52,7 @@ export class AllUnits extends React.Component {
         <div style={{width: '35%', backgroundColor: 'yellow'}}>
           <h1>My Units</h1>
           {allUnits.map((unit, i) => (
-            <SingleUnitCard key={i} index={i + 1} unitInfo={unit} />
+            <SingleUnitCard key={i} index={i + 1} unitInfo={unit} buildInfo={unit.building} />
           ))}
         </div>
 
