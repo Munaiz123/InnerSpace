@@ -33,11 +33,10 @@ export class AllUnits extends React.Component {
   render() {
     let {allUnits, allBuildings} = this.props
 
-
-    // if (this.state.buildingFilter === 'All Buildings') allUnits
-    // else allUnits = allUnits.filter(unit => {
-    //   return build.buildingName === this.state.buildingFilter
-    // })
+    if (this.state.buildingFilter === 'All Buildings') allUnits
+    else allUnits = allUnits.filter(unit => {
+      return unit.buildingId === parseInt(this.state.buildingFilter)
+    })
 
 
 
@@ -70,8 +69,8 @@ export class AllUnits extends React.Component {
               <h5 style={{paddingRight: '3px'}}> Filter by Building:</h5>
 
               <select onChange={this.buildingFilterChange}>
-                <option>All Buildings</option>
-                {allBuildings.map((build,i) => <option key={i}>{build.buildingName}</option>)}
+                <option value ='All Buildings' >All Buildings</option>
+                {allBuildings.map((build,i) => <option value={build.id} key={i}>{build.buildingName}</option>)}
               </select>
 
             </div>
