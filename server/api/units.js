@@ -53,7 +53,6 @@ router.post('/addUnit', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    console.log("REQQQ", req.body)
     let oldUnit = await Unit.findOne({where: {id: req.params.id}})
 
     let updatedUnit = await oldUnit.update({
@@ -74,7 +73,6 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async(req,res,next)=>{
   try{
-    console.log('IDDD', req.params.id)
     await Unit.destroy({where:{id:req.params.id}})
     res.sendStatus(200)
 
