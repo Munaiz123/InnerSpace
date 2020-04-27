@@ -9,25 +9,26 @@ export class SingleTenantsCard extends React.Component {
   }
 
   render() {
-    console.log('SINGLE TEN CARD PROPS', this.props)
-
     const {index} = this.props
     const {firstName, lastName} = this.props.tenInfo
 
     return (
-      <div style={{display: 'flex', flexDirection: 'row', alignContent:'spaceBetween'}}>
+      <div style={{display: 'flex',flexDirection: 'row',
+          alignContent: 'spaceBetween'}}>
         <Link
           // to={`/tenants/${id}`}
-          style={{display: 'flex', flexDirection: 'row', alignItems:'flexStart'}}
+          style={{display: 'flex', flexDirection: 'row', alignItems: 'flexStart'}}
         >
-          <h6 style={{marginTop:'5px',paddingRight: '5px'}}>{index})</h6>
+
+          <h6 style={{marginTop: '5px', paddingRight: '5px'}}>{index})</h6>
           <div>
-            <h6 style={{marginTop:'5px', marginBottom: '5px'}}>{firstName} {lastName}</h6>
+            <h6 style={{marginTop: '5px', marginBottom: '5px'}}>{firstName} {lastName} </h6>
+            <h6 style={{marginTop:'5px', marginBottom: '5px'}}>Unit Number?</h6>
+            <h6 style={{marginTop: '3px', marginBottom: '25px'}}>Buidling Name?</h6>
+
           </div>
         </Link>
-        {/* <button className="deleteButton" onClick={() => deleteBuilding(id)}>
-          DELETE
-        </button> */}
+        <button className="deleteButton" onClick={()=> console.log('DELETE')}> DELETE </button>
       </div>
     )
   }
