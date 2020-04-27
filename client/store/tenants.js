@@ -12,7 +12,7 @@ export const getTenants = tenants =>({ type: GET_TENANTS, tenants})
 
 export const fetchTenants = () => async dispatch =>{
   try{
-    let {data} = await axios.get('api/users')
+    let {data} = await axios.get('api/tenants')
     dispatch(getTenants(data))
 
   } catch (error){
