@@ -2,38 +2,47 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {fetchTenants} from '../../store/tenants'
+import SingleTenantCard from './SingleTenantCard'
 
-
-export class AllTenants extends React.Component{
-  constructor(){
+export class AllTenants extends React.Component {
+  constructor() {
     super()
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchTenants()
-
   }
 
-
-  render(){
-    console.log("this.props.AllTenants", this.props)
+  render() {
+    const {allTenants} = this.props
     return (
       <div>
-        <h1>All Tenants</h1>
-        <h6>TEST</h6>
+        <div style={{width: '30%', backgroundColor: 'gainsboro'}}>
+          <h1 style={{marginTop: '0px'}}>MY TENANTS</h1>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              marginTop: '3px',
+              flexFlow: 'columnWrap'
+            }}
+          >
+            {allTenants.map((ten, i) => (
+              <SingleTenantCard key={i} index={i + 1} tenInfo={ten} />
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-const mapState = state =>({
-  tenants: state.tenants
-
+const mapState = state => ({
+  allTenants: state.tenants
 })
 
-const mapDispatch = dispatch =>({
+const mapDispatch = dispatch => ({
   fetchTenants: () => dispatch(fetchTenants())
-
 })
 
 export default connect(mapState, mapDispatch)(AllTenants)
