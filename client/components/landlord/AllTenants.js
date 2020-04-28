@@ -15,6 +15,7 @@ export class AllTenants extends React.Component {
 
   render() {
     const {allTenants} = this.props
+    console.log(allTenants)
     return (
       <div>
         <div style={{width: '30%', backgroundColor: 'gainsboro'}}>

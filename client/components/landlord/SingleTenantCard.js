@@ -10,13 +10,14 @@ export class SingleTenantsCard extends React.Component {
 
   render() {
     const {index} = this.props
-    const {firstName, lastName} = this.props.tenInfo
+    const {id ,firstName, lastName} = this.props.tenInfo
+    console.log(this.props)
 
     return (
       <div style={{display: 'flex',flexDirection: 'row',
           alignContent: 'spaceBetween'}}>
         <Link
-          // to={`/tenants/${id}`}
+          to={`/tenants/${id}`}
           style={{display: 'flex', flexDirection: 'row', alignItems: 'flexStart'}}
         >
 
