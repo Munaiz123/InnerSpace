@@ -9,8 +9,9 @@ import building from './singleBuilding'
 import units from './units'
 import unit from './singleUnit'
 import tenants from './tenants'
+import tenant from './singleTenant'
 
-export const reducer = combineReducers({user,buildings,building,units,unit,tenants})
+export const reducer = combineReducers({user,buildings,building,units,unit,tenants,tenant})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

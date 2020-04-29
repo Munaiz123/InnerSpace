@@ -1,25 +1,27 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {fetchSingleTenant} from '../../store/singleTenant'
+
 export class SingleTenantView extends React.Component {
   constructor() {
     super()
   }
 
   componentDidMount() {
-
+    this.props.fetchSingleTenant(this.props.match.params.id)
   }
 
   render() {
-    console.log(this.props)
+    const {email,firstName, lastName} = this.props.tenant;
 
     return (
       <div>
         <div>
           <div id="singleTenantInfo">
             <h4>SINGLE TENANT VIEW</h4>
-            <h5>Name: {}</h5>
-            <h5>Email: </h5>
+            <h5>Name: {firstName} {lastName}</h5>
+            <h5>Email: {email} </h5>
           </div>
           <div>
             <h4>Edit Tenant</h4>
@@ -31,8 +33,12 @@ export class SingleTenantView extends React.Component {
   }
 }
 
-const mapState = state => ({})
+const mapState = state => ({
+  tenant: state.tenant
+})
 
-const mapDispatch = dispatch => ({})
+const mapDispatch = dispatch => ({
+  fetchSingleTenant: id => dispatch(fetchSingleTenant(id))
+})
 
 export default connect(mapState, mapDispatch)(SingleTenantView)

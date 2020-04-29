@@ -9,7 +9,7 @@ export const fetchSingleBuilding = id => async dispatch => {
     let {data} = await axios.get(`/api/buildings/${id}`)
     dispatch(getSingleBuilding(data))
   } catch (error) {
-    console.log(error)
+    console.log('ERROR FROM fetchSingleBuilding THUNK', error)
   }
 }
 
