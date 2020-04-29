@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import EditTenantForm from './EditTenantForm'
+
 import {fetchSingleTenant} from '../../store/singleTenant'
 
 export class SingleTenantView extends React.Component {
@@ -13,7 +15,8 @@ export class SingleTenantView extends React.Component {
   }
 
   render() {
-    const {email,firstName, lastName} = this.props.tenant;
+    const {email,firstName, lastName, id} = this.props.tenant;
+
 
     return (
       <div>
@@ -25,7 +28,7 @@ export class SingleTenantView extends React.Component {
           </div>
           <div>
             <h4>Edit Tenant</h4>
-            {/* <EditBuildingForm buildId={building.id} /> */}
+            <EditTenantForm tenId={id}/>
           </div>
         </div>
       </div>
