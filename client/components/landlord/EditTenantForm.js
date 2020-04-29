@@ -1,6 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {fetchSingleTenant, updateATenant} from '../../store/singleTenant'
+
+
+
+
 export class EditTenantForm extends React.Component {
   constructor() {
     super()
@@ -14,7 +19,7 @@ export class EditTenantForm extends React.Component {
   handleSubmit(){
     event.preventDefault()
 
-    // this.props.updateAUnit(this.state, this.props.unitId)
+    this.props.updateATenant(this.state, this.props.unitId)
 
     this.setState({
       firstName:'',
@@ -22,7 +27,7 @@ export class EditTenantForm extends React.Component {
       email:''
     })
 
-    // this.props.fetchSingleUnit(this.props.unitId)
+    this.props.fetchSingleTenant(this.props.tenId)
 
   }
 
@@ -31,9 +36,6 @@ export class EditTenantForm extends React.Component {
   }
 
   render() {
-
-    console.log('EDIT FORM PROPS',this.props)
-
 
     return (
       <div>
@@ -83,6 +85,9 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
+  fetchSingleTenant: id => dispatch(fetchSingleTenant(id)),
+  updateATenant: (tenant, id) => dispatch(updateATenant(tenant,id))
+
 })
 
 export default connect(mapState, mapDispatch)(EditTenantForm)
