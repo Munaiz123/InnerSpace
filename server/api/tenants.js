@@ -44,7 +44,6 @@ router.post('/addUser', async( req, res, next)=>{
 
 router.put('/:id', async(req,res,next)=>{
   try{
-    console.log("req.body", req.body)
     let oldUser = await User.findOne({where:{id:req.params.id}})
     let updatedUser = await oldUser.update({
       email:req.body.email,
