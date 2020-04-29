@@ -19,7 +19,7 @@ export class EditTenantForm extends React.Component {
   handleSubmit(){
     event.preventDefault()
 
-    this.props.updateATenant(this.state, this.props.unitId)
+    this.props.updateATenant(this.state, this.props.tenId)
 
     this.setState({
       firstName:'',
