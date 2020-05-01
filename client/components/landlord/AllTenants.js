@@ -9,19 +9,24 @@ export class AllTenants extends React.Component {
     super()
     this.state = {
       search: '',
-      // firstOrLast:'firstName'
+      firstOrLast: 'firstName'
     }
     this.searchHandleChange = this.searchHandleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchTenants()
   }
 
-  searchHandleChange(event){
+  searchHandleChange(event) {
     this.setState({
-      search:event.target.value
+      search: event.target.value
     })
+  }
+
+  handleChange(event){
+    this.setState({firstOrLast:event.target.value})
 
   }
 
@@ -29,8 +34,8 @@ export class AllTenants extends React.Component {
     let {allTenants} = this.props
 
     allTenants = allTenants.filter(ten =>
-      ten.firstName.toLowerCase().includes(this.state.search.toLowerCase())
-      )
+      ten[this.state.firstOrLast].toLowerCase().includes(this.state.search.toLowerCase())
+    )
 
     console.log('allTenants', allTenants, this.state)
     return (
@@ -51,12 +56,27 @@ export class AllTenants extends React.Component {
           </div>
         </div>
         <div>
-          <input
-            name="search"
-            onChange={this.searchHandleChange}
-            defaultValue={this.state.search}
-            placeholder="Search Tenants"
-          />
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}
+          >
+            <h5 style={{paddingRight: '3px'}}> Search by:</h5>
+
+            <select onChange={this.handleChange}>
+              <option value ='firstName'> First Name</option>
+              <option value ='lastName'>Last Name</option>
+            </select>
+
+            <input
+              name="search"
+              onChange={this.searchHandleChange}
+              defaultValue={this.state.search}
+              placeholder={this.state.firstOrLast}
+            />
+          </div>
         </div>
       </div>
     )
