@@ -8,19 +8,33 @@ export class AllTenants extends React.Component {
   constructor() {
     super()
     this.state = {
-      search: ''
+      search: '',
+      // firstOrLast:'firstName'
     }
+    this.searchHandleChange = this.searchHandleChange.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchTenants()
   }
 
+  searchHandleChange(event){
+    this.setState({
+      search:event.target.value
+    })
+
+  }
+
   render() {
-    const {allTenants} = this.props
-    console.log('allTenants', allTenants)
+    let {allTenants} = this.props
+
+    allTenants = allTenants.filter(ten =>
+      ten.firstName.toLowerCase().includes(this.state.search.toLowerCase())
+      )
+
+    console.log('allTenants', allTenants, this.state)
     return (
-      <div style={{display:'flex', flexDirection:"row"}}>
+      <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{width: '30%', backgroundColor: 'gainsboro'}}>
           <div
             style={{
@@ -36,14 +50,14 @@ export class AllTenants extends React.Component {
             ))}
           </div>
         </div>
-          <div>
+        <div>
           <input
             name="search"
             onChange={this.searchHandleChange}
             defaultValue={this.state.search}
-            placeholder=" Type Here, bruv"
+            placeholder="Search Tenants"
           />
-          </div>
+        </div>
       </div>
     )
   }
