@@ -12,7 +12,7 @@ export class AllTenants extends React.Component {
       firstOrLast: 'firstName'
     }
     this.searchHandleChange = this.searchHandleChange.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleNameFilter = this.handleNameFilter.bind(this)
   }
 
   componentDidMount() {
@@ -25,7 +25,7 @@ export class AllTenants extends React.Component {
     })
   }
 
-  handleChange(event){
+  handleNameFilter(event){
     this.setState({firstOrLast:event.target.value})
 
   }
@@ -65,7 +65,7 @@ export class AllTenants extends React.Component {
           >
             <h5 style={{paddingRight: '3px'}}> Search by:</h5>
 
-            <select onChange={this.handleChange}>
+            <select onChange={this.handleNameFilter}>
               <option value ='firstName'> First Name</option>
               <option value ='lastName'>Last Name</option>
             </select>
