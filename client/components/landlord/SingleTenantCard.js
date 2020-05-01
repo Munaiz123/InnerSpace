@@ -11,7 +11,6 @@ export class SingleTenantsCard extends React.Component {
   render() {
     const {index} = this.props
     const {id ,firstName, lastName} = this.props.tenInfo
-    console.log(this.props)
 
     return (
       <div style={{display: 'flex',flexDirection: 'row',

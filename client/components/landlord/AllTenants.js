@@ -7,6 +7,9 @@ import SingleTenantCard from './SingleTenantCard'
 export class AllTenants extends React.Component {
   constructor() {
     super()
+    this.state = {
+      search: ''
+    }
   }
 
   componentDidMount() {
@@ -15,11 +18,10 @@ export class AllTenants extends React.Component {
 
   render() {
     const {allTenants} = this.props
-    console.log(allTenants)
+    console.log('allTenants', allTenants)
     return (
-      <div>
+      <div style={{display:'flex', flexDirection:"row"}}>
         <div style={{width: '30%', backgroundColor: 'gainsboro'}}>
-          <h1 style={{marginTop: '0px'}}>MY TENANTS</h1>
           <div
             style={{
               display: 'flex',
@@ -28,11 +30,20 @@ export class AllTenants extends React.Component {
               flexFlow: 'columnWrap'
             }}
           >
+            <h1 style={{marginTop: '0px'}}>MY TENANTS</h1>
             {allTenants.map((ten, i) => (
               <SingleTenantCard key={i} index={i + 1} tenInfo={ten} />
             ))}
           </div>
         </div>
+          <div>
+          <input
+            name="search"
+            onChange={this.searchHandleChange}
+            defaultValue={this.state.search}
+            placeholder=" Type Here, bruv"
+          />
+          </div>
       </div>
     )
   }
