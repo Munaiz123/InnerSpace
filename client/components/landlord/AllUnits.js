@@ -51,11 +51,22 @@ export class AllUnits extends React.Component {
         <div style={{width: '35%', backgroundColor: 'yellow'}}>
           <h1>My Units</h1>
           {allUnits.map((unit, i) => (
-            <SingleUnitCard key={i} index={i + 1} unitInfo={unit} buildInfo={unit.building} />
+            <SingleUnitCard
+              key={i}
+              index={i + 1}
+              unitInfo={unit}
+              buildInfo={unit.building}
+            />
           ))}
         </div>
 
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            paddingLeft: '30px'
+          }}
+        >
           <div>
             {/* <h4> SEARCH & FILTERS </h4> */}
 
@@ -69,17 +80,20 @@ export class AllUnits extends React.Component {
               <h5 style={{paddingRight: '3px'}}> Filter by Building:</h5>
 
               <select onChange={this.buildingFilterChange}>
-                <option value ='All Buildings' >All Buildings</option>
-                {allBuildings.map((build,i) => <option value={build.id} key={i}>{build.buildingName}</option>)}
+                <option value="All Buildings">All Buildings</option>
+                {allBuildings.map((build, i) => (
+                  <option value={build.id} key={i}>
+                    {build.buildingName}
+                  </option>
+                ))}
               </select>
-
             </div>
           </div>
 
           {/* end SEARCH & FILTERS */}
 
           <div>
-            <h3>ADD NEW UNIT</h3>
+            <h3 style={{marginBottom: '0px', marginTop: '0px'}}>ADD NEW UNIT</h3>
             <AddUnitForm />
           </div>
         </div>

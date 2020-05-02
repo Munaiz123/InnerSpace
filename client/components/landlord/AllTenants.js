@@ -1,8 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {fetchTenants} from '../../store/tenants'
 import SingleTenantCard from './SingleTenantCard'
+import AddTenantForm from './AddTenantForm'
+
+import {fetchTenants} from '../../store/tenants'
 
 export class AllTenants extends React.Component {
   constructor() {
@@ -25,16 +27,17 @@ export class AllTenants extends React.Component {
     })
   }
 
-  handleNameFilter(event){
-    this.setState({firstOrLast:event.target.value})
-
+  handleNameFilter(event) {
+    this.setState({firstOrLast: event.target.value})
   }
 
   render() {
     let {allTenants} = this.props
 
     allTenants = allTenants.filter(ten =>
-      ten[this.state.firstOrLast].toLowerCase().includes(this.state.search.toLowerCase())
+      ten[this.state.firstOrLast]
+        .toLowerCase()
+        .includes(this.state.search.toLowerCase())
     )
 
     console.log('allTenants', allTenants, this.state)
@@ -55,7 +58,13 @@ export class AllTenants extends React.Component {
             ))}
           </div>
         </div>
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            paddingLeft: '30px'
+          }}
+        >
           <div
             style={{
               display: 'flex',
@@ -66,8 +75,8 @@ export class AllTenants extends React.Component {
             <h5 style={{paddingRight: '3px'}}> Search by:</h5>
 
             <select onChange={this.handleNameFilter}>
-              <option value ='firstName'> First Name</option>
-              <option value ='lastName'>Last Name</option>
+              <option value="firstName"> First Name</option>
+              <option value="lastName">Last Name</option>
             </select>
 
             <input
@@ -76,6 +85,12 @@ export class AllTenants extends React.Component {
               defaultValue={this.state.search}
               placeholder={this.state.firstOrLast}
             />
+          </div>
+          <div>
+            <h3 style={{marginBottom: '0px', marginTop: '0px'}}>
+              ADD NEW TENANT
+            </h3>
+            <AddTenantForm />
           </div>
         </div>
       </div>
