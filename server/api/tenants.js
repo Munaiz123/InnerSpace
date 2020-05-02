@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const faker = require('faker')
+
 
 // /api/users/
 router.get('/', async (req, res, next) => {
@@ -26,18 +28,37 @@ router.get('/:id', async (req, res, next)=>{
 })
 
 
-// /api/users/addUser
-router.post('/addUser', async( req, res, next)=>{
-  try{
-    let newUser = await User.create({
-      email:req.body.email,
-      password:req.body.password,
-      firstName:req.body.firstName,
-      lastName:req.body.lastName,
-      isLandlord:req.body.isLandlord,
-    })
-    res.status(201).send(newUser)
-  } catch(error){
+// /api/users/addTenant
+router.post('/addTenant', async (req, res, next) => {
+  try {
+    let pass, newUser
+    if (!req.body.password) {
+      pass = faker.internet.password()
+
+      newUser = await User.create({
+        email: req.body.email,
+        password: pass,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        isLandlord: req.body.isLandlord,
+        unhashedPasswordForTesting: pass,
+        tenantLandlordId:req.user.id
+      })
+    } else {
+      newUser = await User.create({
+        email: req.body.email,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        isLandlord: req.body.isLandlord,
+        unhashedPasswordForTesting: req.body.unhashedPasswordForTesting,
+        tenantLandlordId:req.user.id
+
+      })
+
+    }
+    res.json(newUser)
+  } catch (error) {
     next(error)
   }
 })

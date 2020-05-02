@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {addATenant} from '../../store/tenants'
+
 
 
 export class AddTenantForm extends React.Component {
@@ -15,7 +17,7 @@ export class AddTenantForm extends React.Component {
 
   handleSubmit(){
     event.preventDefault()
-
+    this.props.addATenant(this.state)
     this.setState({
       firstName:'',
       lastName:'',
@@ -75,6 +77,7 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
+  addATenant: tenant => dispatch(addATenant(tenant))
 
 })
 
