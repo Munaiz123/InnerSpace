@@ -21,6 +21,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+
 // api/units/id
 router.get('/:id', async (req, res, next) => {
   try {
@@ -31,15 +32,20 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-
-router.get('/:tenId', async (req,res,next)=>{
-  try{
-    let tenantUnit = await Unit.findOne({where:{tenantId:req.params.tenId}})
+// api/units/tenants/tenId
+router.get('/tenants/:tenId', async (req, res, next) => {
+  try {
+    let tenantUnit = await Unit.findOne({
+      where: {tenantId: req.params.tenId},
+      include: [
+        {
+          model: Building
+        }
+      ]
+    })
     res.send(tenantUnit).status(200)
-
-  } catch(error){
+  } catch (error) {
     next(error)
-
   }
 })
 

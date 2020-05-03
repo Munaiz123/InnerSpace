@@ -23,7 +23,7 @@ export const fetchSingleUnit = id => async dispatch =>{
 
 export const fetchTenantUnit = tenId => async dispatch =>{
   try{
-    let {data} = await axios.get(`/api/units/${tenId}`)
+    let {data} = await axios.get(`/api/units/tenants/${tenId}`)
     dispatch(getTenantUnit(data))
   } catch(error){
     console.log('ERROR FROM fetechTenantUnit THUNK', error)
