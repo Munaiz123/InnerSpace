@@ -34,5 +34,15 @@ form div {
   height: 50%;
   margin-left: 5px;
   margin-top: 4px;
+}
+
+
+#singleTenantInfo{
+  /* margin: 3%; */
+  margin-left: 6%;
+
+  /* display: flex;
+  flex-direction: column; */
+  /* align-content: space-around;  */
 
 }

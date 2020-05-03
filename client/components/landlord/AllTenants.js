@@ -40,7 +40,6 @@ export class AllTenants extends React.Component {
         .includes(this.state.search.toLowerCase())
     )
 
-    console.log('allTenants', allTenants, this.state)
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{width: '30%', backgroundColor: 'gainsboro'}}>
