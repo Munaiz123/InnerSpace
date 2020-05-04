@@ -38,11 +38,10 @@ form div {
 
 
 #singleTenantInfo{
-  /* margin: 3%; */
   margin-left: 6%;
+}
 
-  /* display: flex;
-  flex-direction: column; */
-  /* align-content: space-around;  */
+#singleTenantUnitInfo{
+  margin-left: 12%;
 
 }
