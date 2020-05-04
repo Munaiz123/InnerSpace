@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import EditTenantForm from './EditTenantForm'
 
@@ -18,12 +19,11 @@ export class SingleTenantView extends React.Component {
 
   render() {
     const {email,firstName, lastName, id} = this.props.tenant;
-
     const {unitNumber, bathroomCount, bedroomCount, rent} = this.props.unit
-
+    const unitId = this.props.unit.id
 
     return (
-      <div>
+      <div style={{padding:'7%', border:'dotted', borderColor:'coral'}}>
         <div>
           <div style={{display:'flex', flexDirection:'row'}}>
           <div id="singleTenantInfo"> {/* styled in style.css */}
@@ -33,10 +33,12 @@ export class SingleTenantView extends React.Component {
           </div>
           <div id="singleTenantInfo">
             <h4>Unit Information </h4>
+            <Link to={`/units/${unitId}`}>
             <h5> Unit Number: {unitNumber}</h5>
             <h5> Number of Bath: {bathroomCount}</h5>
             <h5> Number of Bed: {bedroomCount}</h5>
             <h5> Rent: {rent}</h5>
+            </Link>
           </div>
           </div>
           <div>
