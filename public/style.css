@@ -43,5 +43,9 @@ form div {
 
 #singleTenantUnitInfo{
   margin-left: 12%;
+}
 
+/* located in SingleUnitView.js */
+#singleUnitViewDiv{
+  margin-left: 9%;
 }

@@ -14,8 +14,7 @@ const App = props => {
       {user.isLandlord ? (
         <div>
           <Navbar />
-          <LandLordHub />
-          <Routes />
+          <LandLordHub/>
         </div>
       ) : (
         <div>

@@ -23,7 +23,7 @@ export class SingleTenantView extends React.Component {
     const unitId = this.props.unit.id
 
     return (
-      <div style={{padding:'7%'}}>
+      <div style={{padding:'7%', }}>
       <h2>SINGLE TENANT VIEW</h2>
         <div>
           <div style={{display:'flex', flexDirection:'row'}}>
@@ -36,10 +36,10 @@ export class SingleTenantView extends React.Component {
             <h4>Unit Information </h4>
             <Link to={`/units/${unitId}`}>
             <h5> Unit Number: {unitNumber}</h5>
+            </Link>
             <h5> Number of Bath: {bathroomCount}</h5>
             <h5> Number of Bed: {bedroomCount}</h5>
             <h5> Rent: {rent}</h5>
-            </Link>
           </div>
 
           </div>
