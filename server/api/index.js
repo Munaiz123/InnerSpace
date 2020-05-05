@@ -6,7 +6,7 @@ router.use('/tenants', require('./tenants'))
 router.use('/buildings', require('./buildings'))
 router.use('/units', require('./units'))
 
-// router.use('/tickets', require('/.tickets'))
+router.use('/tickets', require('./tickets'))
 
 
 
