@@ -27,8 +27,8 @@ Unit.belongsTo(Building)
 
 
 //  TICKETS ******************************************
-Ticket.belongsTo(User)
-User.hasMany(Ticket, {as:'ticketLandlord', foreignKey:'ticketLanlordId'})
+Ticket.belongsTo(User, {as:'ticketTenant'})
+User.hasOne(Ticket, {as:'ticketLandlord', foreignKey:'ticketLandlordId'})
 
 Unit.hasMany(Ticket)
 Ticket.belongsTo(Unit)

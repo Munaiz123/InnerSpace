@@ -8,8 +8,8 @@ const faker = require('faker')
 
 const USER_COUNT = 30
 const UNIT_COUNT = 30
-const TICKET_COUNT = 45
-const BUILDING_COUNT = 7
+const TICKET_COUNT = 20
+const BUILDING_COUNT = 10
 const NOTE_COUNT = 23
 
 const createUser = async () => {
@@ -46,7 +46,7 @@ const createBuilding = async () => {
   }
 }
 
-const createUnit = async (tenId, builId) => {
+const createUnit = async (tenId, buildId) => {
   try {
     let unitNum = String(
       faker.random.alphaNumeric(faker.random.number({min: 1, max: 6}))
@@ -59,7 +59,7 @@ const createUnit = async (tenId, builId) => {
       rent: faker.random.number({min: 900, max: 1300}),
       tenantId: tenId,
       unitLandlordId: faker.random.number({min:1,max:2}),
-      buildingId: builId
+      buildingId: buildId
     })
 
     return currentUnit
@@ -71,10 +71,15 @@ const createUnit = async (tenId, builId) => {
 
 const createTicket = async () => {
   try {
+
+
     let currentTicket = await Ticket.create({
       issue: faker.random.arrayElement(['HEAT/AC','PLUMBING','ELECTRICAL','OTHER']),
       details: faker.lorem.paragraph(),
-      unitId: faker.random.number({min: 1, max: 30})
+      unitId: faker.random.number({min: 1, max: 30}),
+      ticketTenantId: faker.random.number({min:3, max:20}),
+      ticketLandlordId: faker.random.number({min:1, max:2}),
+      buildingId: faker.random.number({min:1, max:10})
     })
     return currentTicket
   } catch (error) {

@@ -37,12 +37,8 @@ form div {
 }
 
 
-#singleTenantInfo{
-  margin-left: 6%;
-}
-
-#singleTenantUnitInfo{
-  margin-left: 12%;
+.singleTenantInfo{
+  padding: .5%;
 }
 
 /* located in SingleUnitView.js */
