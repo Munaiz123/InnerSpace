@@ -9,6 +9,10 @@ const Ticket = db.define('ticket', {
   details: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  pending:{
+    type: Sequelize.BOOLEAN,
+    defaultValue: true
   }
 })
 
