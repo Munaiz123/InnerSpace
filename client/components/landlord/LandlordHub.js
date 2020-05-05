@@ -6,7 +6,7 @@ import LandlordHome from './LandlordHome'
 import AllBuildings from './AllBuildings'
 import AllUnits from './AllUnits'
 import AllTenants from './AllTenants'
-import AllTickets from './AllTickets'
+import AllTickets from './ticketComponents/AllTickets'
 
 import SingleBuildingView from './SingleBuildingView'
 import SingleUnitView from './SingleUnitView'

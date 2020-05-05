@@ -2,10 +2,10 @@ import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
 import {connect} from 'react-redux'
 
-import  AllBuildings  from './AllBuildings'
-import  AllUnits from './AllUnits'
+import AllBuildings  from './AllBuildings'
+import AllUnits from './AllUnits'
 import AllTenants from './AllTenants'
-import AllTickets from './AllTickets'
+import AllTickets from  './ticketComponents/AllTickets'
 
 
 export class LandlordSidebar extends React.Component{
