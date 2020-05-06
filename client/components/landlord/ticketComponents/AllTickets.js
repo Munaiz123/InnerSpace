@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import SingleTicketCard from './SingleTicketCard'
 
 import {fetchTickets} from '../../../store/tickets'
+import {fetchBuildings} from '../../../store/buildings'
 
 export class AllTickets extends React.Component {
   constructor() {
@@ -12,20 +13,24 @@ export class AllTickets extends React.Component {
       statusFilter: 'all'
     }
     this.handleStatusChange = this.handleStatusChange.bind(this)
+    this.handleBuildingSelectors = this.handleBuildingSelectors.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchTickets()
+    this.props.fetchBuildings()
   }
 
   handleStatusChange(){
     this.setState({statusFilter:event.target.value})
   }
 
-  render() {
-    let {allTickets} = this.props
+  handleBuildingSelectors(){
+    console.log(event.target.value)
+  }
 
-    console.log('isBool?', typeof(this.state.statusFilter))
+  render() {
+    let {allTickets,allBuildings} = this.props
 
     if(this.state.statusFilter === 'all') allTickets;
     else allTickets = allTickets.filter( tick =>{
@@ -41,7 +46,6 @@ export class AllTickets extends React.Component {
         <div style={{width: '35%', backgroundColor: 'lightCyan'}}>
           <h1>All Tickets</h1>
           {allTickets.map((tick, i) => (
-            console.log(typeof(tick.pending)),
             <SingleTicketCard key={i} index={i + 1} tick={tick} />
           ))}
         </div>
@@ -64,6 +68,18 @@ export class AllTickets extends React.Component {
             </select>
           </div>
 
+          <div>
+            <ul style={{margin: '0px', padding:'0px'}}>
+              {allBuildings.map( build =>(
+                <div>
+                  <input type='checkBox' value={build.id} />
+                  <label>{build.buildingName}</label>
+                </div>
+              ))}
+            </ul>
+
+          </div>
+
           {/* end SEARCH & FILTERS */}
         </div>
       </div>
@@ -72,11 +88,13 @@ export class AllTickets extends React.Component {
 }
 
 const mapState = state => ({
-  allTickets: state.tickets
+  allTickets: state.tickets,
+  allBuildings: state.buildings
 })
 
 const mapDispatch = dispatch => ({
-  fetchTickets: () => dispatch(fetchTickets())
+  fetchTickets: () => dispatch(fetchTickets()),
+  fetchBuildings:() => dispatch(fetchBuildings())
 })
 
 export default connect(mapState, mapDispatch)(AllTickets)

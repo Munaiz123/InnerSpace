@@ -9,7 +9,6 @@ export class SingleTicketCard extends React.Component {
 
   render() {
     const {index, tick} = this.props
-    console.log("this.props", this.props)
 
     return (
       <div
