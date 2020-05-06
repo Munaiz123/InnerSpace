@@ -1,10 +1,19 @@
 const router = require('express').Router()
-const {Ticket} = require('../db/models')
+const {Ticket, Building} = require('../db/models')
 
 // GET - api/tickets
 router.get('/', async (req, res, next) => {
   try {
-    res.send(await Ticket.findAll({where: {ticketLandlordId: req.user.id}}))
+    res.send(
+      await Ticket.findAll({
+        where: {ticketLandlordId: req.user.id},
+        include: [
+          {
+            model: Building
+          }
+        ]
+      })
+    )
   } catch (error) {
     next(error)
   }

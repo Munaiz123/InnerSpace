@@ -46,7 +46,7 @@ export class AllTickets extends React.Component {
         <div style={{width: '35%', backgroundColor: 'lightCyan'}}>
           <h1>All Tickets</h1>
           {allTickets.map((tick, i) => (
-            <SingleTicketCard key={i} index={i + 1} tick={tick} />
+            <SingleTicketCard key={i} index={i + 1} buildInfo={tick.building} tick={tick} />
           ))}
         </div>
         <div>
@@ -68,15 +68,16 @@ export class AllTickets extends React.Component {
             </select>
           </div>
 
-          <div>
-            <ul style={{margin: '0px', padding:'0px'}}>
-              {allBuildings.map( build =>(
-                <div>
-                  <input type='checkBox' value={build.id} />
-                  <label>{build.buildingName}</label>
+          <div style={{padding:'7%', paddingTop:'.5%'}}>
+            <h5 style={{paddingBottom:'.5%'}}>Select Buildings</h5>
+            <form onChange={this.handleBuildingSelectors}>
+              {allBuildings.map( (build,i) =>(
+                <div key={i} style={{display:'flex', flexDirection:'column'}}>
+                  <input type='checkBox' name={build.buildingName} defaultValue={build.id} />
+                  <label htmlFor={build.buildingName}>{build.buildingName}</label>
                 </div>
               ))}
-            </ul>
+            </form>
 
           </div>
 

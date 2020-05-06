@@ -22,6 +22,8 @@ export class SingleUnitCard extends React.Component {
       buildingId
     } = this.props.unitInfo
 
+    console.log(this.props)
+
     if (buildInfo) {
       return (
         <div

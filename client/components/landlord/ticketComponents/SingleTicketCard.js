@@ -8,7 +8,7 @@ export class SingleTicketCard extends React.Component {
   }
 
   render() {
-    const {index, tick} = this.props
+    const {index, tick, buildInfo} = this.props
 
     return (
       <div
@@ -33,7 +33,7 @@ export class SingleTicketCard extends React.Component {
               {tick.issue}
             </h6>
             <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
-              Building
+              {buildInfo.buildingName}
             </h6>
           </div>
         </Link>
