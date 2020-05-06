@@ -8,12 +8,16 @@ export class SingleTicketCard extends React.Component {
   }
 
   render() {
+    console.log(this.props)
+    const {index, tick} = this.props
+
     return (
       <div
         style={{
           display: 'flex',
           flexDirection: 'row',
-          alignContent: 'spaceBetween'
+          alignContent: 'spaceBetween',
+          paddingTop: '5px'
         }}
       >
         <Link
@@ -24,13 +28,10 @@ export class SingleTicketCard extends React.Component {
             alignItems: 'flexStart'
           }}
         >
-          <h6 style={{marginTop: '5px', paddingRight: '5px'}}>#</h6>
+          <h6 style={{marginTop: '5px', paddingRight: '5px'}}>{`${index})`}</h6>
           <div>
             <h6 style={{marginTop: '5px', marginBottom: '5px'}}>
-              ISSUE
-            </h6>
-            <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
-              Tenant Name
+              {tick.issue}
             </h6>
             <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
               Building

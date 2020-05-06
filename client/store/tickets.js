@@ -6,7 +6,7 @@ const GET_TICKETS = 'GET_TICKETS'
 
 // ACTION CREATORS
 
-export const getTickets = tickets => {type: GET_TICKETS, tickets}
+export const getTickets = tickets =>({type: GET_TICKETS, tickets})
 
 //THUNKS
 
