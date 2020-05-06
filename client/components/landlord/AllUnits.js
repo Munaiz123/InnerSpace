@@ -32,6 +32,7 @@ export class AllUnits extends React.Component {
 
   render() {
     let {allUnits, allBuildings} = this.props
+    console.log(allUnits, allBuildings)
 
     if (this.state.buildingFilter === 'All Buildings') allUnits
     else allUnits = allUnits.filter(unit => {
