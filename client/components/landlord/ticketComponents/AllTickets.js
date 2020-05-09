@@ -27,17 +27,19 @@ export class AllTickets extends React.Component {
   }
 
   handleBuildingSelectors(){
-    // console.log(event.target.value)
 
     if(this.state.selectedBuildings[event.target.value]){
       console.log(`${this.state.selectedBuildings[event.target.value]} has been unselected`)
-      delete this.state.selectedBuildings[event.target.value]
+      this.setState( state =>{
+        delete state.selectedBuildings[event.target.value]
+      })
     } else {
-      this.state.selectedBuildings[event.target.value] = event.target.value
-      console.log(`${this.state.selectedBuildings[event.target.value]} has been selected`)
+      this.setState( state =>{
+        state.selectedBuildings[event.target.value] = event.target.value
+        console.log(`${this.state.selectedBuildings[event.target.value]} has been selected`)
+      })
     }
-    console.log(this.state)
-
+    console.log("buildingIdArray", this.state)
   }
 
   render() {
@@ -48,6 +50,8 @@ export class AllTickets extends React.Component {
       return tick.pending.toString() === this.state.statusFilter
     })
 
+    const buildingIdArray = Object.keys(this.state.selectedBuildings)
+    // console.log("buildingIdArray", buildingIdArray)
 
 
     return (
@@ -84,7 +88,7 @@ export class AllTickets extends React.Component {
             <form onChange={this.handleBuildingSelectors}>
               {allBuildings.map( (build,i) =>(
                 <div key={i} style={{display:'flex', flexDirection:'column'}}>
-                  <input type='checkBox' name={build.buildingName} defaultValue={build.buildingName} />
+                  <input type='checkBox' name={build.buildingName} defaultValue={build.id} />
                   <label htmlFor={build.buildingName}>{build.buildingName}</label>
                 </div>
               ))}
