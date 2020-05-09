@@ -10,7 +10,8 @@ export class AllTickets extends React.Component {
   constructor() {
     super()
     this.state = {
-      statusFilter: 'all'
+      statusFilter: 'all',
+      selectedBuildings:{}
     }
     this.handleStatusChange = this.handleStatusChange.bind(this)
     this.handleBuildingSelectors = this.handleBuildingSelectors.bind(this)
@@ -26,7 +27,17 @@ export class AllTickets extends React.Component {
   }
 
   handleBuildingSelectors(){
-    console.log(event.target.value)
+    // console.log(event.target.value)
+
+    if(this.state.selectedBuildings[event.target.value]){
+      console.log(`${this.state.selectedBuildings[event.target.value]} has been unselected`)
+      delete this.state.selectedBuildings[event.target.value]
+    } else {
+      this.state.selectedBuildings[event.target.value] = event.target.value
+      console.log(`${this.state.selectedBuildings[event.target.value]} has been selected`)
+    }
+    console.log(this.state)
+
   }
 
   render() {
@@ -36,6 +47,7 @@ export class AllTickets extends React.Component {
     else allTickets = allTickets.filter( tick =>{
       return tick.pending.toString() === this.state.statusFilter
     })
+
 
 
     return (
@@ -49,8 +61,7 @@ export class AllTickets extends React.Component {
             <SingleTicketCard key={i} index={i + 1} buildInfo={tick.building} tick={tick} />
           ))}
         </div>
-        <div>
-          {/* <h4> SEARCH & FILTERS </h4> */}
+        <div> {/* start SEARCH & FILTERS */}
 
           <div
             style={{
@@ -68,21 +79,19 @@ export class AllTickets extends React.Component {
             </select>
           </div>
 
-          <div style={{padding:'7%', paddingTop:'.5%'}}>
+          <div style={{padding:'7%', paddingTop:'.5%'}}> {/* BUILDING SELECTOR */}
             <h5 style={{paddingBottom:'.5%'}}>Select Buildings</h5>
             <form onChange={this.handleBuildingSelectors}>
               {allBuildings.map( (build,i) =>(
                 <div key={i} style={{display:'flex', flexDirection:'column'}}>
-                  <input type='checkBox' name={build.buildingName} defaultValue={build.id} />
+                  <input type='checkBox' name={build.buildingName} defaultValue={build.buildingName} />
                   <label htmlFor={build.buildingName}>{build.buildingName}</label>
                 </div>
               ))}
             </form>
-
           </div>
 
-          {/* end SEARCH & FILTERS */}
-        </div>
+        </div> {/* end SEARCH & FILTERS */}
       </div>
     )
   }
