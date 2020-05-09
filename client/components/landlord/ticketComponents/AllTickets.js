@@ -11,7 +11,8 @@ export class AllTickets extends React.Component {
     super()
     this.state = {
       statusFilter: 'all',
-      selectedBuildings:{}
+      buildingCheckboxes:{},
+      selectedBuildings:[]
     }
     this.handleStatusChange = this.handleStatusChange.bind(this)
     this.handleBuildingSelectors = this.handleBuildingSelectors.bind(this)
@@ -27,19 +28,27 @@ export class AllTickets extends React.Component {
   }
 
   handleBuildingSelectors(){
+    if(this.state.buildingCheckboxes[event.target.value]){
+      this.setState( state =>{
+        selectedBuildings: state.selectedBuildings.filter(num=>{
+          return num !== event.target.value
+        })
 
-    if(this.state.selectedBuildings[event.target.value]){
-      console.log(`${this.state.selectedBuildings[event.target.value]} has been unselected`)
-      this.setState( state =>{
-        delete state.selectedBuildings[event.target.value]
+        // state.selectedBuildings = state.selectedBuildings.filter(num =>{
+        //   return num !== event.target.value
+        // })
       })
+      delete state.buildingCheckboxes[event.target.value]
     } else {
-      this.setState( state =>{
-        state.selectedBuildings[event.target.value] = event.target.value
-        console.log(`${this.state.selectedBuildings[event.target.value]} has been selected`)
-      })
+      this.setState( state =>({
+        // buildingCheckboxes: state.buildingCheckboxes[event.target.value] = event.target.value,
+        selectedBuildings: state.selectedBuildings.concat([event.target.value])
+
+        // buildingCheckboxes[event.target.value] = event.target.value
+        // selectedBuildings.push(event.target.value.toString())
+      }))
     }
-    console.log("buildingIdArray", this.state)
+    // console.log("this.state.selectedBuildings", this.state.selectedBuildings)
   }
 
   render() {
@@ -50,8 +59,23 @@ export class AllTickets extends React.Component {
       return tick.pending.toString() === this.state.statusFilter
     })
 
-    const buildingIdArray = Object.keys(this.state.selectedBuildings)
-    // console.log("buildingIdArray", buildingIdArray)
+    console.log('LENGTH',this.state.selectedBuildings.length)
+    console.log('STATE', this.state)
+    // console.log(this.state.statusFilter)
+
+    // if(this.state.selectedBuildings.length !== 0){
+    //   allTickets = allTickets.filter( tick =>{
+    //     return tick.buildingName.indexOf('Road') !== -1
+    //   })
+    // }
+
+
+    // else allTickets = allTickets.filter( tick =>{
+    //   // return this.state.selectedBuildings.includes(tick.buildingId.toString())
+    //   return tick.buildingName.includes('Road')
+    // })
+
+    console.log("allTicketssss", allTickets)
 
 
     return (
