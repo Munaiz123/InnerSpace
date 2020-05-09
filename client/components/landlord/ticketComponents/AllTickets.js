@@ -28,27 +28,18 @@ export class AllTickets extends React.Component {
   }
 
   handleBuildingSelectors(){
-    if(this.state.buildingCheckboxes[event.target.value]){
-      this.setState( state =>{
-        selectedBuildings: state.selectedBuildings.filter(num=>{
-          return num !== event.target.value
+    if(this.state.selectedBuildings.indexOf(event.target.value) !== -1){
+      this.setState({
+        selectedBuildings: this.state.selectedBuildings.filter(num =>{
+          return num.toString() !== event.target.value.toString()
         })
-
-        // state.selectedBuildings = state.selectedBuildings.filter(num =>{
-        //   return num !== event.target.value
-        // })
       })
-      delete state.buildingCheckboxes[event.target.value]
     } else {
-      this.setState( state =>({
-        // buildingCheckboxes: state.buildingCheckboxes[event.target.value] = event.target.value,
-        selectedBuildings: state.selectedBuildings.concat([event.target.value])
-
-        // buildingCheckboxes[event.target.value] = event.target.value
-        // selectedBuildings.push(event.target.value.toString())
-      }))
+      this.setState({
+        selectedBuildings: this.state.selectedBuildings.concat([event.target.value])
+      })
     }
-    // console.log("this.state.selectedBuildings", this.state.selectedBuildings)
+    console.log(this.state)
   }
 
   render() {
@@ -59,23 +50,15 @@ export class AllTickets extends React.Component {
       return tick.pending.toString() === this.state.statusFilter
     })
 
+    if(this.state.selectedBuildings.length > 0){
+      allTickets = allTickets.filter( tick =>{
+        return this.state.selectedBuildings.includes(tick.buildingId.toString())
+      })
+    }
+
     console.log('LENGTH',this.state.selectedBuildings.length)
-    console.log('STATE', this.state)
-    // console.log(this.state.statusFilter)
+    if(this.state.selectedBuildings.length > 0) console.log('LOLOLOL', this.state.selectedBuildings.length)
 
-    // if(this.state.selectedBuildings.length !== 0){
-    //   allTickets = allTickets.filter( tick =>{
-    //     return tick.buildingName.indexOf('Road') !== -1
-    //   })
-    // }
-
-
-    // else allTickets = allTickets.filter( tick =>{
-    //   // return this.state.selectedBuildings.includes(tick.buildingId.toString())
-    //   return tick.buildingName.includes('Road')
-    // })
-
-    console.log("allTicketssss", allTickets)
 
 
     return (
@@ -107,7 +90,7 @@ export class AllTickets extends React.Component {
             </select>
           </div>
 
-          <div style={{padding:'7%', paddingTop:'.5%'}}> {/* BUILDING SELECTOR */}
+          <div style={{padding:'7%', paddingTop:'.5%'}}> {/* start --- BUILDING SELECTOR */}
             <h5 style={{paddingBottom:'.5%'}}>Select Buildings</h5>
             <form onChange={this.handleBuildingSelectors}>
               {allBuildings.map( (build,i) =>(
@@ -117,7 +100,7 @@ export class AllTickets extends React.Component {
                 </div>
               ))}
             </form>
-          </div>
+          </div> {/* end --- BUILDING SELECTOR */}
 
         </div> {/* end SEARCH & FILTERS */}
       </div>
