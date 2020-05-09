@@ -11,7 +11,6 @@ export class AllTickets extends React.Component {
     super()
     this.state = {
       statusFilter: 'all',
-      buildingCheckboxes:{},
       selectedBuildings:[]
     }
     this.handleStatusChange = this.handleStatusChange.bind(this)
@@ -39,7 +38,6 @@ export class AllTickets extends React.Component {
         selectedBuildings: this.state.selectedBuildings.concat([event.target.value])
       })
     }
-    console.log(this.state)
   }
 
   render() {
@@ -55,11 +53,6 @@ export class AllTickets extends React.Component {
         return this.state.selectedBuildings.includes(tick.buildingId.toString())
       })
     }
-
-    console.log('LENGTH',this.state.selectedBuildings.length)
-    if(this.state.selectedBuildings.length > 0) console.log('LOLOLOL', this.state.selectedBuildings.length)
-
-
 
     return (
       <div  style={{

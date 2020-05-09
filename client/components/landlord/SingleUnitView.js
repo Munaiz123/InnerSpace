@@ -18,7 +18,6 @@ export class SingleUnitView extends React.Component {
   render() {
     const {unit} = this.props
     const {building, tenant} = unit
-    console.log(this.props)
 
     if (building && tenant) {
       return (
