@@ -9,7 +9,6 @@ export class SingleTicketCard extends React.Component {
 
   render() {
     const {index, tick, buildInfo} = this.props
-    console.log(this.props)
 
     return (
       <div
@@ -40,7 +39,7 @@ export class SingleTicketCard extends React.Component {
         </Link>
         {/* <button className="deleteButton" onClick={() => deleteAUnit(id)}>
             DELETE
-          </button> */}
+          </button> ***************** MAY NEED DELETE BUTTON LATER ?*/}
       </div>
     )
   }
