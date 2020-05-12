@@ -9,6 +9,7 @@ export class SingleTicketCard extends React.Component {
 
   render() {
     const {index, tick, buildInfo} = this.props
+    console.log(this.props)
 
     return (
       <div
@@ -20,7 +21,7 @@ export class SingleTicketCard extends React.Component {
         }}
       >
         <Link
-          // to={}
+          to={`/tickets/${tick.id}`}
           style={{
             display: 'flex',
             flexDirection: 'row',

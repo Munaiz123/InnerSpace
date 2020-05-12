@@ -11,6 +11,7 @@ import AllTickets from './ticketComponents/AllTickets'
 import SingleBuildingView from './SingleBuildingView'
 import SingleUnitView from './SingleUnitView'
 import SingleTenantView from './SingleTenantView'
+import SingleTicketView from './ticketComponents/SingleTicketView'
 
 
 const routes = [
@@ -57,7 +58,14 @@ const routes = [
     main: () => <AllTenants />
   },
   {
+    path: '/tickets/:id',
+    exact: true,
+    sidebar: () => <h4> My Tickets / {}</h4>,
+    main: () => <Route exact path= '/tickets/:id' component={SingleTicketView} />
+  },
+  {
     path: '/tickets',
+    exact: true,
     sidebar: () => <h4>All Tickets</h4>,
     main: () => <AllTickets />
   }
