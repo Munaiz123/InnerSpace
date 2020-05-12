@@ -11,8 +11,20 @@ import unit from './singleUnit'
 import tenants from './tenants'
 import tenant from './singleTenant'
 import tickets from './tickets'
+import singleTicket from './singleTicket'
 
-export const reducer = combineReducers({user,buildings,building,units,unit,tenants,tenant, tickets})
+export const reducer = combineReducers({
+  user,
+  buildings,
+  building,
+  units,
+  unit,
+  tenants,
+  tenant,
+  tickets,
+  singleTicket
+})
+
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
