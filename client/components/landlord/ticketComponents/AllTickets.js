@@ -28,15 +28,15 @@ export class AllTickets extends React.Component {
 
   handleBuildingSelectors(){
     if(this.state.selectedBuildings.indexOf(event.target.value) !== -1){
-      this.setState({
-        selectedBuildings: this.state.selectedBuildings.filter(num =>{
+      this.setState((state)=>({
+        selectedBuildings: state.selectedBuildings.filter(num =>{
           return num.toString() !== event.target.value.toString()
         })
-      })
+      }))
     } else {
-      this.setState({
-        selectedBuildings: this.state.selectedBuildings.concat([event.target.value])
-      })
+      this.setState((state) =>({
+        selectedBuildings: state.selectedBuildings.concat([event.target.value])
+      }))
     }
   }
 
@@ -65,7 +65,7 @@ export class AllTickets extends React.Component {
             <SingleTicketCard key={i} index={i + 1} buildInfo={tick.building} tick={tick} />
           ))}
         </div>
-        <div> {/* start SEARCH & FILTERS */}
+        <div style={{width:'35%'}}> {/* start SEARCH & FILTERS */}
 
           <div
             style={{
@@ -83,17 +83,18 @@ export class AllTickets extends React.Component {
             </select>
           </div>
 
-          <div style={{padding:'7%', paddingTop:'.5%'}}> {/* start --- BUILDING SELECTOR */}
-            <h5 style={{paddingBottom:'.5%'}}>Select Buildings</h5>
-            <form onChange={this.handleBuildingSelectors}>
+          {/* start --- BUILDING SELECTOR */}
+            <form style={{paddingTop:'.25%'}} onChange={this.handleBuildingSelectors}>
+            <h5 style={{paddingBottom:'.5%'}}>SELECT BUILDINGS</h5>
               {allBuildings.map( (build,i) =>(
                 <div key={i} style={{display:'flex', flexDirection:'column'}}>
-                  <input type='checkBox' name={build.buildingName} defaultValue={build.id} />
-                  <label htmlFor={build.buildingName}>{build.buildingName}</label>
+                  <label htmlFor={build.buildingName}>
+                    <input type='checkBox' name={build.buildingName} defaultValue={build.id} /> { build.buildingName}
+                  </label>
                 </div>
               ))}
             </form>
-          </div> {/* end --- BUILDING SELECTOR */}
+          {/* end --- BUILDING SELECTOR */}
 
         </div> {/* end SEARCH & FILTERS */}
       </div>
