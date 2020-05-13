@@ -6,12 +6,12 @@ import LandlordHome from './LandlordHome'
 import AllBuildings from './BuildingComponents/AllBuildings'
 import AllUnits from './UnitComponents/AllUnits'
 import AllTenants from './TenantComponents/AllTenants'
-import AllTickets from './ticketComponents/AllTickets'
+import AllTickets from './TicketComponents/AllTickets'
 
 import SingleBuildingView from './BuildingComponents/SingleBuildingView'
 import SingleUnitView from './UnitComponents/SingleUnitView'
 import SingleTenantView from './TenantComponents/SingleTenantView'
-import SingleTicketView from './ticketComponents/SingleTicketView'
+import SingleTicketView from './TicketComponents/SingleTicketView'
 
 
 const routes = [
