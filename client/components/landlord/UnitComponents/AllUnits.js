@@ -11,10 +11,13 @@ export class AllUnits extends React.Component {
   constructor() {
     super()
     this.state = {
-      buildingFilter: 'All Buildings'
+      buildingFilter: 'All Buildings',
+      selectedBuildings:[]
     }
 
     this.buildingFilterChange = this.buildingFilterChange.bind(this)
+    this.handleBuildingSelectors = this.handleBuildingSelectors.bind(this)
+
   }
 
   componentDidMount() {
@@ -28,6 +31,22 @@ export class AllUnits extends React.Component {
     })
   }
 
+  handleBuildingSelectors(){
+    if(this.state.selectedBuildings.indexOf(event.target.value) !== -1){
+      this.setState((state)=>({
+        selectedBuildings: state.selectedBuildings.filter(num =>{
+          return num.toString() !== event.target.value.toString()
+        })
+      }))
+    } else {
+      this.setState((state) =>({
+        selectedBuildings: state.selectedBuildings.concat([event.target.value])
+      }))
+    }
+
+    console.log(event.target.value)
+  }
+
 
 
   render() {
@@ -38,6 +57,11 @@ export class AllUnits extends React.Component {
       return unit.buildingId === parseInt(this.state.buildingFilter)
     })
 
+    if(this.state.selectedBuildings.length > 0){
+      allUnits = allUnits.filter( unit =>{
+        return this.state.selectedBuildings.includes(unit.buildingId.toString())
+      })
+    }
 
 
     return (
@@ -70,7 +94,7 @@ export class AllUnits extends React.Component {
           <div>
             {/* <h4> SEARCH & FILTERS </h4> */}
 
-            <div
+            {/* <div
               style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -87,7 +111,23 @@ export class AllUnits extends React.Component {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
+
+            {/* start --- BUILDING SELECTOR */}
+            <form style={{paddingTop:'.25%'}} onChange={this.handleBuildingSelectors}>
+            <h5 style={{paddingBottom:'.5%'}}>SELECT BUILDINGS</h5>
+              {allBuildings.map( (build,i) =>(
+                <div key={i} style={{display:'flex', flexDirection:'column'}}>
+                  <label htmlFor={build.buildingName}>
+                    <input type='checkBox' name={build.buildingName} defaultValue={build.id} /> { build.buildingName}
+                  </label>
+                </div>
+              ))}
+            </form>
+          {/* end --- BUILDING SELECTOR */}
+
+
+
           </div>
 
           {/* end SEARCH & FILTERS */}
