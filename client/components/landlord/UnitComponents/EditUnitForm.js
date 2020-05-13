@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {updateAUnit} from '../../store/units'
-import {fetchSingleUnit} from '../../store/singleUnit'
+import {updateAUnit} from '../../../store/units'
+import {fetchSingleUnit} from '../../../store/singleUnit'
 
 export class EditUnitForm extends React.Component {
   constructor() {

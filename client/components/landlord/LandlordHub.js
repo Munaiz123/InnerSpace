@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 
 import LandlordHome from './LandlordHome'
 import AllBuildings from './BuildingComponents/AllBuildings'
-import AllUnits from './AllUnits'
+import AllUnits from './UnitComponents/AllUnits'
 import AllTenants from './AllTenants'
 import AllTickets from './ticketComponents/AllTickets'
 
 import SingleBuildingView from './BuildingComponents/SingleBuildingView'
-import SingleUnitView from './SingleUnitView'
+import SingleUnitView from './UnitComponents/SingleUnitView'
 import SingleTenantView from './SingleTenantView'
 import SingleTicketView from './ticketComponents/SingleTicketView'
 

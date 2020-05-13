@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-import {deleteAUnit} from '../../store/units'
+import {deleteAUnit} from '../../../store/units'
 
 export class SingleUnitCard extends React.Component {
   constructor() {

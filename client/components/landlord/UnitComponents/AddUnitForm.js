@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {addAUnit} from '../../store/units'
+import {addAUnit} from '../../../store/units'
 
 export class AddUnitForm extends React.Component{
   constructor(){

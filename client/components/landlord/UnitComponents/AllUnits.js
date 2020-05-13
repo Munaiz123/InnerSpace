@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {fetchUnits} from '../../store/units'
-import {fetchBuildings} from '../../store/buildings'
+import {fetchUnits} from '../../../store/units'
+import {fetchBuildings} from '../../../store/buildings'
 
-import SingleUnitCard from './SingleUnitCard'
+import SingleUnitCard from '../UnitComponents/SingleUnitCard'
 import AddUnitForm from './AddUnitForm'
 
 export class AllUnits extends React.Component {
