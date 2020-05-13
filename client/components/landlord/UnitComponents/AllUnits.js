@@ -11,24 +11,15 @@ export class AllUnits extends React.Component {
   constructor() {
     super()
     this.state = {
-      buildingFilter: 'All Buildings',
       selectedBuildings:[]
     }
 
-    this.buildingFilterChange = this.buildingFilterChange.bind(this)
     this.handleBuildingSelectors = this.handleBuildingSelectors.bind(this)
-
   }
 
   componentDidMount() {
     this.props.fetchUnits()
     this.props.fetchBuildings()
-  }
-
-  buildingFilterChange(){
-    this.setState({
-      buildingFilter:event.target.value
-    })
   }
 
   handleBuildingSelectors(){
@@ -92,30 +83,10 @@ export class AllUnits extends React.Component {
           }}
         >
           <div>
-            {/* <h4> SEARCH & FILTERS </h4> */}
-
-            {/* <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center'
-              }}
-            >
-              <h5 style={{paddingRight: '3px'}}> Filter by Building:</h5>
-
-              <select onChange={this.buildingFilterChange}>
-                <option value="All Buildings">All Buildings</option>
-                {allBuildings.map((build, i) => (
-                  <option value={build.id} key={i}>
-                    {build.buildingName}
-                  </option>
-                ))}
-              </select>
-            </div> */}
-
-            {/* start --- BUILDING SELECTOR */}
+          {/* start --- BUILDING SELECTOR */}
             <form style={{paddingTop:'.25%'}} onChange={this.handleBuildingSelectors}>
             <h5 style={{paddingBottom:'.5%'}}>SELECT BUILDINGS</h5>
+
               {allBuildings.map( (build,i) =>(
                 <div key={i} style={{display:'flex', flexDirection:'column'}}>
                   <label htmlFor={build.buildingName}>
@@ -123,11 +94,9 @@ export class AllUnits extends React.Component {
                   </label>
                 </div>
               ))}
+
             </form>
           {/* end --- BUILDING SELECTOR */}
-
-
-
           </div>
 
           {/* end SEARCH & FILTERS */}
