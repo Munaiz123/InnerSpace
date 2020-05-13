@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-import {deleteBuilding} from '../../store/buildings'
+import {deleteBuilding} from '../../../store/buildings'
 
 export class SingleBuildingCard extends React.Component {
   constructor() {

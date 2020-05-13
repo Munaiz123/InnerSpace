@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {addBuild} from '../../store/buildings'
+import {addBuild} from '../../../store/buildings'
 
 export class AddBuildingForm extends React.Component {
   constructor() {

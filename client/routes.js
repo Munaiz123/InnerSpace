@@ -7,7 +7,7 @@ import {Login, Signup, UserHome} from './components'
 
 import LandlordHub from './components/landlord/LandlordHub'
 
-import SingleBuildingView from './components/landlord/SingleBuildingView'
+import SingleBuildingView from './components/landlord/BuildingComponents/SingleBuildingView'
 
 
 import {me} from './store'

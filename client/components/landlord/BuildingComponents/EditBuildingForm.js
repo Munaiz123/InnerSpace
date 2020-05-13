@@ -2,8 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-import {updateBuilding} from '../../store/buildings'
-import {fetchSingleBuilding} from '../../store/singleBuilding'
+import {updateBuilding} from '../../../store/buildings'
+import {fetchSingleBuilding} from '../../../store/singleBuilding'
 
 
 export class EditBuildingForm extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {fetchSingleBuilding} from '../../store/singleBuilding'
+import {fetchSingleBuilding} from '../../../store/singleBuilding'
 import EditBuildingForm from './EditBuildingForm'
 
 export class SingleBuildingView extends React.Component {
