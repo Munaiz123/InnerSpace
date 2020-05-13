@@ -38,7 +38,7 @@ export class SingleTicketView extends React.Component {
           <h5>Mark as resolved BUTTON</h5>
         </div>
 
-        {ticketTenant && unit ? (
+        {ticketTenant && unit ?
           <div
             id="tenant&unitInfo"
             style={{display: 'flex', flexDirection: 'row'}}
@@ -46,23 +46,22 @@ export class SingleTicketView extends React.Component {
             <div style={{width: '45%'}}>
               <h1>Tenant Info</h1>
               <Link to={`/tenants/${ticketTenant.id}`}>
-              <h5>
-                {ticketTenant.firstName} {ticketTenant.lastName}
-              </h5>
+                <h5> {ticketTenant.firstName} {ticketTenant.lastName}</h5>
               </Link>
               <h5>{ticketTenant.email}</h5>
             </div>
+
             <div style={{width: '45%'}}>
               <h1>Unit Info</h1>
-              <h5>{unit.unitNumber}</h5>
-              <h5>{unit.bedroomCount}</h5>
-              <h5>{unit.bathroomCount}</h5>
-              <h5>{unit.rent}</h5>
+              <Link to={`/units/${unit.id}`}>
+                <h5>Unit Number: {unit.unitNumber}</h5>
+              </Link>
+              <h5>Bed: {unit.bedroomCount}</h5>
+              <h5>Bath: {unit.bathroomCount}</h5>
+              <h5>Rent: {unit.rent}</h5>
             </div>
-          </div>
-        ) : (
-          <div></div>
-        )}
+
+          </div> : ( <React.Fragment /> )}
       </div>
     )
   }
