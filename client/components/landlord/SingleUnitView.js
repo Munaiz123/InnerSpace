@@ -28,7 +28,6 @@ export class SingleUnitView extends React.Component {
               <h6>Bedroom Count: {unit.bedroomCount}</h6>
               <h6>Bathroom Count: {unit.bathroomCount}</h6>
               <h6>Rent: {unit.rent}</h6>
-
             </div>
 
             <div style={{width: '45%'}}>

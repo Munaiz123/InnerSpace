@@ -26,29 +26,41 @@ export class SingleTicketView extends React.Component {
       >
         <div style={{width: '45%'}}>
           <h2>{singleTicket.issue}</h2>
-          {building ? <h5>{building.buildingName}</h5> : <React.Fragment />}
+
+          {building ? (
+            <Link to={`/buildings/${building.id}`}>
+              <h5>{building.buildingName}</h5>
+            </Link>
+          ) : ( <React.Fragment /> )}
+
           <h5>{date.toDateString()}</h5>
           <p>{singleTicket.details}</p>
           <h5>Mark as resolved BUTTON</h5>
         </div>
 
-        { ticketTenant && unit ? (
-        <div id='tenant&unitInfo' style={{display:'flex', flexDirection:'row'}}>
-          <div style={{width: '45%'}}>
-            <h1>Tenant Info</h1>
-            <h5>{ticketTenant.firstName} {ticketTenant.lastName}</h5>
-            <h5>{ticketTenant.email}</h5>
+        {ticketTenant && unit ? (
+          <div
+            id="tenant&unitInfo"
+            style={{display: 'flex', flexDirection: 'row'}}
+          >
+            <div style={{width: '45%'}}>
+              <h1>Tenant Info</h1>
+              <h5>
+                {ticketTenant.firstName} {ticketTenant.lastName}
+              </h5>
+              <h5>{ticketTenant.email}</h5>
+            </div>
+            <div style={{width: '45%'}}>
+              <h1>Unit Info</h1>
+              <h5>{unit.unitNumber}</h5>
+              <h5>{unit.bedroomCount}</h5>
+              <h5>{unit.bathroomCount}</h5>
+              <h5>{unit.rent}</h5>
+            </div>
           </div>
-          <div style={{width: '45%'}}>
-            <h1>Unit Info</h1>
-            <h5>{unit.unitNumber}</h5>
-            <h5>{unit.bedroomCount}</h5>
-            <h5>{unit.bathroomCount}</h5>
-            <h5>{unit.rent}</h5>
-          </div>
-        </div>
-        ): <div></div>}
-
+        ) : (
+          <div></div>
+        )}
       </div>
     )
   }
