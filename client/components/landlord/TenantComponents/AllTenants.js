@@ -42,7 +42,7 @@ export class AllTenants extends React.Component {
 
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <div style={{width: '30%', backgroundColor: 'gainsboro'}}>
+        <div style={{width: '30%', backgroundColor: 'lightCyan'}}>
           <div
             style={{
               display: 'flex',

@@ -57,7 +57,7 @@ export class AllUnits extends React.Component {
           justifyContent: 'spaceBetween'
         }}
       >
-        <div style={{width: '35%', backgroundColor: 'yellow'}}>
+        <div style={{width: '35%', backgroundColor: 'lightCyan'}}>
           <h1>My Units</h1>
           {allUnits.map((unit, i) => (
             <SingleUnitCard

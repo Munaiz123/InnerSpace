@@ -43,7 +43,7 @@ export class AllBuildings extends React.Component {
 
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <div style={{width: '30%', backgroundColor: 'gainsboro'}}>
+        <div style={{width: '30%', backgroundColor: 'lightCyan'}}>
           <h1 style={{marginTop: '0px'}}>MY BUILDINGS</h1>
           <div
             style={{
