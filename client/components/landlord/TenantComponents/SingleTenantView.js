@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 
 import EditTenantForm from './EditTenantForm'
 
-import {fetchSingleTenant} from '../../store/singleTenant'
-import {fetchTenantUnit} from '../../store/singleUnit'
+import {fetchSingleTenant} from '../../../store/singleTenant'
+import {fetchTenantUnit} from '../../../store/singleUnit'
 
 export class SingleTenantView extends React.Component {
   constructor() {

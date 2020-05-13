@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 import AllBuildings  from '../landlord/BuildingComponents/AllBuildings'
 import AllUnits from './UnitComponents/AllUnits'
-import AllTenants from './AllTenants'
+import AllTenants from './TenantComponents/AllTenants'
 import AllTickets from  './ticketComponents/AllTickets'
 
 

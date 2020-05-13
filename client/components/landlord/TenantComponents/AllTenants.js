@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import SingleTenantCard from './SingleTenantCard'
 import AddTenantForm from './AddTenantForm'
 
-import {fetchTenants} from '../../store/tenants'
+import {fetchTenants} from '../../../store/tenants'
 
 export class AllTenants extends React.Component {
   constructor() {
