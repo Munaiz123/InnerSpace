@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Ticket, Building} = require('../db/models')
+const {Ticket, User, Building, Unit} = require('../db/models')
 
 // GET - api/tickets
 router.get('/', async (req, res, next) => {
@@ -22,7 +22,23 @@ router.get('/', async (req, res, next) => {
 // GET - api/tickets/id
 router.get('/:id', async (req, res, next) => {
   try {
-    res.send(await Ticket.findOne({where: {id: req.params.id}}))
+    res.send(
+      await Ticket.findOne({
+        where: {id: req.params.id},
+        include: [
+          {
+            model: User,
+            as:'ticketTenant'
+          },
+          {
+            model: Unit
+          },
+          {
+            model: Building
+          }
+        ]
+      })
+    )
   } catch (error) {
     next(error)
   }

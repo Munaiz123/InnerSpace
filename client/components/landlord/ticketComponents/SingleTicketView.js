@@ -16,6 +16,7 @@ export class SingleTicketView extends React.Component {
   render() {
     console.log('single ticket view props', this.props)
     const {singleTicket} = this.props
+    const {ticketTenant, unit, building} = singleTicket
     let date = new Date(singleTicket.createdAt)
 
     return (
@@ -24,20 +25,30 @@ export class SingleTicketView extends React.Component {
         style={{padding: '3%', display: 'flex', flexDirection: 'column'}}
       >
         <div style={{width: '45%'}}>
-          <h3>{singleTicket.issue}</h3>
+          <h2>{singleTicket.issue}</h2>
+          {building ? <h5>{building.buildingName}</h5> : <React.Fragment />}
           <h5>{date.toDateString()}</h5>
           <p>{singleTicket.details}</p>
           <h5>Mark as resolved BUTTON</h5>
         </div>
+
+        { ticketTenant && unit ? (
         <div id='tenant&unitInfo' style={{display:'flex', flexDirection:'row'}}>
           <div style={{width: '45%'}}>
-          <h1>Tenant Info</h1>
+            <h1>Tenant Info</h1>
+            <h5>{ticketTenant.firstName} {ticketTenant.lastName}</h5>
+            <h5>{ticketTenant.email}</h5>
           </div>
           <div style={{width: '45%'}}>
-          <h1>Unit Info</h1>
+            <h1>Unit Info</h1>
+            <h5>{unit.unitNumber}</h5>
+            <h5>{unit.bedroomCount}</h5>
+            <h5>{unit.bathroomCount}</h5>
+            <h5>{unit.rent}</h5>
           </div>
-
         </div>
+        ): <div></div>}
+
       </div>
     )
   }
