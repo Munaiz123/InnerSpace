@@ -43,17 +43,11 @@ export class AllUnits extends React.Component {
   render() {
     let {allUnits, allBuildings} = this.props
 
-    if (this.state.buildingFilter === 'All Buildings') allUnits
-    else allUnits = allUnits.filter(unit => {
-      return unit.buildingId === parseInt(this.state.buildingFilter)
-    })
-
     if(this.state.selectedBuildings.length > 0){
       allUnits = allUnits.filter( unit =>{
         return this.state.selectedBuildings.includes(unit.buildingId.toString())
       })
     }
-
 
     return (
       <div
@@ -82,11 +76,11 @@ export class AllUnits extends React.Component {
             paddingLeft: '30px'
           }}
         >
-          <div>
+        <div> {/* start SEARCH & FILTERS */}
+
           {/* start --- BUILDING SELECTOR */}
             <form style={{paddingTop:'.25%'}} onChange={this.handleBuildingSelectors}>
-            <h5 style={{paddingBottom:'.5%'}}>SELECT BUILDINGS</h5>
-
+              <h5 style={{paddingBottom:'.5%'}}>SELECT BUILDINGS</h5>
               {allBuildings.map( (build,i) =>(
                 <div key={i} style={{display:'flex', flexDirection:'column'}}>
                   <label htmlFor={build.buildingName}>
@@ -97,9 +91,8 @@ export class AllUnits extends React.Component {
 
             </form>
           {/* end --- BUILDING SELECTOR */}
-          </div>
 
-          {/* end SEARCH & FILTERS */}
+        </div> {/* end SEARCH & FILTERS */}
 
           <div>
             <h3 style={{marginBottom: '0px', marginTop: '0px'}}>ADD NEW UNIT</h3>
