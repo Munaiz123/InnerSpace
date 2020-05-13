@@ -45,9 +45,11 @@ export class SingleTicketView extends React.Component {
           >
             <div style={{width: '45%'}}>
               <h1>Tenant Info</h1>
+              <Link to={`/tenants/${ticketTenant.id}`}>
               <h5>
                 {ticketTenant.firstName} {ticketTenant.lastName}
               </h5>
+              </Link>
               <h5>{ticketTenant.email}</h5>
             </div>
             <div style={{width: '45%'}}>
