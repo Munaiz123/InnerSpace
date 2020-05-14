@@ -17,19 +17,27 @@ export class SingleBuildingView extends React.Component {
     let {building} = this.props
 
     return (
-      <div>
-        <div>
+      <div style={{padding: '5%'}}>
 
-          <div id="singleBuildInfo">
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <div id="singleBuildInfo" style={{width: '40%'}}>
             <h4>{building.buildingName}</h4>
             <h5>Address: {building.address}</h5>
             <h5>Number of Units: {building.unitsCount}</h5>
           </div>
-          <div>
+          <div style={{width: '40%'}}>
             <h4>Edit Building</h4>
             <EditBuildingForm buildId={building.id} />
           </div>
+        </div>
 
+        <div style={{display: 'flex', flexDirection: 'row', paddingTop:'5%'}}>
+          <div style={{width: '40%'}}>
+            <h3>UNITS</h3>
+          </div>
+          <div >
+          <h3>TENANTS</h3>
+          </div>
         </div>
       </div>
     )

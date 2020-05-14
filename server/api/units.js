@@ -12,7 +12,8 @@ router.get('/', async (req, res, next) => {
       include: [
         {
           model: Building
-        }
+        },
+        {model:User, as:'tenant'}
       ]
     })
     res.send(allUnits).status(200)

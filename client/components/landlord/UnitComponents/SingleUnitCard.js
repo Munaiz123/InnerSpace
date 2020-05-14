@@ -10,7 +10,7 @@ export class SingleUnitCard extends React.Component {
   }
 
   render() {
-    const {index, deleteAUnit, buildInfo} = this.props
+    const {index, deleteAUnit, buildInfo, tenInfo} = this.props
     const {
       id,
       unitNumber,
@@ -49,7 +49,7 @@ export class SingleUnitCard extends React.Component {
               <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
                 Building: {buildInfo.buildingName}
               </h6>
-              <h6 style={{marginTop: '3px'}}> Tenant ID: {tenantId} </h6>
+              <h6 style={{marginTop: '3px'}}> Tenant: {tenInfo.firstName} {tenInfo.lastName} </h6>
             </div>
           </Link>
           <button className="deleteButton" onClick={() => deleteAUnit(id)}>

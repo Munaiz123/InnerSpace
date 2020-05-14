@@ -65,6 +65,7 @@ export class AllUnits extends React.Component {
               index={i + 1}
               unitInfo={unit}
               buildInfo={unit.building}
+              tenInfo={unit.tenant}
             />
           ))}
         </div>
