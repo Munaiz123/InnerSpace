@@ -12,7 +12,7 @@ export class AllTickets extends React.Component {
     this.state = {
       statusFilter: 'all',
       selectedBuildings:[],
-      slectedIssues:[]
+      selectedTicketCats:[]
     }
     this.handleStatusChange = this.handleStatusChange.bind(this)
     this.handleBuildingSelectors = this.handleBuildingSelectors.bind(this)
@@ -43,20 +43,39 @@ export class AllTickets extends React.Component {
   }
 
   handleIssueSelectors(){
-    console.log(event.target.value)
+    if(this.state.selectedTicketCats.indexOf(event.target.value) !== -1){
+      this.setState((state)=>({
+        selectedTicketCats: state.selectedTicketCats.filter( cat =>{
+          return cat !== event.target.value
+        })
+      }))
+    } else {
+      this.setState((state)=>({
+        selectedTicketCats: state.selectedTicketCats.concat([event.target.value])
+      }))
+    }
   }
 
   render() {
     let {allTickets,allBuildings} = this.props
 
+    {/* extension of this.handleStatusChange */}
     if(this.state.statusFilter === 'all') allTickets;
     else allTickets = allTickets.filter( tick =>{
       return tick.pending.toString() === this.state.statusFilter
     })
 
+    {/* extension of this.handleBuildingSelectors */}
     if(this.state.selectedBuildings.length > 0){
       allTickets = allTickets.filter( tick =>{
         return this.state.selectedBuildings.includes(tick.buildingId.toString())
+      })
+    }
+
+    {/* extension of this.handleIssuesSelectors */}
+    if(this.state.selectedTicketCats.length >0){
+      allTickets = allTickets.filter(tick =>{
+        return this.state.selectedTicketCats.includes(tick.issue)
       })
     }
 
