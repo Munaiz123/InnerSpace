@@ -11,10 +11,12 @@ export class AllTickets extends React.Component {
     super()
     this.state = {
       statusFilter: 'all',
-      selectedBuildings:[]
+      selectedBuildings:[],
+      slectedIssues:[]
     }
     this.handleStatusChange = this.handleStatusChange.bind(this)
     this.handleBuildingSelectors = this.handleBuildingSelectors.bind(this)
+    this.handleIssueSelectors = this.handleIssueSelectors.bind(this)
   }
 
   componentDidMount() {
@@ -40,6 +42,10 @@ export class AllTickets extends React.Component {
     }
   }
 
+  handleIssueSelectors(){
+    console.log(event.target.value)
+  }
+
   render() {
     let {allTickets,allBuildings} = this.props
 
@@ -59,7 +65,7 @@ export class AllTickets extends React.Component {
         display: 'flex',
         flexDirection: 'row',
       }}>
-        <div style={{width: '35%', backgroundColor: 'lightCyan'}}>
+        <div style={{width: '25%', backgroundColor: 'lightCyan'}}>
           <h1>All Tickets</h1>
           {allTickets.map((tick, i) => (
             <SingleTicketCard key={i} index={i + 1} buildInfo={tick.building} tick={tick} />
@@ -84,17 +90,34 @@ export class AllTickets extends React.Component {
           </div>
 
           {/* start --- BUILDING SELECTOR */}
-            <form style={{paddingTop:'.25%'}} onChange={this.handleBuildingSelectors}>
-            <h5 style={{paddingBottom:'.5%'}}>SELECT BUILDINGS</h5>
+            <form onChange={this.handleBuildingSelectors}>
+            <h5>SELECT BUILDINGS</h5>
               {allBuildings.map( (build,i) =>(
-                <div key={i} style={{display:'flex', flexDirection:'column'}}>
-                  <label htmlFor={build.buildingName}>
-                    <input type='checkBox' name={build.buildingName} defaultValue={build.id} /> { build.buildingName}
-                  </label>
-                </div>
+                <label style={{paddingBottom:'5%'}} key={i} htmlFor={build.buildingName}>
+                  <input type='checkBox' name={build.buildingName} defaultValue={build.id} /> { build.buildingName}
+                </label>
               ))}
             </form>
+
           {/* end --- BUILDING SELECTOR */}
+
+          {/* start --- ISSUE SELECTOR */}
+          <form onChange={this.handleIssueSelectors}>
+            <h5>SELECT TICKET CATEGORY</h5>
+              <label htmlFor='ELECTRICAL'>
+                <input type='checkBox' name='ELECTRICAL' defaultValue= 'ELECTRICAL'/>ELECTRICAL
+              </label>
+              <label htmlFor='PLUMBING'>
+                <input type='checkBox' name='PLUMBING' defaultValue= 'PLUMBING'/>PLUMBING
+              </label>
+              <label htmlFor='HEAT/AC'>
+                <input type='checkBox' name='HEAT/AC' defaultValue= 'HEAT/AC'/>HEAT/AC
+              </label>
+              <label htmlFor='OTHER'>
+                <input type='checkBox' name='OTHER' defaultValue= 'OTHER'/>OTHER
+              </label>
+          </form>
+          {/* end --- ISSUE SELECTOR */}
 
         </div> {/* end SEARCH & FILTERS */}
       </div>
