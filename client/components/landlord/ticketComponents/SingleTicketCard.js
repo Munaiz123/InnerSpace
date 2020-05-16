@@ -20,7 +20,7 @@ export class SingleTicketCard extends React.Component {
         }}
       >
         <Link
-          to={`/tickets/${tick.id}`}
+          to={{pathname:`/tickets/${tick.id}`, state:{ticketStatus:tick.pending}}}
           style={{
             display: 'flex',
             flexDirection: 'row',

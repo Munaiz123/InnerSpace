@@ -5,9 +5,14 @@ import {connect} from 'react-redux'
 import {fetchSingleTicket} from '../../../store/singleTicket'
 
 export class SingleTicketView extends React.Component {
-  constructor() {
-    super()
-    this.state = {}
+  constructor(props) {
+    super(props)
+    const {ticketStatus} = props.location.state // comes from react Link in SingleTicketCard
+
+    this.state = {
+      ticketStatus:ticketStatus
+    }
+
     this.handleButton = this.handleButton.bind(this)
   }
 
@@ -16,8 +21,9 @@ export class SingleTicketView extends React.Component {
   }
 
   handleButton(){
-    if(this.state.ticketStatus === 'pending') this.setState({ticketStatus:'completed'})
-    else this.setState({ticketStatus:'pending'})
+   this.setState((state)=>({
+     ticketStatus: !state.ticketStatus
+   }))
   }
 
   render() {
@@ -26,7 +32,9 @@ export class SingleTicketView extends React.Component {
     const {ticketTenant, unit, building} = singleTicket
     let date = new Date(singleTicket.createdAt)
 
-    console.log(this.state)
+    console.log("this.state", this.state)
+
+
 
     return (
       <div
@@ -36,7 +44,7 @@ export class SingleTicketView extends React.Component {
         <div style={{width: '45%'}}>
           <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
             <h2>{singleTicket.issue}</h2>
-            {singleTicket.pending ? <button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'>Resolve Ticket</button>
+            {this.state.ticketStatus ? <button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'>Resolve Ticket</button>
             : <button style={{backgroundColor:'red', height:'5%'}} onClick={this.handleButton} type='button'> Mark as pending</button>}
           </div>
 
