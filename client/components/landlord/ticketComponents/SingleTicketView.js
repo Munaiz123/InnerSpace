@@ -7,10 +7,16 @@ import {fetchSingleTicket} from '../../../store/singleTicket'
 export class SingleTicketView extends React.Component {
   constructor() {
     super()
+    this.state = {}
+    this.handleButton = this.handleButton.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchSingleTicket(this.props.match.params.id)
+  }
+
+  handleButton(){
+    console.log(this.state)
   }
 
   render() {
@@ -25,7 +31,11 @@ export class SingleTicketView extends React.Component {
         style={{padding: '3%', display: 'flex', flexDirection: 'column'}}
       >
         <div style={{width: '45%'}}>
-          <h2>{singleTicket.issue}</h2>
+          <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+            <h2>{singleTicket.issue}</h2>
+            {singleTicket.pending ? ( <button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'>Resolve Ticket</button>)
+            : (<button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'> Mark as pending</button>)}
+          </div>
 
           {building ? (
             <Link to={`/buildings/${building.id}`}>
@@ -35,7 +45,6 @@ export class SingleTicketView extends React.Component {
 
           <h5>{date.toDateString()}</h5>
           <p>{singleTicket.details}</p>
-          <h5>Mark as resolved BUTTON</h5>
         </div>
 
         {ticketTenant && unit ?
