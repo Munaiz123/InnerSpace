@@ -24,14 +24,14 @@ export class SingleTicketView extends React.Component {
      ticketStatus: !state.ticketStatus
    }))
    this.props.toggleStatus(this.props.match.params.id)
-   this.props.fetchSingleTicket(this.props.match.params.id)
   }
 
   render() {
-    console.log('single ticket view props', this.props)
     const {singleTicket} = this.props
     const {ticketTenant, unit, building} = singleTicket
-    let date = new Date(singleTicket.createdAt)
+    let createdDate = new Date(singleTicket.createdAt)
+    let updatedDate = new Date(singleTicket.updatedAt)
+
 
     return (
       <div
@@ -39,10 +39,17 @@ export class SingleTicketView extends React.Component {
         style={{padding: '3%', display: 'flex', flexDirection: 'column'}}
       >
         <div style={{width: '45%'}}>
+
           <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
             <h2>{singleTicket.issue}</h2>
-            {this.state.ticketStatus ? <button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'>Resolve Ticket</button>
-            : <button style={{backgroundColor:'red', height:'5%'}} onClick={this.handleButton} type='button'> Mark as pending</button>}
+            {
+            this.state.ticketStatus ?
+              <button style={{backgroundColor:'green', height:'5%'}}
+              onClick={this.handleButton} type='button'>Resolve Ticket</button>
+              :
+              <button style={{backgroundColor:'red', height:'5%'}}
+              onClick={this.handleButton} type='button'> Mark as pending</button>
+            }
           </div>
 
           {building ? (
@@ -51,7 +58,9 @@ export class SingleTicketView extends React.Component {
             </Link>
           ) : ( <React.Fragment /> )}
 
-          <h5>{date.toDateString()}</h5>
+          <h5 style={{marginBottom:'0px'}}>Submitted: {createdDate.toDateString()}</h5>
+          {/* Only show updatedDate if ticket has been marked as complete ⤵️ */}
+          {this.state.ticketStatus ? <React.Fragment /> : <h5 style={{marginTop:'0px'}}>Updated: {updatedDate.toDateString()}</h5>}
           <p>{singleTicket.details}</p>
         </div>
 
