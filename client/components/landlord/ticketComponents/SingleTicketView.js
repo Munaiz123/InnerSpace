@@ -32,10 +32,6 @@ export class SingleTicketView extends React.Component {
     const {ticketTenant, unit, building} = singleTicket
     let date = new Date(singleTicket.createdAt)
 
-    console.log("this.state", this.state)
-
-
-
     return (
       <div
         id="singleTicketViewDiv"
