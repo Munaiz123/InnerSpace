@@ -80,6 +80,39 @@ router.delete('/:id', async (req,res, next)=>{
 })
 
 
+
+// PUT - api/tickets/id/updateStatus
+// *** only landlords should be able to toggle status of a ticket ****
+
+router.put('/:id/updateStatus', async (req, res, next) => {
+  try {
+    let oldTicket = await Ticket.findOne({
+      where: {id: req.params.id},
+      include: [
+        {
+          model: User,
+          as: 'ticketTenant'
+        },
+        {
+          model: Unit
+        },
+        {
+          model: Building
+        }
+      ]
+    })
+    let updatedTicket = await oldTicket.update({
+      pending: !oldTicket.pending
+    })
+    res.status(200).send(updatedTicket)
+  } catch (error) {
+    next(error)
+  }
+})
+
+
+
+
 // PUT - api/tickets/id
 // *** only tenants should be able to update a ticket ***
 

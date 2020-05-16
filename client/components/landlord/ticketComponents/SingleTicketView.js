@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {fetchSingleTicket} from '../../../store/singleTicket'
+import {fetchSingleTicket, toggleStatus} from '../../../store/singleTicket'
 
 export class SingleTicketView extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ export class SingleTicketView extends React.Component {
     this.state = {
       ticketStatus:ticketStatus
     }
-
     this.handleButton = this.handleButton.bind(this)
   }
 
@@ -24,6 +23,8 @@ export class SingleTicketView extends React.Component {
    this.setState((state)=>({
      ticketStatus: !state.ticketStatus
    }))
+   this.props.toggleStatus(this.props.match.params.id)
+   this.props.fetchSingleTicket(this.props.match.params.id)
   }
 
   render() {
@@ -88,7 +89,8 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  fetchSingleTicket: id => dispatch(fetchSingleTicket(id))
+  fetchSingleTicket: id => dispatch(fetchSingleTicket(id)),
+  toggleStatus: id => dispatch(toggleStatus(id))
 })
 
 export default connect(mapState, mapDispatch)(SingleTicketView)
