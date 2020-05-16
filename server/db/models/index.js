@@ -11,12 +11,12 @@ const Note = require('./note')
 // may need to add buildingId to USER table as well
 
 User.hasMany(User, {as:'tenantLandlord', foreignKey:'tenantLandlordId'})
-
 User.hasOne(Building, {as:'landlord', foreignKey:'landlordId'}) //Landlord
+
+User.belongsToMany(User,{through:'Roommates', as:'Roomates'})
 
 
 //  UNITS-----------------------------------------------
-User.hasOne(Unit, {as:'tenant'})
 User.hasMany(Unit, {as:'unitLandlord', foreignKey:'unitLandlordId'})
 Unit.belongsTo(User, {as:'tenant'})
 

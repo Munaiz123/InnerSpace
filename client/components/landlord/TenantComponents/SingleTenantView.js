@@ -23,27 +23,33 @@ export class SingleTenantView extends React.Component {
     const unitId = this.props.unit.id
 
     return (
-      <div style={{display:'flex', flexDirection:'column'}}>
+      <div>
+        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-around' , width:'45%'}}>
+          <div>
+            <div className="singleTenantInfo"> {/* styled in style.css */}
+              <h2>{firstName} {lastName}</h2>
+              <p>{email}</p>
+            </div>
 
-        <div className="singleTenantInfo"> {/* styled in style.css */}
-          <h2>{firstName} {lastName}</h2>
-          <p>{email}</p>
+            <div className="singleTenantInfo"> {/* styled in style.css */}
+              <Link to={`/units/${unitId}`}>
+              <h3>{unitNumber}</h3>
+              </Link>
+              <p> Baths: {bathroomCount}</p>
+              <p> Beds: {bedroomCount}</p>
+              <p> Rent: {rent}</p>
+            </div>
+          </div>
+
+          <div style={{width:'45%'}} className="singleTenantInfo">
+            <h4>Edit Tenant</h4>
+            <EditTenantForm tenId={id}/>
+          </div>
+
         </div>
-
-        <div className="singleTenantInfo"> {/* styled in style.css */}
-          <Link to={`/units/${unitId}`}>
-          <h3>{unitNumber}</h3>
-          </Link>
-          <p> Baths: {bathroomCount}</p>
-          <p> Beds: {bedroomCount}</p>
-          <p> Rent: {rent}</p>
+        <div>
+          <h5>Tenant Tickets</h5>
         </div>
-
-        <div className="singleTenantInfo">
-          <h4>Edit Tenant</h4>
-          <EditTenantForm tenId={id}/>
-        </div>
-
       </div>
 
     )

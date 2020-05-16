@@ -23,8 +23,8 @@ export class SingleTenantsCard extends React.Component {
           <h6 style={{marginTop: '5px', paddingRight: '5px'}}>{index})</h6>
           <div>
             <h6 style={{marginTop: '5px', marginBottom: '5px'}}>{firstName} {lastName} </h6>
-            <h6 style={{marginTop:'5px', marginBottom: '5px'}}>Unit Number?</h6>
-            <h6 style={{marginTop: '3px', marginBottom: '25px'}}>Buidling Name?</h6>
+            <h6 style={{marginTop: '3px', marginBottom: '5px'}}>Buidling Name?</h6>
+            <h6 style={{marginTop:'5px', marginBottom: '25px'}}>Unit Number?</h6>
 
           </div>
         </Link>

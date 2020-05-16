@@ -33,6 +33,7 @@ export class AllTenants extends React.Component {
 
   render() {
     let {allTenants} = this.props
+    console.log("allTenants", allTenants)
 
     allTenants = allTenants.filter(ten =>
       ten[this.state.firstOrLast]

@@ -19,6 +19,20 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:tenantId', async(req, res, next)=>{
+  try{
+    res.send(
+      await Ticket.findAll({
+        where: {ticketTenantId: req.params.tenantId},
+
+      })
+    )
+
+  } catch(error){
+    next(error)
+  }
+})
+
 // GET - api/tickets/id
 router.get('/:id', async (req, res, next) => {
   try {
