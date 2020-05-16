@@ -16,7 +16,8 @@ export class SingleTicketView extends React.Component {
   }
 
   handleButton(){
-    console.log(this.state)
+    if(this.state.ticketStatus === 'pending') this.setState({ticketStatus:'completed'})
+    else this.setState({ticketStatus:'pending'})
   }
 
   render() {
@@ -24,6 +25,8 @@ export class SingleTicketView extends React.Component {
     const {singleTicket} = this.props
     const {ticketTenant, unit, building} = singleTicket
     let date = new Date(singleTicket.createdAt)
+
+    console.log(this.state)
 
     return (
       <div
@@ -33,8 +36,8 @@ export class SingleTicketView extends React.Component {
         <div style={{width: '45%'}}>
           <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
             <h2>{singleTicket.issue}</h2>
-            {singleTicket.pending ? ( <button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'>Resolve Ticket</button>)
-            : (<button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'> Mark as pending</button>)}
+            {singleTicket.pending ? <button style={{backgroundColor:'green', height:'5%'}} onClick={this.handleButton} type='button'>Resolve Ticket</button>
+            : <button style={{backgroundColor:'red', height:'5%'}} onClick={this.handleButton} type='button'> Mark as pending</button>}
           </div>
 
           {building ? (
