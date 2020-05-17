@@ -19,15 +19,14 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// GET - api/tickets/tenantId --> SingleTenantView
 router.get('/:tenantId', async(req, res, next)=>{
   try{
     res.send(
       await Ticket.findAll({
-        where: {ticketTenantId: req.params.tenantId},
-
+        where: {ticketTenantId: req.params.tenantId}
       })
     )
-
   } catch(error){
     next(error)
   }

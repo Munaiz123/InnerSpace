@@ -11,6 +11,8 @@ export class SingleTicketCard extends React.Component {
   render() {
     const {index, tick, buildInfo} = this.props
 
+    console.log(this.props)
+
     return (
       <div
         style={{
@@ -33,9 +35,11 @@ export class SingleTicketCard extends React.Component {
             <h6 style={{marginTop: '5px', marginBottom: '5px'}}>
               {tick.issue}
             </h6>
-            <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
-              {buildInfo.buildingName}
-            </h6>
+            {!!buildInfo ?
+              <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
+                {buildInfo.buildingName}
+              </h6> : <React.Fragment />
+            }
           </div>
         </Link>
         {/* <button className="deleteButton" onClick={() => deleteAUnit(id)}>

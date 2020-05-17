@@ -42,7 +42,8 @@ export class SingleTicketView extends React.Component {
 
           <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
             <h2>{singleTicket.issue}</h2>
-            {
+
+            { /** if ticketStatus is pending (false) then show green button that toggles it to completed (true) other wise show red button which toggles ticket.pending to true */
             this.state.ticketStatus ?
               <button style={{backgroundColor:'green', height:'5%'}}
               onClick={this.handleButton} type='button'>Resolve Ticket</button>
