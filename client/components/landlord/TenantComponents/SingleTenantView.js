@@ -67,7 +67,7 @@ export class SingleTenantView extends React.Component {
             <h5>Tenant Tickets</h5>
 
               {tickets.map((tick,i)=>(
-                <SingleTicketCard index={i+1} tick={tick}/>
+                <SingleTicketCard key={i} index={i+1} tick={tick}/>
               ))}
             </div>
 
