@@ -20,7 +20,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // GET - api/tickets/tenantId --> SingleTenantView
-router.get('/:tenantId', async(req, res, next)=>{
+router.get('/tenant/:tenantId', async(req, res, next)=>{
   try{
     res.send(
       await Ticket.findAll({

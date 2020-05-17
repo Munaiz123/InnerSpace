@@ -22,9 +22,10 @@ export const fetchTickets = () => async dispatch =>{
   }
 }
 
+// --> SingleTenantView.js
 export const fetchTenantTickets = id => async dispatch =>{
   try{
-    let {data} = await axios.get(`/api/tickets/${id}`)
+    let {data} = await axios.get(`/api/tickets/tenant/${id}`)
     dispatch(getTenantTickets(data))
   } catch(error){
     console.log('ERROR FROM fetchTenantTickets THUNK', error)

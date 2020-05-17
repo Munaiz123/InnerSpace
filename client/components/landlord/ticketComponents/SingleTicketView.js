@@ -32,6 +32,7 @@ export class SingleTicketView extends React.Component {
     let createdDate = new Date(singleTicket.createdAt)
     let updatedDate = new Date(singleTicket.updatedAt)
 
+    console.log('SINGLE TICKET VIEW PROPS', this.props)
 
     return (
       <div
