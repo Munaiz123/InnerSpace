@@ -43,7 +43,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-// api/units/tenants/tenId
+// api/units/tenants/tenId --> SingleTenantView.js
 router.get('/tenants/:tenId', async (req, res, next) => {
   try {
     let tenantUnit = await Unit.findOne({

@@ -24,50 +24,59 @@ export class SingleTenantView extends React.Component {
 
   render() {
     const {email,firstName, lastName, id} = this.props.tenant;
-    const {unitNumber, bathroomCount, bedroomCount, rent} = this.props.unit
+    const {unitNumber, bathroomCount, bedroomCount, rent, building} = this.props.unit
     const unitId = this.props.unit.id
 
     let {tickets} = this.props
 
-    console.log('SINGLETENVIEW PROPS',tickets)
+    console.log('SINGLETENVIEW PROPS',this.props)
 
-    return (
-      <div>
-        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-around' , width:'45%'}}>
-          <div>
-            <div className="singleTenantInfo"> {/* styled in style.css */}
-              <h2>{firstName} {lastName}</h2>
-              <p>{email}</p>
+    if(building){
+      return (
+        <div style={{display:'flex', flexDirection:'column'}}>
+
+          <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', width:'70%'}}>
+            <div>
+              <div style={{paddingBottom:'10%'}}>
+                <h2>{firstName} {lastName}</h2>
+                <p>{email}</p>
+              </div>
+
+              <div>
+                <Link to={`/units/${unitId}`}>
+                  <h3>{unitNumber}</h3>
+                </Link>
+                <Link to={`/buildings/${building.id}`}>
+                  <p>{building.buildingName}</p>
+                </Link>
+                <p> Baths: {bathroomCount}</p>
+                <p> Beds: {bedroomCount}</p>
+                <p> Rent: {rent}</p>
+              </div>
             </div>
 
-            <div className="singleTenantInfo"> {/* styled in style.css */}
-              <Link to={`/units/${unitId}`}>
-              <h3>{unitNumber}</h3>
-              </Link>
-              <p> Baths: {bathroomCount}</p>
-              <p> Beds: {bedroomCount}</p>
-              <p> Rent: {rent}</p>
+            <div style={{width:'30%'}}>
+              <h4>Edit Tenant</h4>
+              <EditTenantForm tenId={id}/>
             </div>
-          </div>
 
-          <div style={{width:'45%'}} className="singleTenantInfo">
-            <h4>Edit Tenant</h4>
-            <EditTenantForm tenId={id}/>
-          </div>
+          </div >
+
+          {tickets.length ?
+            <div style={{paddingTop: '50px'}}>
+            <h5>Tenant Tickets</h5>
+
+              {tickets.map((tick,i)=>(
+                <SingleTicketCard index={i+1} tick={tick}/>
+              ))}
+            </div>
+
+            : <React.Fragment />
+          }
 
         </div>
-        {tickets.length ?
-          <div>
-            <h5>Tenant Tickets</h5>
-            {tickets.map((tick,i)=>(
-              <SingleTicketCard index={i+1} tick={tick}/>
-            ))}
-          </div>
-          : <React.Fragment />
-        }
-      </div>
-
-    )
+      )
+    } else return <React.Fragment />
   }
 }
 
