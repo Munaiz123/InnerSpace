@@ -6,6 +6,7 @@ import {fetchSingleUnit} from '../../../store/singleUnit'
 import {fetchUnitTickets} from '../../../store/tickets'
 
 import EditUnitForm from './EditUnitForm'
+import SingleTicketCard from '../TicketComponents/SingleTicketCard'
 
 export class SingleUnitView extends React.Component {
   constructor() {
@@ -19,10 +20,10 @@ export class SingleUnitView extends React.Component {
   }
 
   render() {
-    const {unit} = this.props
+    const {unit,tickets} = this.props
     const {building, tenant} = unit
 
-    console.log("this.props single unit view", this.props)
+    console.log("this.props single unit view", tickets)
 
     if (building && tenant) {
       return (
@@ -66,6 +67,11 @@ export class SingleUnitView extends React.Component {
           </div>
           <div>
             <h4>Previous Unit Tickets</h4>
+            <div>
+              {tickets.map((tick,i)=>{
+                return <SingleTicketCard key={i} index={i+1} tick={tick}/>
+              })}
+            </div>
 
           </div>
         </div>

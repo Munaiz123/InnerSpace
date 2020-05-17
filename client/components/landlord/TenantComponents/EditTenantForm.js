@@ -3,9 +3,6 @@ import {connect} from 'react-redux'
 
 import {fetchSingleTenant, updateATenant} from '../../../store/singleTenant'
 
-
-
-
 export class EditTenantForm extends React.Component {
   constructor() {
     super()
