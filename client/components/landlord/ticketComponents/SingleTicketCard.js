@@ -11,8 +11,6 @@ export class SingleTicketCard extends React.Component {
   render() {
     const {index, tick, buildInfo} = this.props
 
-    console.log(this.props)
-
     return (
       <div
         style={{

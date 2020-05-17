@@ -29,8 +29,6 @@ export class SingleTenantView extends React.Component {
 
     let {tickets} = this.props
 
-    console.log('SINGLETENVIEW PROPS',this.props)
-
     if(building){
       return (
         <div style={{display:'flex', flexDirection:'column'}}>

@@ -34,8 +34,6 @@ export class AllUnits extends React.Component {
         selectedBuildings: state.selectedBuildings.concat([event.target.value])
       }))
     }
-
-    console.log(event.target.value)
   }
 
 
