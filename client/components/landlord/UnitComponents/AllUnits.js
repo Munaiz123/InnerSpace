@@ -41,6 +41,8 @@ export class AllUnits extends React.Component {
   render() {
     let {allUnits, allBuildings} = this.props
 
+    console.log("allUnits", allUnits)
+
     if(this.state.selectedBuildings.length > 0){
       allUnits = allUnits.filter( unit =>{
         return this.state.selectedBuildings.includes(unit.buildingId.toString())
