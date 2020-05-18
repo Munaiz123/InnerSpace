@@ -60,6 +60,18 @@ router.get('/tenants/:tenId', async (req, res, next) => {
   }
 })
 
+router.get('/building/:buildingId', async(req, res,next)=>{
+  try{
+    res.send(
+      await Unit.findAll({
+        where: {buildingId:req.params.buildingId}
+      })
+    )
+
+  }catch(error){
+    next(error)
+  }
+})
 
 // api/units/addUnit
 // need to think about how assinging a tenant to a unit looks like
