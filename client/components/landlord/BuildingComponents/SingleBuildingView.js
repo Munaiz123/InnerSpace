@@ -21,8 +21,6 @@ export class SingleBuildingView extends React.Component {
   render() {
     let {building,units} = this.props
 
-    console.log('single building view props', units)
-
     return (
       <div style={{padding: '5%'}}>
 
@@ -41,11 +39,13 @@ export class SingleBuildingView extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row', paddingTop:'5%'}}>
           <div style={{width: '40%'}}>
             <h3>UNITS</h3>
-            <div style={{backgroundColor:'pink'}}>
+
+            <div>
               {units.map((unit,i)=>(
                 <SingleUnitCard key={i} index={i +1} unitInfo={unit} tenInfo={unit.tenant}/>
               ))}
             </div>
+
           </div>
         </div>
       </div>
