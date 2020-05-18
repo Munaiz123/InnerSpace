@@ -24,7 +24,7 @@ export class SingleUnitCard extends React.Component {
 
 
 
-    if (buildInfo) {
+    // if (buildInfo && tenInfo) {
       return (
         <div
           style={{
@@ -46,9 +46,11 @@ export class SingleUnitCard extends React.Component {
               <h6 style={{marginTop: '5px', marginBottom: '5px'}}>
                 {unitNumber}
               </h6>
-              <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
-                Building: {buildInfo.buildingName}
-              </h6>
+              {buildInfo ?
+                <h6 style={{marginTop: '3px', marginBottom: '5px'}}>
+                  Building: {buildInfo.buildingName}
+                </h6> : <React.Fragment />
+              }
               <h6 style={{marginTop: '3px'}}> Tenant: {tenInfo.firstName} {tenInfo.lastName} </h6>
             </div>
           </Link>
@@ -57,7 +59,7 @@ export class SingleUnitCard extends React.Component {
           </button>
         </div>
       )
-    } else return <div></div>
+    // } else return <div></div>
   }
 }
 

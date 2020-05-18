@@ -2,7 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {fetchSingleBuilding} from '../../../store/singleBuilding'
+import {fetchBuildingUnits} from '../../../store/units'
+
 import EditBuildingForm from './EditBuildingForm'
+import SingleUnitCard from '../UnitComponents/SingleUnitCard'
 
 export class SingleBuildingView extends React.Component {
   constructor() {
@@ -10,11 +13,15 @@ export class SingleBuildingView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSingleBuilding(this.props.match.params.id)
+    const buildingId = this.props.match.params.id
+    this.props.fetchSingleBuilding(buildingId)
+    this.props.fetchBuildingUnits(buildingId)
   }
 
   render() {
-    let {building} = this.props
+    let {building,units} = this.props
+
+    console.log('single building view props', units)
 
     return (
       <div style={{padding: '5%'}}>
@@ -34,9 +41,11 @@ export class SingleBuildingView extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row', paddingTop:'5%'}}>
           <div style={{width: '40%'}}>
             <h3>UNITS</h3>
-          </div>
-          <div >
-          <h3>TENANTS</h3>
+            <div style={{backgroundColor:'pink'}}>
+              {units.map((unit,i)=>(
+                <SingleUnitCard key={i} index={i +1} unitInfo={unit} tenInfo={unit.tenant}/>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -45,11 +54,13 @@ export class SingleBuildingView extends React.Component {
 }
 
 const mapState = state => ({
-  building: state.building
+  building: state.building,
+  units: state.units
 })
 
 const mapDispatch = dispatch => ({
-  fetchSingleBuilding: id => dispatch(fetchSingleBuilding(id))
+  fetchSingleBuilding: id => dispatch(fetchSingleBuilding(id)),
+  fetchBuildingUnits: buildingId => dispatch(fetchBuildingUnits(buildingId))
 })
 
 export default connect(mapState, mapDispatch)(SingleBuildingView)

@@ -1,24 +1,24 @@
 import axios from "axios"
 
-// ACTION TYPES
+/* *************** ACTION TYPES **************** */
+
 const GET_UNITS = 'GET_UNITS'
 const ADD_UNIT = 'ADD_UNIT'
 const DELETE_UNIT = 'DELETE_UNIT'
 const UPDATE_UNIT = 'UPDATE_UNIT'
+const GET_BUILDING_UNITS = 'GET_BUILDING_UNITS'
 
-//ACTION CREATORS
+/* *************** ACTION CREATORS **************** */
 
 export const getUnits = units =>({type: GET_UNITS, units})
-
 export const addUnit = unit =>({type: ADD_UNIT, unit})
-
 export const deleteUnit = unitId => ({type:DELETE_UNIT, unitId})
-
 export const updateUnit = unit =>({type:UPDATE_UNIT, unit})
+export const getBuildingUnits = units => ({type:GET_BUILDING_UNITS, units})
 
 
 
-//THUNKS
+/* **************** THUNKS **************** */
 
 // --> AllUnits.js ~ fetches all of the units that pertains to a landlord (unitLandlordId)
 export const fetchUnits = () => async dispatch =>{
@@ -66,6 +66,17 @@ export const updateAUnit = (unit, id) => async dispatch =>{
   }
 }
 
+// --> SingleBuildingView.js
+export const fetchBuildingUnits = buildingId => async dispatch =>{
+  try{
+    let {data} = await axios.get(`/api/units/building/${buildingId}`)
+    dispatch(getBuildingUnits(data))
+
+  }catch(error){
+    console.log('ERROR FROM fetchBuildingUnits THUNK', error)
+  }
+}
+
 // INITIAL STATE
 const units = []
 
@@ -83,6 +94,8 @@ export default function (state = units, action){
       return[...state].map( unit =>{
         if(unit.id === action.unit.id) return action.unit
       })
+    case GET_BUILDING_UNITS:
+      return action.units
     default:
       return state
   }
