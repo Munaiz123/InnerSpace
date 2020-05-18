@@ -20,6 +20,7 @@ export const updateUnit = unit =>({type:UPDATE_UNIT, unit})
 
 //THUNKS
 
+// --> AllUnits.js ~ fetches all of the units that pertains to a landlord (unitLandlordId)
 export const fetchUnits = () => async dispatch =>{
   try{
     let {data} = await axios.get('/api/units')
@@ -29,6 +30,10 @@ export const fetchUnits = () => async dispatch =>{
     console.log('ERROR FORM fetchUnits THUNK', error)
   }
 }
+
+/* need to rethink where this should live? ⤵️
+  will it be in SingleBuildingView where you have access to buildingId
+*/
 
 export const addAUnit = unit => async dispatch =>{
   try{
@@ -50,6 +55,7 @@ export const deleteAUnit = unitId => async dispatch =>{
   }
 }
 
+// --> SingleUnitView.js
 export const updateAUnit = (unit, id) => async dispatch =>{
   try{
     let {data} = await axios.put(`/api/units/${id}`, unit)

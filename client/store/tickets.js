@@ -15,7 +15,7 @@ export const getUnitTickets = tickets =>({type:GET_UNIT_TICKETS, tickets})
 
 /* **************** THUNKS **************** */
 
-
+// --> AllTickets.js ~ fetches all of the tickets that pertains to landlord (ticketLandlordId)
 export const fetchTickets = () => async dispatch =>{
   try{
     let {data} = await axios.get('/api/tickets')
@@ -26,7 +26,7 @@ export const fetchTickets = () => async dispatch =>{
   }
 }
 
-// --> SingleTenantView.js
+// --> SingleTenantView.js ~ fetches all tickets that a tenant submits (ticketTenantId)
 export const fetchTenantTickets = id => async dispatch =>{
   try{
     let {data} = await axios.get(`/api/tickets/tenant/${id}`)
@@ -36,7 +36,7 @@ export const fetchTenantTickets = id => async dispatch =>{
   }
 }
 
-// --> SingleUnitView.js
+// --> SingleUnitView.js ~ fetches all tickets related to a unit (unitId)
 export const fetchUnitTickets = id => async dispatch =>{
   try{
     let {data} = await axios.get(`/api/tickets/unit/${id}`)

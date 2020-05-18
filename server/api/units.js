@@ -60,15 +60,16 @@ router.get('/tenants/:tenId', async (req, res, next) => {
   }
 })
 
-router.get('/building/:buildingId', async(req, res,next)=>{
-  try{
+// api/units/building/buildingId --> SingleBuildingView.js
+router.get('/building/:buildingId', async (req, res, next) => {
+  try {
     res.send(
       await Unit.findAll({
-        where: {buildingId:req.params.buildingId}
+        where: {buildingId: req.params.buildingId},
+        include: [{model: User, as: 'tenant'}]
       })
     )
-
-  }catch(error){
+  } catch (error) {
     next(error)
   }
 })
