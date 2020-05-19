@@ -32,10 +32,11 @@ export class SingleUnitCard extends React.Component {
               Building: {buildInfo.buildingName}
             </h6> : <React.Fragment />
           }
-
-          <h6 style={{marginTop: '3px'}}>
-            Tenant: {tenInfo.firstName} {tenInfo.lastName}
-          </h6>
+          {tenInfo ?
+            <h6 style={{marginTop: '3px'}}>
+              Tenant: {tenInfo.firstName} {tenInfo.lastName}
+            </h6> : <React.Fragment />
+          }
         </div>
         <button className="deleteButton" onClick={() => deleteAUnit(id)}>
           DELETE

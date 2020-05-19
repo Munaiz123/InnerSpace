@@ -41,8 +41,6 @@ export class AllUnits extends React.Component {
   render() {
     let {allUnits, allBuildings} = this.props
 
-    console.log("allUnits", allUnits)
-
     if(this.state.selectedBuildings.length > 0){
       allUnits = allUnits.filter( unit =>{
         return this.state.selectedBuildings.includes(unit.buildingId.toString())
@@ -95,10 +93,10 @@ export class AllUnits extends React.Component {
 
         </div> {/* end SEARCH & FILTERS */}
 
-          <div>
+          {/* <div>
             <h3 style={{marginBottom: '0px', marginTop: '0px'}}>ADD NEW UNIT</h3>
             <AddUnitForm />
-          </div>
+          </div> */}
         </div>
       </div>
     )

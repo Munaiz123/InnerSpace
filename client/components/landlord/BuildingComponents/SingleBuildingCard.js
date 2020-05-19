@@ -27,7 +27,7 @@ export class SingleBuildingCard extends React.Component {
           </div>
         </Link>
 
-        {/** NOTE: When a building is deleted, we need to make sure that all associated data is also deleted because when you try to filter tickets or tenants based on a building it'll break the code. I think it has to do with tenants or tickets that end up having NULL in their fields in the DB for buildingId ⤵️⤵️⤵️  ~~~ need to figure out how to deal with NULL values in buildingId fieldss*/}
+        {/** NOTE: When a building is deleted, we need to make sure that all associated data is also deleted because when you try to filter tickets or tenants based on a building it'll break the code. I think it has to do with tenants or tickets that end up having NULL in their fields in the DB for buildingId ⤵️⤵️⤵️  ~~~ need to figure out how to deal with NULL values in buildingId fields*/}
 
         {/* <button className="deleteButton" onClick={() => deleteBuilding(id)}>
           DELETE
