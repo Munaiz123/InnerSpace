@@ -23,7 +23,7 @@ export class SingleUnitView extends React.Component {
     const {unit,tickets} = this.props
     const {building, tenant} = unit
 
-    if (building && tenant) {
+    if (building) {
       return (
         <div id="singleUnitViewDiv">
           <div>
@@ -40,27 +40,28 @@ export class SingleUnitView extends React.Component {
               <h4>Edit Unit</h4>
               <EditUnitForm unitId={unit.id} />
             </div>
-
           </div>
 
           <div style={{display: 'flex', flexDirection: 'row'}}>
-
-            <div style={{width: '25%'}}>
-              {/* <h4>Tenant Info</h4> */}
-              <Link to={`/tenants/${tenant.id}`}>
-              <h6> Tenant Name: {tenant.firstName} {tenant.lastName} </h6>
-              </Link>
-              <h6> Email: {tenant.email} </h6>
-            </div>
-
             <div>
-              {/* <h3>Building Info</h3> */}
-              <Link to={`/buildings/${building.id}`}>
-              <h6>Building Name: {building.buildingName}</h6>
-              </Link>
-              <h6>Address: {building.address}</h6>
-
+                {/* <h3>Building Info</h3> */}
+                <Link to={`/buildings/${building.id}`}>
+                <h6>Building Name: {building.buildingName}</h6>
+                </Link>
+                <h6>Address: {building.address}</h6>
             </div>
+
+            {tenant ?
+              <div style={{paddingLeft:'5%', width: '25%'}}>
+                {/* <h4>Tenant Info</h4> */}
+                <Link to={`/tenants/${tenant.id}`}>
+                <h6> Tenant Name: {tenant.firstName} {tenant.lastName} </h6>
+                </Link>
+                <h6> Email: {tenant.email} </h6>
+              </div>
+              :<h3 style={{paddingLeft:'5%', width: '25%'}}> No Tenant Assigned</h3>
+            }
+
           </div>
           </div>
           <div>
