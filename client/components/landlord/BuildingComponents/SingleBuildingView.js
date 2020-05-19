@@ -6,6 +6,7 @@ import {fetchBuildingUnits} from '../../../store/units'
 
 import EditBuildingForm from './EditBuildingForm'
 import SingleUnitCard from '../UnitComponents/SingleUnitCard'
+import AddUnitForm from '../UnitComponents/AddUnitForm'
 
 export class SingleBuildingView extends React.Component {
   constructor() {
@@ -20,6 +21,11 @@ export class SingleBuildingView extends React.Component {
 
   render() {
     let {building,units} = this.props
+    const buildingId = this.props.match.params.id
+
+    console.log("buildingId", buildingId)
+
+
 
     return (
       <div style={{padding: '5%'}}>
@@ -36,7 +42,7 @@ export class SingleBuildingView extends React.Component {
           </div>
         </div>
 
-        <div style={{display: 'flex', flexDirection: 'row', paddingTop:'5%'}}>
+        <div style={{display: 'flex', flexDirection: 'row', paddingTop:'5%', alignItems:'baseline'}}>
           <div style={{width: '40%'}}>
             <h3>UNITS</h3>
 
@@ -45,7 +51,10 @@ export class SingleBuildingView extends React.Component {
                 <SingleUnitCard key={i} index={i +1} unitInfo={unit} tenInfo={unit.tenant}/>
               ))}
             </div>
-
+          </div>
+          <div>
+            <h3 style={{marginBottom: '5px', marginTop: '0px'}}>ADD NEW UNIT</h3>
+            <AddUnitForm buildId={buildingId} />
           </div>
         </div>
       </div>

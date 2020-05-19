@@ -80,12 +80,16 @@ router.get('/building/:buildingId', async (req, res, next) => {
 
 router.post('/addUnit', async (req, res, next) => {
   try {
+    console.log('REQ..BODY:::::', req.body)
+    console.log('REQ..params:::::', req.params)
+
     let newUnit = await Unit.create({
-      unitNumber: req.body.unitNumber,
-      bedroomCount: req.body.bedroomCount,
-      bathroomCount: req.body.bathroomCount,
-      rent: req.body.rent,
-      unitLandlordId: req.user.id
+      unitNumber: req.body.unit.unitNumber,
+      bedroomCount: req.body.unit.bedroomCount,
+      bathroomCount: req.body.unit.bathroomCount,
+      rent: req.body.unit.rent,
+      unitLandlordId: req.user.id,
+      buildingId: req.body.buildId
     })
     res.json(newUnit)
   } catch (error) {

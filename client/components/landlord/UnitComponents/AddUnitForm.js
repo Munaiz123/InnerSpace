@@ -13,8 +13,10 @@ export class AddUnitForm extends React.Component{
   }
 
   handleSubmit(){
+    const {buildId} = this.props
+
     event.preventDefault()
-    this.props.addAUnit(this.state)
+    this.props.addAUnit(this.state,buildId)
 
     this.setState({
       unitNumber:'',
@@ -32,6 +34,9 @@ export class AddUnitForm extends React.Component{
 
 
   render(){
+
+    console.log('props from ADDUNIT FORM', this.props)
+
     return (
       <div>
         <form
@@ -89,7 +94,7 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch =>({
-  addAUnit: unit => dispatch(addAUnit(unit))
+  addAUnit: (unit,buildId) => dispatch(addAUnit(unit,buildId))
 })
 
 export default connect(mapState, mapDispatch)(AddUnitForm)

@@ -35,9 +35,10 @@ export const fetchUnits = () => async dispatch =>{
   will it be in SingleBuildingView where you have access to buildingId
 */
 
-export const addAUnit = unit => async dispatch =>{
+export const addAUnit = (unit,buildId) => async dispatch =>{
   try{
-    let {data} = await axios.post('/api/units/addUnit', unit)
+    console.log("buildId FROM THUNK", buildId)
+    let {data} = await axios.post(`/api/units/addUnit`, {unit,buildId})
     dispatch(addUnit(unit))
 
   } catch (error){
