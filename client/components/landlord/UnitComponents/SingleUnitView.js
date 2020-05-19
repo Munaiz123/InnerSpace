@@ -7,6 +7,7 @@ import {fetchUnitTickets} from '../../../store/tickets'
 
 import EditUnitForm from './EditUnitForm'
 import SingleTicketCard from '../TicketComponents/SingleTicketCard'
+import AddTenantForm from '../TenantComponents/AddTenantForm'
 
 export class SingleUnitView extends React.Component {
   constructor() {
@@ -59,7 +60,11 @@ export class SingleUnitView extends React.Component {
                 </Link>
                 <h6> Email: {tenant.email} </h6>
               </div>
-              :<h3 style={{paddingLeft:'5%', width: '25%'}}> No Tenant Assigned</h3>
+              :
+              <div style={{paddingLeft:'5%', width: '25%'}}>
+                <h3> No Tenant Assigned</h3>
+                <AddTenantForm />
+              </div>
             }
 
           </div>
