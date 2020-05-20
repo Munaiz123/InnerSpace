@@ -25,10 +25,9 @@ export const fetchTenants = () => async dispatch =>{
   }
 }
 // --> AllTenants.js
-export const addATenant = (tenant,unitId) => async dispatch =>{
+export const addATenant = tenant => async dispatch =>{
   try{
-    await axios.post('api/tenants/addTenant', {tenant,unitId})
-    console.log('CONSOLE ',tenant,unitId)
+    await axios.post('api/tenants/addTenant', tenant)
     dispatch(addTenant(tenant))
 
   } catch(error){

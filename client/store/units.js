@@ -31,7 +31,7 @@ export const fetchUnits = () => async dispatch =>{
   }
 }
 
-// --> AllTenant.js + SingleUnitView.js
+// --> AllTenant.js + SingleUnitView,s
 export const addAUnit = (unit,buildId) => async dispatch =>{
   try{
     await axios.post(`/api/units/addUnit`, {unit,buildId})

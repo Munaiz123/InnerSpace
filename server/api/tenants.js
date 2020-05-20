@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Unit} = require('../db/models')
+const {User} = require('../db/models')
 const faker = require('faker')
 
 
@@ -28,50 +28,34 @@ router.get('/:id', async (req, res, next)=>{
 })
 
 
-
-// api/user/addTenantToUnit --> AddTenantForm.js located in SingleUnitView.js
-// router.post(`/addTenantToUnit`, async(req,res,next)=>{
-//   try{
-
-
-//   } catch(error){
-//     next(error)
-//   }
-// })
-
-
 // /api/users/addTenant ~ --> AddTenantForm.js located in AllTenant.js
 router.post('/addTenant', async (req, res, next) => {
   try {
     let pass, newUser;
-    if (!req.body.tenant.password) {
+    if (!req.body.password) {
       pass = faker.internet.password()
 
       newUser = await User.create({
-        email: req.body.tenant.email,
+        email: req.body.email,
         password: pass,
-        firstName: req.body.tenant.firstName,
-        lastName: req.body.tenant.lastName,
-        isLandlord: req.body.tenant.isLandlord,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        isLandlord: req.body.isLandlord,
         unhashedPasswordForTesting: pass,
         tenantLandlordId: req.user.id
       })
     } else {
       newUser = await User.create({
-        email: req.body.tenant.email,
-        password: req.body.tenant.password,
-        firstName: req.body.tenant.firstName,
-        lastName: req.body.tenant.lastName,
-        isLandlord: req.body.tenant.isLandlord,
-        unhashedPasswordForTesting: req.body.tenant.unhashedPasswordForTesting,
+        email: req.body.email,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        isLandlord: req.body.isLandlord,
+        unhashedPasswordForTesting: req.body.unhashedPasswordForTesting,
         tenantLandlordId: req.user.id
       })
     }
 
-    if(req.body.unitId > 0){
-      let aUnit = await Unit.findOne({where:{id:unitId}})
-      await aUnit.update({tenantId:newUser.id})
-    }
     res.json(newUser)
   } catch (error) {
     next(error)
