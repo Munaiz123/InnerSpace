@@ -5,6 +5,7 @@ import axios from 'axios'
 const GET_TENANTS = 'GET_TENANTS'
 const ADD_TENANT = 'ADD_TENANT'
 
+
 // ACTION CREATORS
 
 export const getTenants = tenants =>({ type: GET_TENANTS, tenants})
@@ -23,10 +24,11 @@ export const fetchTenants = () => async dispatch =>{
 
   }
 }
-
-export const addATenant = tenant => async dispatch =>{
+// --> AllTenants.js
+export const addATenant = (tenant,unitId) => async dispatch =>{
   try{
-    await axios.post('api/tenants/addTenant', tenant)
+    await axios.post('api/tenants/addTenant', {tenant,unitId})
+    console.log('CONSOLE ',tenant,unitId)
     dispatch(addTenant(tenant))
 
   } catch(error){

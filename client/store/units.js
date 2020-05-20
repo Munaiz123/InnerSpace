@@ -31,14 +31,10 @@ export const fetchUnits = () => async dispatch =>{
   }
 }
 
-/* need to rethink where this should live? ⤵️
-  will it be in SingleBuildingView where you have access to buildingId
-*/
-
+// --> AllTenant.js + SingleUnitView.js
 export const addAUnit = (unit,buildId) => async dispatch =>{
   try{
-    console.log("buildId FROM THUNK", buildId)
-    let {data} = await axios.post(`/api/units/addUnit`, {unit,buildId})
+    await axios.post(`/api/units/addUnit`, {unit,buildId})
     dispatch(addUnit(unit))
 
   } catch (error){

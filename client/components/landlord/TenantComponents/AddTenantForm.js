@@ -16,8 +16,10 @@ export class AddTenantForm extends React.Component {
   }
 
   handleSubmit(){
+    let unitId = this.props.unitId || 0
+
     event.preventDefault()
-    this.props.addATenant(this.state)
+    this.props.addATenant(this.state,unitId)
     this.setState({
       firstName:'',
       lastName:'',
@@ -31,6 +33,7 @@ export class AddTenantForm extends React.Component {
   }
 
   render() {
+
 
     return (
       <div>
@@ -72,13 +75,10 @@ export class AddTenantForm extends React.Component {
   }
 }
 
-const mapState = state => ({
-
-})
+const mapState = state => ({})
 
 const mapDispatch = dispatch => ({
-  addATenant: tenant => dispatch(addATenant(tenant))
-
+  addATenant: (tenant,unitId) => dispatch(addATenant(tenant,unitId))
 })
 
 export default connect(mapState, mapDispatch)(AddTenantForm)
