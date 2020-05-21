@@ -24,10 +24,18 @@ export const fetchTenants = () => async dispatch =>{
 
   }
 }
+
 // --> AllTenants.js
-export const addATenant = tenant => async dispatch =>{
+export const addATenant = (tenant,unitId) => async dispatch =>{
   try{
-    await axios.post('api/tenants/addTenant', tenant)
+    let {data} = await axios.post('/api/tenants/addTenant', tenant)
+
+    if(unitId !== 0){
+      // let unit = await axios.get(`/api/units/${unitId}`)
+      let id = data.id
+      await axios.put(`/api/units/assignTenant/${unitId}`, {id})
+      console.log("unit.data from ADDTENANT THUNK", unit.data)
+    }
     dispatch(addTenant(tenant))
 
   } catch(error){

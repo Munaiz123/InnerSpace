@@ -97,6 +97,16 @@ router.post('/addUnit', async (req, res, next) => {
   }
 })
 
+router.put(`/assignTenant/:unitId`, async(req,res,next)=>{
+  try{
+    let oldUnit = await Unit.findOne({where:{id:req.params.unitId}})
+    await oldUnit.update({tenantId:req.body.id})
+
+  } catch(error){
+    next(error)
+  }
+})
+
 router.put('/:id', async (req, res, next) => {
   try {
     let oldUnit = await Unit.findOne({where: {id: req.params.id}})
