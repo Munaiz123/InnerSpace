@@ -63,6 +63,7 @@ export class SingleUnitView extends React.Component {
               :
               <div style={{paddingLeft:'5%', width: '25%'}}>
                 <h3> No Tenant Assigned</h3>
+                {/** Need to find a way to refresh or run 'fetchSingleUnit' again after tenant is added */}
                 <AddTenantForm unitId={unit.id} />
               </div>
             }

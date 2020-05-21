@@ -23,9 +23,6 @@ export class SingleBuildingView extends React.Component {
     let {building,units} = this.props
     const buildingId = this.props.match.params.id
 
-    console.log("buildingId", buildingId)
-
-
 
     return (
       <div style={{padding: '5%'}}>

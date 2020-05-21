@@ -35,8 +35,6 @@ export class AddUnitForm extends React.Component{
 
   render(){
 
-    console.log('props from ADDUNIT FORM', this.props)
-
     return (
       <div>
         <form

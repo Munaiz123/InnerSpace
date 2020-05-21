@@ -75,9 +75,6 @@ router.get('/building/:buildingId', async (req, res, next) => {
 })
 
 // api/units/addUnit
-// need to think about how assinging a tenant to a unit looks like
-// as well as how assigning a unit to building looks like.
-
 router.post('/addUnit', async (req, res, next) => {
   try {
     console.log('REQ..BODY:::::', req.body)
@@ -97,6 +94,8 @@ router.post('/addUnit', async (req, res, next) => {
   }
 })
 
+// --> AddATenant THUNK in store/tenants.js
+// PUT - api/units/assignTenant/unitId
 router.put(`/assignTenant/:unitId`, async(req,res,next)=>{
   try{
     let oldUnit = await Unit.findOne({where:{id:req.params.unitId}})
@@ -107,6 +106,7 @@ router.put(`/assignTenant/:unitId`, async(req,res,next)=>{
   }
 })
 
+// PUT - api/units/id
 router.put('/:id', async (req, res, next) => {
   try {
     let oldUnit = await Unit.findOne({where: {id: req.params.id}})

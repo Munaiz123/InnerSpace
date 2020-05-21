@@ -17,6 +17,7 @@ export class AddTenantForm extends React.Component {
 
   handleSubmit(){
     const unitId = this.props.unitId || 0
+    const {fetchSingleUnit} = this.props
 
     event.preventDefault()
     this.props.addATenant(this.state, unitId)
@@ -25,7 +26,6 @@ export class AddTenantForm extends React.Component {
       lastName:'',
       email:''
     })
-
   }
 
   handleChange(){
@@ -33,7 +33,6 @@ export class AddTenantForm extends React.Component {
   }
 
   render() {
-
 
     return (
       <div>
