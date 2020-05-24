@@ -1,4 +1,5 @@
 import React from 'react'
+import {Checkbox, Row, Col} from 'antd'
 import {connect} from 'react-redux'
 
 import {fetchUnits} from '../../../store/units'
@@ -78,17 +79,16 @@ export class AllUnits extends React.Component {
         <div> {/* start SEARCH & FILTERS */}
 
           {/* start --- BUILDING SELECTOR */}
-            <form style={{paddingTop:'.25%'}} onChange={this.handleBuildingSelectors}>
-              <h5 style={{paddingBottom:'.5%'}}>SELECT BUILDINGS</h5>
-              {allBuildings.map( (build,i) =>(
-                <div key={i} style={{display:'flex', flexDirection:'column'}}>
-                  <label htmlFor={build.buildingName}>
-                    <input type='checkBox' name={build.buildingName} defaultValue={build.id} /> { build.buildingName}
-                  </label>
-                </div>
+          <Checkbox.Group style={{paddingTop:'.25%', width:'100%'}} onChange={this.handleBuildingSelectors} >
+            <h5>SELECT BUILDINGS</h5>
+            <Row>
+              {allBuildings.map((build,i)=>(
+                <Col key={i} style={{paddingBottom:'5%'}} span={4}>
+                  <Checkbox value={build.id}>{build.buildingName}</Checkbox>
+                </Col>
               ))}
-
-            </form>
+            </Row>
+          </Checkbox.Group>
           {/* end --- BUILDING SELECTOR */}
 
         </div> {/* end SEARCH & FILTERS */}
