@@ -8,6 +8,8 @@ import EditBuildingForm from './EditBuildingForm'
 import SingleUnitCard from '../UnitComponents/SingleUnitCard'
 import AddUnitForm from '../UnitComponents/AddUnitForm'
 
+import {Grid} from '@material-ui/core'
+
 export class SingleBuildingView extends React.Component {
   constructor() {
     super()
@@ -25,7 +27,7 @@ export class SingleBuildingView extends React.Component {
 
 
     return (
-      <div style={{padding: '5%'}}>
+      <div >
 
         <div style={{display: 'flex', flexDirection: 'row'}}>
           <div id="singleBuildInfo" style={{width: '40%'}}>
