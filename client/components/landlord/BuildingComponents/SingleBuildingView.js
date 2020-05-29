@@ -27,46 +27,40 @@ export class SingleBuildingView extends React.Component {
 
 
     return (
-      <Grid>
-        <Grid container style={{padding: '2.5%'}}>
-          <Grid item xs={5}>
-            <div id="singleBuildInfo">
-              <h2>{building.buildingName}</h2>
-              <h5>Address: {building.address}</h5>
-              <h5>Number of Units: {building.unitsCount}</h5>
-            </div>
+        <Grid>
+          <Grid container style={{padding:'2.5%'}}>
+
+            <Grid item xs={5}>
+              <div id="singleBuildInfo">
+                <h2>{building.buildingName}</h2>
+                <h5>Address: {building.address}</h5>
+                <h5>Number of Units: {building.unitsCount}</h5>
+              </div>
           </Grid>
 
-          <Grid
-            item
-            xs={5}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
-            }}
-          >
+          <Grid item xs={5} style={{display:'flex',flexDirection:'column', justifyContent:'center'}}>
             <EditBuildingForm buildId={building.id} />
           </Grid>
+
         </Grid>
-        <Grid container style={{padding: '2.5%'}}>
+
+        <Grid container style={{padding:'2.5%'}}>
+
           <Grid item xs={5}>
             <div>
               <h3>UNITS</h3>
-              {units.map((unit, i) => (
-                <SingleUnitCard
-                  key={i}
-                  index={i + 1}
-                  unitInfo={unit}
-                  tenInfo={unit.tenant}
-                />
+              {units.map((unit,i)=>(
+                <SingleUnitCard key={i} index={i +1} unitInfo={unit} tenInfo={unit.tenant}/>
               ))}
             </div>
           </Grid>
-          <Grid item lg={3}>
+
+          <Grid item lg={3} style={{backgroundColor:'cornSilk'}}>
             <AddUnitForm buildId={buildingId} />
           </Grid>
-        </Grid>
+
+        </ Grid>
+
       </Grid>
     )
   }
